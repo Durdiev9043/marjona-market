@@ -29,4 +29,5 @@ Route::post('/check-sms/{user:phone}', [RegisteredUserController::class, 'checkS
 Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('category',CategoryController::class);
     Route::resource('product',ProductController::class);
+    Route::get('order/index/web',[\App\Http\Controllers\GeneralController::class,'orderIndex'])->name('orderIndex');
 });

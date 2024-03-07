@@ -26,9 +26,7 @@ class AuthController extends Controller
 
     public function reg(Request $request){
         $data =  $request->validate([
-            'name' => 'required',
             'phone' => 'required',
-            'password' => 'required',
         ]);
         $smsphone='+998'.$data['phone'];
 //        $code = rand(100000, 999999);
@@ -40,9 +38,7 @@ class AuthController extends Controller
         else {
             $role = 'client';
                 $user = User::create([
-                    'name' => $request->name,
                     'phone' => $request->phone,
-                    'password' => Hash::make($request->password),
                     'role' => 2,
                     'verify_code' => $code,
                     'verify_expiration' => now()->addMinutes(3),
@@ -65,7 +61,22 @@ class AuthController extends Controller
 
             Auth::login($user);
 
-            return 'chotki';
+            if ($user)
+            {
+                $role=User::where('phone', $request->phone)->first()->role;
+                $user_id=User::where('phone', $request->phone)->first()->id;
+                $name=User::where('phone', $request->phone)->first()->name;
+                $phone=User::where('phone', $request->phone)->first()->phone;
+            }
+            return response()->json([
+                'status' => true,
+                'message' => 'User Logged In Successfully',
+                'token' => $user->createToken("API TOKEN")->plainTextToken,
+                'role' => $role,
+                'user_id'=>$user_id,
+                'name'=>$name,
+                'phone'=>$phone
+            ], 200);
 
         } else {
 

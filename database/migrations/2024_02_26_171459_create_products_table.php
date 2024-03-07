@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-//            'name','more','price','img','count','status'
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->string('name');
@@ -22,7 +21,9 @@ return new class extends Migration
             $table->string('price');
             $table->string('img')->nullable();
             $table->string('count')->default(0);
+            $table->string('miqdori')->default(0);
             $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('type')->default(0);
             $table->timestamps();
 
             $table->foreign('category_id')->on('categories')->references('id');

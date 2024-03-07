@@ -47,31 +47,55 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                            <h5 class="card-title">Buyurmalar tarixi</span></h5>
 
                             <table class="table table-borderless datatable">
                                 <thead>
                                 <tr>
 {{--                                    <th scope="col">#</th>--}}
-                                    <th scope="col">F.I.O'</th>
-                                    <th scope="col">Tug`ilgan yili</th>
-                                    <th scope="col">Jinsi</th>
+                                    <th scope="col">№</th>
+                                    <th scope="col">Buyurmachi</th>
+                                    <th scope="col">Narxi</th>
+                                    <th scope="col">Mahsulot</th>
+                                    <th scope="col">Miqdori</th>
+                                    <th scope="col">Holat</th>
+                                    <th scope="col">Buyurtma qilinga vaqti</th>
                                     <th scope="col" colspan="2"></th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
 
-{{--                                @foreach($patients as $patient)--}}
-{{--                                    <tr>--}}
-{{--                                        <th scope="row"><a href="#">{{$patient -> id }}</a></th>--}}
-{{--                                        <td>{{$patient -> name }} {{$patient -> surname }} {{$patient -> father_name }}</td>--}}
-{{--                                        <td>{{$patient -> date_birth }}</a></td>--}}
-{{--                                        <td>{{$patient -> gd[$patient->gender] }}</td>--}}
-{{--                                        <td>  <a class="btn btn-warning btn-sm" href="{{ route('doctor.add.diagnosis',$patient -> id ) }}"><i class="fa-solid fa-hospital m-2"></i> Klinik davolanish</a>--}}
-{{--                                        <a class="btn btn-warning btn-sm" href="{{ route('doctor.add.department',$patient -> id ) }}"><i class="fa fa-reply m-2" aria-hidden="true"></i> boshqa bo`limga yuborish</a></td>--}}
-{{--                                    </tr>--}}
-{{--                                @endforeach--}}
+                                @foreach($orders as $order)
+                                        <?php
+                                        $pri=0;
+                                        ?>
+                                        @foreach($orderproducts as $orderproduct)
+                                            @if($orderproduct->order_id == $order->id)
+                                                    <?php
+                                                    $pri=$pri+$orderproduct->total_price;
+                                                    ?>
+                                                <tr>
+                                                    <th scope="row"><a href="#">{{$order -> id }}</a></th>
+                                                    <td>{{$order ->user->phone }} </td>
+                                                    <td>{{$pri }} </td>
+                                                    <td>{{$orderproduct->product->name }}  </td>
+                                                    <td>
+                                                        @if($orderproduct->count == 0)
+                                                            {{$orderproduct->miqdor }}
+                                                        @else
+                                                            {{$orderproduct->count }}
+                                                       @endif
+                                                    </td>
+                                                    <td>{{$order->status }}  </td>
+                                                    <td>{{$order->created_at->addMinutes(300)->format('d.m.Y  H:i') }}  </td>
+
+
+                                                </tr>
+                                            @endif
+                                        @endforeach
+
+                                @endforeach
 
                                 </tbody>
                             </table>
