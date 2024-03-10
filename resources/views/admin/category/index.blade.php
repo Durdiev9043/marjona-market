@@ -100,10 +100,15 @@
                                 <tbody>
 
                                                                 @foreach($cats as $cat)
+                                                                    <form action="{{route('category.update',$cat->id)}}" method="POST" accept-charset="UTF-8"
+                                                                          enctype="multipart/form-data">
+                                                                        @csrf
+                                                                        @METHOD('PUT')
                                                                     <tr>
                                                                         <th scope="row"><a href="#">{{$cat -> id }}</a></th>
-                                                                        <td>{{$cat->name}}</td>
+                                                                        <td><input style="border:none" type="text" name="name" value="{{$cat->name}}" ></td>
                                                                     </tr>
+                                                                    </form>
                                                                 @endforeach
 
                                 </tbody>

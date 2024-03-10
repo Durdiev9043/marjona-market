@@ -87,7 +87,7 @@
                                                             {{$orderproduct->count }}
                                                        @endif
                                                     </td>
-                                                    <td>{{$order->status }}  </td>
+                                                    <td>{{$order->st[$order->status] }}  </td>
                                                     <td>{{$order->created_at->addMinutes(300)->format('d.m.Y  H:i') }}  </td>
 
 

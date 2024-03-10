@@ -14,4 +14,5 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public $st=['jarayonda','bajarildi'];
 }

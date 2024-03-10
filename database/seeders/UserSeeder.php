@@ -17,6 +17,28 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $role = Role::create(['name' => 'admin']);
+        $role1 = Role::create(['name' => 'client']);
+        $role2 = Role::create(['name' => 'supplier']);
+
+        $permissions = [
+            'role-list',
+            'role-create',
+            'role-edit',
+            'role-delete',
+            'product-list',
+            'product-create',
+            'product-edit',
+            'product-delete'
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::create(['name' => $permission]);
+        }
+        $permissions = Permission::pluck('id','id')->all();
+
+        $role->syncPermissions($permissions);
+
         $admin = User::create([
             'name' => 'admin',
             'phone' => '997484390',
@@ -26,14 +48,10 @@ class UserSeeder extends Seeder
 
 
 
-        $role = Role::create(['name' => 'admin']);
-        $role1 = Role::create(['name' => 'client']);
-        $role2 = Role::create(['name' => 'supplier']);
 
 
-        $permissions = Permission::pluck('id','id')->all();
 
-        $role->syncPermissions($permissions);
+
 
         $admin->assignRole([$role->id]);
 

@@ -34,15 +34,16 @@ class CategoryController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+//
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $category->update($request->all());
+        return redirect()->back();
     }
 
 
