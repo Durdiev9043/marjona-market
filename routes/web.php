@@ -30,4 +30,5 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('category',CategoryController::class);
     Route::resource('product',ProductController::class);
     Route::get('order/index/web',[\App\Http\Controllers\GeneralController::class,'orderIndex'])->name('orderIndex');
+    Route::put('order/status,{id}',[\App\Http\Controllers\GeneralController::class,'orderstatus'])->name('orderstatus');
 });

@@ -18,7 +18,7 @@
             </div>
         @endif
         <div class="pagetitle">
-            <h1>Dashboard</h1>
+            <h1>Buyurtmalar holati boyicha ma'lumot</h1>
 
 {{--            <div class="btn-add">--}}
 {{--                <a href="{{ route('patient.create') }}">Be`mor qoshish</a>--}}
@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Buyurmalar tarixi</span></h5>
+                            <h5 class="card-title">Buyurmalar tarixi</h5>
 
                             <table class="table table-borderless datatable">
                                 <thead>
@@ -87,7 +87,23 @@
                                                             {{$orderproduct->count }}
                                                        @endif
                                                     </td>
-                                                    <td>{{$order->st[$order->status] }}  </td>
+                                                    <td>
+                                                        @if($order->status == 0)
+                                                            <form action="{{ route('orderstatus', $order->id) }}" method="post">
+                                                                @csrf
+                                                                @method('put')
+                                                                <div class="form-group">
+                                                                    <select class="form-control" name="status" id="exampleFormControlSelect1">
+                                                                        <option value="{{ $order->status }}">{{$order->st[$order->status] }}</option>
+                                                                        <option value="1">Bajarildi</option>
+                                                                    </select>
+                                                                </div>
+                                                                <button>saqlash</button>
+                                                            </form>
+                                                        @else
+                                                            Bajarilgan vaqti:  {{$order->updated_at->addMinutes(300)->format('d.m.Y  H:i') }}
+                                                        @endif
+                                                    </td>
                                                     <td>{{$order->created_at->addMinutes(300)->format('d.m.Y  H:i') }}  </td>
 
 

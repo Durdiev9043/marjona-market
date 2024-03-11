@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,5 +28,21 @@ class GeneralController extends Controller
         $orders=Order::all();
         $orderproducts=OrderProduct::all();
         return view('admin.home',['orders'=>$orders,'orderproducts'=>$orderproducts]);
+    }
+    public function orderstatus(Request $request,$order)
+    {
+        $order=Order::where('id',$order)->first();
+        $orpr=OrderProduct::where('order_id',$order->id)->get();
+        foreach ($orpr as $item){
+            $p_id=$item->product_id;
+            $pp=Product::where('id',$p_id)->first();
+            $count=$pp->count - $item->count;
+            $pp->update(['count'=>$count]);
+        }
+        $order->update([
+            'status' => $request->status,
+        ]);
+
+        return redirect()->back();
     }
 }
