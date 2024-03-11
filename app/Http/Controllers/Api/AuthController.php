@@ -31,11 +31,11 @@ class AuthController extends Controller
         $smsphone='+998'.$data['phone'];
 //        $code = rand(100000, 999999);
         $code=7777;
-        if ($this->service->sendMessage($smsphone, $code) != 200)
-        {
-                redirect()->back()->with('failed', 'invalid Phone');
-        }
-        else {
+//        if ($this->service->sendMessage($smsphone, $code) != 200)
+//        {
+//                redirect()->back()->with('failed', 'invalid Phone');
+//        }
+//        else {
             $role = 'client';
                 $user = User::create([
                     'phone' => $request->phone,
@@ -45,7 +45,7 @@ class AuthController extends Controller
                     'verify_code_status' => false
                 ]);
                 $user->assignRole($role);
-            }
+//            }
         return 'iltimos login qiling';
     }
 
