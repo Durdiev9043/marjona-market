@@ -46,7 +46,7 @@ class AuthController extends Controller
                 ]);
                 $user->assignRole($role);
             }
-        return 'iltimos login qiloing';
+        return 'iltimos login qiling';
     }
 
     public function checkSms(Request $request, $phone)

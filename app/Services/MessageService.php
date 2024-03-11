@@ -18,13 +18,13 @@ class MessageService {
     public function sendMessage($phone, $message) {
 
         $token = $this->getToken();
-
+$msg='Marjona oziq ovqat dokonining kirinsh kodi:'.$message;
         if ($phone != '998999999999') {
             $res = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->post("notify.eskiz.uz/api/message/sms/send", [
+            ])->post("https://notify.eskiz.uz/api/message/sms/send", [
                 'mobile_phone' => "$phone",
-                'message' => "$message",
+                'message' => "$msg",
                 'from' => '4546',
                 //'callback_url' => route('receive_status')
             ]);
