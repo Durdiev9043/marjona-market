@@ -46,7 +46,14 @@ class AuthController extends Controller
                 ]);
                 $user->assignRole($role);
             }
-        return 'iltimos login qiling';
+        $res = [
+            'success' => true,
+            //            array_key_first($data) => array_values($data),
+            'data' => $request->phone,
+            'message' => 'telefon qaqam saqlandi',
+        ];
+
+        return response()->json($res, 200);
     }
 
     public function checkSms(Request $request, $phone)
