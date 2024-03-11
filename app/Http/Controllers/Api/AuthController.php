@@ -39,7 +39,7 @@ class AuthController extends Controller
             $role = 'client';
                 $user = User::create([
                     'phone' => $request->phone,
-                    'role' => 2,
+                    'role' => '2',
                     'verify_code' => $code,
                     'verify_expiration' => now()->addMinutes(3),
                     'verify_code_status' => false
