@@ -22,7 +22,7 @@ $msg='Marjona oziq ovqat dokonining kirinsh kodi:'.$message;
         if ($phone != '998999999999') {
             $res = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-            ])->post("https://notify.eskiz.uz/api/message/sms/send", [
+            ])->post("http://notify.eskiz.uz/api/message/sms/send", [
                 'mobile_phone' => "$phone",
                 'message' => "$msg",
                 'from' => '4546',
