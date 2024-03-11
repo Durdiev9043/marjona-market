@@ -45,7 +45,7 @@ class AuthController extends Controller
                     'verify_code_status' => false
                 ]);
                 $user->assignRole($role);
-//            }
+            }
         return 'iltimos login qiling';
     }
 
