@@ -29,17 +29,17 @@ class GeneralController extends Controller
     public function orderstory(Request $request,$id)
     {$user=User::where('id',$id)->first();
         $jsonData = $request->json()->all();
-        dd($jsonData['lat']);
+//        dd($jsonData['lat']);
 //        $rrr= json_decode($request->json(), true);
        $p_id=Order::create([
             'user_id'=>$user->id,
             'status'=>0,
-            'lat'=>$request->lat,
-            'lang'=>$request->lang,
-            'address_name'=>$request->address_name,
+            'lat'=>$jsonData['lat'],
+            'lang'=>$jsonData['lang'],
+            'address_name'=>$jsonData['address_name'],
         ])->id;
 //        $products=json_decode($request->products);
-        foreach ($request->products as $product){
+        foreach ($jsonData['products'] as $product){
             OrderProduct::create([
                 'product_id'=>$product['product_id'],
                 'count'=>$product['count'],
