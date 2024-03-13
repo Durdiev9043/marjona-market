@@ -28,7 +28,7 @@ class GeneralController extends Controller
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
     public function orderstory(Request $request,$id)
     {$user=User::where('id',$id)->first();
-//        $data =  $request->validate([        ]);
+
         $p_id=Order::create([
             'user_id'=>$user->id,
             'status'=>0,
@@ -36,7 +36,8 @@ class GeneralController extends Controller
             'lang'=>$request->lang,
             'address_name'=>$request->address_name,
         ])->id;
-        foreach ($request->products as $product){
+        $products=json_decode($request->products);
+        foreach ($products as $product){
             OrderProduct::create([
                 'product_id'=>$product['product_id'],
                 'count'=>$product['count'],

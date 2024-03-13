@@ -31,11 +31,32 @@ class AuthController extends Controller
         $smsphone='+998'.$data['phone'];
 //        $code = rand(100000, 999999);
         $code=7777;
-        if ($this->service->sendMessage($smsphone, $code) != 200)
-        {
+        $us=User::where('phone',$request->phone)->first();
+
+        if ($us){
+
+            if ($this->service->sendMessage($smsphone, $code) != 200)
+            {
                 redirect()->back()->with('failed', 'invalid Phone');
-        }
-        else {
+            }
+            $us->update([
+                'verify_code' => $code,
+                'verify_expiration' => now()->addMinutes(3),
+            ]);
+            $res = [
+                'success' => true,
+                //            array_key_first($data) => array_values($data),
+                'data' => $request->phone,
+                'message' => 'telefon qaqam saqlandi',
+            ];
+
+            return response()->json($res, 200);
+        }else{
+            if ($this->service->sendMessage($smsphone, $code) != 200)
+            {
+                redirect()->back()->with('failed', 'invalid Phone');
+            }
+            else {
             $role = 'client';
                 $user = User::create([
                     'phone' => $request->phone,
@@ -46,14 +67,15 @@ class AuthController extends Controller
                 ]);
                 $user->assignRole($role);
             }
-        $res = [
-            'success' => true,
-            //            array_key_first($data) => array_values($data),
-            'data' => $request->phone,
-            'message' => 'telefon qaqam saqlandi',
-        ];
+            $res = [
+                'success' => true,
+                //            array_key_first($data) => array_values($data),
+                'data' => $request->phone,
+                'message' => 'telefon qaqam saqlandi',
+            ];
 
-        return response()->json($res, 200);
+            return response()->json($res, 200);
+    }
     }
 
     public function checkSms(Request $request, $phone)
