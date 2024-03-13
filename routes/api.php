@@ -26,6 +26,7 @@ Route::post('/auth/login', [AuthController::class, 'loginUser']);
 
 Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(function () {
     Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
+    Route::get('home/list',[\App\Http\Controllers\Api\GeneralController::class,'homelist'] );
     Route::get('product/list',[\App\Http\Controllers\Api\GeneralController::class,'productlist'] );
     Route::get('product/filter/{id}',[\App\Http\Controllers\Api\GeneralController::class,'productfilter'] );
     Route::post('order/story/{id}',[\App\Http\Controllers\Api\GeneralController::class,'orderstory'] );

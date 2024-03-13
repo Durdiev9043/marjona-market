@@ -25,6 +25,21 @@ class GeneralController extends BaseController
         $product=Product::where('category_id',$id)->get();
         return $this->sendSuccess($product,'chotki');
     }
+    public function homelist()
+    {
+        $cat=Category::all();
+        $product=Product::all();
+        $data=[];
+        $tt=[];
+        foreach ($cat as $item){
+            $tt['cat_id']=$item->id;
+            $tt['name']=$item->name;
+            $tt['products']=Product::where('category_id',$item->id)->get();
+            $data[]=$tt;
+        }
+
+        return $this->sendSuccess($data,'home page uchun api');
+    }
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
     public function orderstory(Request $request,$id)
     {$user=User::where('id',$id)->first();
