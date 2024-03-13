@@ -81,6 +81,6 @@ class GeneralController extends BaseController
                 )
             ->join('orders', 'orders.id', '=', 'order_products.order_id')
             ->where('user_id',$user->id)->get();
-        return $today;
+        return $this->sendSuccess($today,'Buyurtmalar tarixi');
     }
 }
