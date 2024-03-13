@@ -28,8 +28,8 @@ class GeneralController extends Controller
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
     public function orderstory(Request $request,$id)
     {$user=User::where('id',$id)->first();
-
-        $p_id=Order::create([
+        return $request->products;
+     /*   $p_id=Order::create([
             'user_id'=>$user->id,
             'status'=>0,
             'lat'=>$request->lat,
@@ -46,7 +46,7 @@ class GeneralController extends Controller
                 'order_id'=>$p_id,
             ]);
         }
-        return 'buyurtmalar qabul qilindi';
+        return 'buyurtmalar qabul qilindi';*/
 //        return $user_id->id;
     }
     public function orderhistory($id)
