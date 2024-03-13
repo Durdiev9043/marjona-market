@@ -28,7 +28,7 @@ class ProductController extends Controller
 
 //        'category_id','name','more','price','img','count','status'
         $uuid = Str::uuid()->toString();
-        $fileName = $uuid . '-' . time() . '.' . $request->img->extension();
+        $fileName = $uuid . '-' . time() . '.' . $request->img->getExtension();
         $request->img->move(public_path('../public/storage/galereya/'), $fileName);
         if ($request->count>0) {
             Product::create([
