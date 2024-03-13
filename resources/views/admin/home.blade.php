@@ -75,9 +75,12 @@
                                                     <?php
                                                     $pri=$pri+$orderproduct->total_price;
                                                     ?>
+@foreach($users as $user)
+    @if($user->id == $order->user_id)
                                                 <tr>
+
                                                     <th scope="row"><a href="#">{{$order -> id }}</a></th>
-                                                    <td>{{$order ->user->phone }} </td>
+                                                    <td> {{$user->phone }} </td>
                                                     <td>{{$pri }} </td>
                                                     <td>{{$orderproduct->product->name }}  </td>
                                                     <td>
@@ -108,6 +111,8 @@
 
 
                                                 </tr>
+    @endif
+@endforeach
                                             @endif
                                         @endforeach
 

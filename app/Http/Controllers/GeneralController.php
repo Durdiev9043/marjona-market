@@ -26,8 +26,9 @@ class GeneralController extends Controller
 //            ->join('orders', 'orders.id', '=', 'order_products.order_id')
 //            ->get();
         $orders=Order::all();
+        $users=User::all();
         $orderproducts=OrderProduct::all();
-        return view('admin.home',['orders'=>$orders,'orderproducts'=>$orderproducts]);
+        return view('admin.home',['orders'=>$orders,'orderproducts'=>$orderproducts,'users'=>$users]);
     }
     public function orderstatus(Request $request,$order)
     {

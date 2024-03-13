@@ -11,7 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class GeneralController extends Controller
+class GeneralController extends BaseController
 {
     public function category(){
         $cat=Category::all();
@@ -48,8 +48,8 @@ class GeneralController extends Controller
                 'order_id'=>$p_id,
             ]);
         }
-        return 'buyurtmalar qabul qilindi';
-//        return $user_id->id;
+        $msg='Buyurtma saqlandi';
+       return $this->sendSuccess('created',$msg);
     }
     public function orderhistory($id)
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
     private MessageService $service;
 
@@ -45,7 +45,6 @@ class AuthController extends Controller
             ]);
             $res = [
                 'success' => true,
-                //            array_key_first($data) => array_values($data),
                 'data' => $request->phone,
                 'message' => 'telefon qaqam saqlandi',
             ];
@@ -97,14 +96,17 @@ class AuthController extends Controller
                 $name=User::where('phone', $request->phone)->first()->name;
                 $phone=User::where('phone', $request->phone)->first()->phone;
             }
-            return response()->json([
-                'status' => true,
-                'message' => 'User Logged In Successfully',
+            $data=[
                 'token' => $user->createToken("API TOKEN")->plainTextToken,
                 'role' => $role,
                 'user_id'=>$user_id,
                 'name'=>$name,
                 'phone'=>$phone
+            ];
+            return response()->json([
+                'success' => true,
+                'message' => 'User Logged In Successfully',
+                'data' => $data
             ], 200);
 
         } else {
