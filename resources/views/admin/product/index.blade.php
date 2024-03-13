@@ -91,10 +91,12 @@
                                     {{--                                    <th scope="col">#</th>--}}
                                     <th scope="col">#</th>
                                     <th scope="col">Nomi</th>
+                                    <th scope="col">Shtrix kod</th>
                                     <th scope="col">Miqdori</th>
                                     <th scope="col">Narxi</th>
                                     <th scope="col">Turi</th>
                                     <th scope="col">Holati</th>
+                                    <th scope="col">Surati</th>
 
 
                                 </tr>
@@ -105,10 +107,14 @@
                                                                     <tr>
                                                                         <th scope="row"><a href="#">{{$product -> id }}</a></th>
                                                                         <td>{{$product->name}}</td>
-                                                                        <td>{{$product->count}}</td>
+                                                                        <td>{{$product->code}}</td>
+                                                                        <td>@if($product->count>0) {{$product->count}} @else {{$product->miqdori}} @endif</td>
                                                                         <td>{{$product->price}}</td>
                                                                         <td>{{$product->category->name}}</td>
                                                                         <td>{{$product->aksiya[$product->status]}}</td>
+                                                                        <td width="200px">
+                                                                            <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">
+                                                                        </td>
                                                                     </tr>
                                                                 @endforeach
 
@@ -119,7 +125,8 @@
                                 <!-- Modal content -->
                                 <div class="modal-content">
                                     <span class="close">&times;</span>
-                                    <form method="POST" action="{{ route('product.store') }}">
+                                    <form method="POST" action="{{ route('product.store') }}" accept-charset="UTF-8"
+                                          enctype="multipart/form-data">
                                         @csrf
 
                                         <div class="form-group">
@@ -127,6 +134,11 @@
                                             <select class="form-control form-control-sm"  name="category_id">
                                                 @foreach($cats as $item)<option value="{{$item->id}}">{{ $item->name }}</option>@endforeach
                                             </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Tovarning shtrix kodi</label>
+                                            <input type="number" class="form-control" id="exampleInputEmail1" name="code" aria-describedby="emailHelp" placeholder="nomi">
+
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">nomi</label>
@@ -149,10 +161,19 @@
 
                                         </div>
                                         <div class="form-group">
+                                            <label for="exampleInputEmail1">Miqdori</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1" name="miqdori" aria-describedby="emailHelp" placeholder="Soni">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati:</label>
+                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">
+
+                                        </div>
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Mahsulot aksiyadami</label>
                                             <select class="form-control form-control-sm"  name="status">
-                                                <option value="0">Hozirda aksiyada</option>
-                                                <option value="1">Hozirda aksiyada emas</option>
+                                                <option value="0">Hozirda aksiyada emas</option>
+                                                <option value="1">Hozirda aksiyada</option>
                                             </select>
                                         </div>
 

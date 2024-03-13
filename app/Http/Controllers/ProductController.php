@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class ProductController extends Controller
 {
 
@@ -26,7 +26,35 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        Product::create($request->all());
+//        'category_id','name','more','price','img','count','status'
+        $uuid = Str::uuid()->toString();
+        $fileName = $uuid . '-' . time() . '.' . $request->img->extension();
+        $request->img->move(public_path('../public/storage/galereya/'), $fileName);
+        if ($request->count>0) {
+            Product::create([
+                'category_id' => $request->category_id,
+                'img' => $fileName,
+                'name' => $request->name,
+                'more' => $request->more,
+                'price' => $request->price,
+                'count' => $request->count,
+                'type' => 0,
+                'status' => $request->status,
+                'code' => $request->code
+            ]);
+        }else{
+            Product::create([
+                'category_id' => $request->category_id,
+                'img' => $fileName,
+                'name' => $request->name,
+                'more' => $request->more,
+                'price' => $request->price,
+                'miqdori' => $request->miqdori,
+                'status' => $request->status,
+                'type' => 1,
+                'code' => $request->code
+            ]);
+        }
         return redirect()->route('product.index');
     }
 

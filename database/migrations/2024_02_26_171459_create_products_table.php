@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('miqdori')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('type')->default(0);
+            $table->bigInteger('code')->default(0);
             $table->timestamps();
 
             $table->foreign('category_id')->on('categories')->references('id');

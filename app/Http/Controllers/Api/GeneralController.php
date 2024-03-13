@@ -15,15 +15,15 @@ class GeneralController extends BaseController
 {
     public function category(){
         $cat=Category::all();
-        return $cat;
+        return $this->sendSuccess($cat,'Dokondagi barcha Mahsulotlar Toifalari');
     }
     public function productlist(){
         $product=Product::all();
-        return $product;
+       return $this->sendSuccess($product,'Dokondagi barcha Mahsulotlar');
     }
     public function productfilter($id){
         $product=Product::where('category_id',$id)->get();
-        return $product;
+        return $this->sendSuccess($product,'chotki');
     }
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
     public function orderstory(Request $request,$id)
