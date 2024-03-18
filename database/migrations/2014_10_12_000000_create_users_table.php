@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('verify_code')->nullable();
             $table->string('verify_expiration')->nullable();
             $table->tinyInteger('verify_code_status')->default(0);
+            $table->double('balans')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

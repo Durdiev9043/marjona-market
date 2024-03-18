@@ -20,6 +20,12 @@
                 <span>Mahsulotlar</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('incoming.index') }}">
+                <i class="bi bi-grid"></i>
+                <span>Mahsulot kirim qilish</span>
+            </a>
+        </li>
         <!-- End Dashboard Nav -->
 
 

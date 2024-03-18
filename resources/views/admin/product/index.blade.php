@@ -38,7 +38,11 @@
             color: black;
             text-decoration: none;
             cursor: pointer;
-        }</style>
+        }
+        body>footer>div{
+            display: none !important;
+        }
+    </style>
     <!-- ======= Header ======= -->
 
 
@@ -135,11 +139,7 @@
                                                 @foreach($cats as $item)<option value="{{$item->id}}">{{ $item->name }}</option>@endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Tovarning shtrix kodi</label>
-                                            <input type="number" class="form-control" id="exampleInputEmail1" name="code" aria-describedby="emailHelp" placeholder="nomi">
 
-                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">nomi</label>
                                             <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="nomi">
@@ -170,6 +170,11 @@
 
                                         </div>
                                         <div class="form-group">
+                                            <label for="exampleInputEmail1">Tovarning shtrix kodi</label>
+                                            <input type="number" class="form-control" id="exampleInputEmail1" name="code" aria-describedby="emailHelp" placeholder="nomi">
+
+                                        </div>
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Mahsulot aksiyadami</label>
                                             <select class="form-control form-control-sm"  name="status">
                                                 <option value="0">Hozirda aksiyada emas</option>
@@ -181,7 +186,6 @@
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
 

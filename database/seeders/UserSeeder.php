@@ -20,6 +20,10 @@ class UserSeeder extends Seeder
         $role = Role::create(['name' => 'admin']);
         $role1 = Role::create(['name' => 'client']);
         $role2 = Role::create(['name' => 'supplier']);
+        $role3 = Role::create(['name' => 'role1']);
+        $role4 = Role::create(['name' => 'role2']);
+        $role5 = Role::create(['name' => 'role3']);
+        $role6 = Role::create(['name' => 'role4']);
 
         $permissions = [
             'role-list',

@@ -46,4 +46,65 @@ class GeneralController extends Controller
 
         return redirect()->back();
     }
+
+    public function addToCart(Request $request)
+    {
+        $product = $request->all();
+
+        @session_start();
+
+        if(isset($_SESSION["cart"]) and (!empty($_SESSION["cart"]))){
+            $cart = ($_SESSION['cart']);
+//            echo "cart sessiyada bo <br>";
+        }else{
+            $cart=[];
+//            echo "cart sessiyada yoq <br>";
+        }
+        $cart []=array($request->all());
+//        if(array_key_exists($product['product_id'],$cart)){
+//            $name=DB::table('products')->where('id',$product['product_id'])->first();
+//            $id=$product['product_id'];
+//            $ammount=$product['count']*$name->price_size;
+//            $cart[$id] += $product['count'];
+//            $cart [$id]=array(
+//                'product_id'=>$product['product_id'],
+//                'ammount' => $ammount,
+//                'count' => $product['count'],
+//                'name' => $name->name,
+//            ) ;
+//            echo "ok <br>";
+//        }else{
+//            $name=DB::table('products')->where('id',$product['product_id'])->first();
+//
+//            $id=$product['product_id'];
+//            $ammount=$product['count']*$name->price_size;
+//
+//            $cart[$id] = $product['count'];
+//            $cart [$id]=array(
+//                'ammount' => $ammount,
+//                'product_id'=>$product['product_id'],
+//                'count' => $product['count'],
+//                'name' => $name->name,
+//
+//
+//            ) ;
+//        }
+
+        $_SESSION['cart'] = $cart;
+
+        return redirect()->back()->with('yardi',$cart);
+    }
+    public function clearCart()
+    {
+
+
+        @session_start();
+unset($_SESSION['cart']);
+return redirect()->back();
+    }
+    public function codeSearch(Request $request)
+    {
+        $product=Product::where('code',$request->code)->first();
+        return $product;
+    }
 }

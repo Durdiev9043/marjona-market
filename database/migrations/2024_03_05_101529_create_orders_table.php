@@ -17,10 +17,16 @@ return new class extends Migration
 //            'user_id','status','lat','lang','address_name'
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->tinyInteger('status');
+            $table->unsignedBigInteger('supplier_id')->nullable();
+            $table->integer('status');
             $table->double('lat')->nullable();
             $table->double('lang')->nullable();
             $table->string('address_name')->nullable();
+            $table->tinyInteger('type')->nullable();
+            $table->tinyInteger('pay_type')->nullable();
+
+            $table->foreign('user_id')->on('users')->references('id');
+            $table->foreign('supplier_id')->on('users')->references('id');
             $table->timestamps();
         });
     }

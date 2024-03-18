@@ -18,7 +18,7 @@ class MessageService {
     public function sendMessage($phone, $message) {
 
         $token = $this->getToken();
-$msg='Marjona oziq ovqat dokonining kirinsh kodi:'.$message;
+$msg='Marjona market ilovasi uchun tasdiqlash kodi: '.$message.'. Tanlovingiz uchun raxmat.';
         if ($phone != '998999999999') {
             $res = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,

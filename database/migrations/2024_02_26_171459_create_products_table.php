@@ -19,12 +19,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('more')->nullable();
             $table->string('price');
+            $table->string('new_price')->nullable();
             $table->string('img')->nullable();
-            $table->string('count')->default(0);
-            $table->string('miqdori')->default(0);
+            $table->string('count')->nullable();
+            $table->string('miqdori')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('type')->default(0);
-            $table->bigInteger('code')->default(0);
+            $table->bigInteger('code')->unique()->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')->on('categories')->references('id');
