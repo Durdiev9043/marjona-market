@@ -96,11 +96,13 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Nomi</th>
                                     <th scope="col">Shtrix kod</th>
+                                    <th scope="col">izoh</th>
                                     <th scope="col">Miqdori</th>
                                     <th scope="col">Narxi</th>
                                     <th scope="col">Turi</th>
                                     <th scope="col">Holati</th>
                                     <th scope="col">Surati</th>
+                                    <th scope="col">Amallar</th>
 
 
                                 </tr>
@@ -109,15 +111,52 @@
 
                                                                 @foreach($products as $product)
                                                                     <tr>
+
                                                                         <th scope="row"><a href="#">{{$product -> id }}</a></th>
                                                                         <td>{{$product->name}}</td>
                                                                         <td>{{$product->code}}</td>
-                                                                        <td>@if($product->count>0) {{$product->count}} @else {{$product->miqdori}} @endif</td>
-                                                                        <td>{{$product->price}}</td>
+                                                                        <td>{{ Illuminate\Support\Str::limit($product->more, $limit = 50, $end = '...') }}</td>
+
+                                                                        <td>
+                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">
+                                                                                @csrf
+                                                                                @method('PUT')
+                                                                            @if($product->count>0)
+                                                                                <input style="border:none" type="text" name="count" value="{{$product->count}}">
+                                                                            @else
+                                                                                <input style="border:none" type="text" name="miqdori" value="{{$product->miqdori}}">
+                                                                            @endif
+                                                                            </form>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">
+                                                                                @csrf
+                                                                                @method('PUT')
+                                                                                <input style="border:none" type="text" name="price" value="{{$product->price}}">
+                                                                            </form>
+                                                                        </td>
+
                                                                         <td>{{$product->category->name}}</td>
                                                                         <td>{{$product->aksiya[$product->status]}}</td>
+
                                                                         <td width="200px">
                                                                             <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">
+                                                                        </td>
+                                                                        <td>
+                                                                            <form action="{{ route('product.destroy',$product ->id) }}" method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <a class="btn btn-warning btn-sm m-1" href="{{ route('product.edit',$product->id) }}">
+                                                                                    <span class="btn-label">
+                                                                                        <i class="fa fa-edit"></i>
+                                                                                    </span>
+                                                                                </a>
+
+                                                                                <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span></button>
+                                                                            </form>
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
@@ -145,11 +184,11 @@
                                             <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="nomi">
 
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">batafsil</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" name="more" aria-describedby="emailHelp" placeholder="batafsil">
+{{--                                        <div class="form-group">--}}
+{{--                                            <label for="exampleInputEmail1">batafsil</label>--}}
+{{--                                            <input type="text" class="form-control" id="exampleInputEmail1" name="more" aria-describedby="emailHelp" placeholder="batafsil">--}}
 
-                                        </div>
+{{--                                        </div>--}}
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">narxi</label>
                                             <input type="text" class="form-control" id="exampleInputEmail1" name="price" aria-describedby="emailHelp" placeholder="narxi">
@@ -163,6 +202,10 @@
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Miqdori</label>
                                             <input type="text" class="form-control" id="exampleInputEmail1" name="miqdori" aria-describedby="emailHelp" placeholder="Soni">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                                            <textarea class="form-control" name="more" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Surati:</label>

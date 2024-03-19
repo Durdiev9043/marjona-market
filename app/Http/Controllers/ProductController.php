@@ -19,7 +19,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.product.create');
     }
 
 
@@ -92,19 +92,21 @@ class ProductController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('admin.product.edit',['product'=>$product]);
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        return redirect()->route('product.index')->with('success','O\'zgarish saqlandi');
     }
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->back();
     }
 }
