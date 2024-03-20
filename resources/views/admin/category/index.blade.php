@@ -91,6 +91,8 @@
                                     {{--                                    <th scope="col">#</th>--}}
                                     <th scope="col">#</th>
                                     <th scope="col">Nomi</th>
+                                    <th scope="col">Surati</th>
+                                    <th scope="col">Amallar</th>
 
 
                                 </tr>
@@ -100,15 +102,31 @@
                                 <tbody>
 
                                                                 @foreach($cats as $cat)
-                                                                    <form action="{{route('category.update',$cat->id)}}" method="POST" accept-charset="UTF-8"
-                                                                          enctype="multipart/form-data">
-                                                                        @csrf
-                                                                        @METHOD('PUT')
+
                                                                     <tr>
                                                                         <th scope="row"><a href="#">{{$cat -> id }}</a></th>
-                                                                        <td><input style="border:none" type="text" name="name" value="{{$cat->name}}" ></td>
+                                                                        <td>
+                                                                            <form action="{{route('category.update',$cat->id)}}" method="POST" accept-charset="UTF-8"
+                                                                                  enctype="multipart/form-data">
+                                                                                @csrf
+                                                                                @METHOD('PUT')
+                                                                                <input style="border:none" type="text" name="name" value="{{$cat->name}}" >
+                                                                            </form>
+                                                                        </td>
+                                                                        <td><img src="{{ asset('/storage/galereya/'.$cat->img) }}" width="150px" alt=""></td>
+                                                                        <td>
+                                                                            <form action="{{ route('category.destroy',$cat ->id) }}" method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+
+
+                                                                                <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span></button>
+                                                                            </form>
+                                                                        </td>
                                                                     </tr>
-                                                                    </form>
+
                                                                 @endforeach
 
                                 </tbody>
@@ -118,7 +136,7 @@
                                 <!-- Modal content -->
                                 <div class="modal-content">
                                     <span class="close">&times;</span>
-                                    <form method="POST" action="{{ route('category.store') }}">
+                                    <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data">
                                         @csrf
 
 
@@ -126,6 +144,11 @@
                                             <label for="exampleInputEmail1">name</label>
                                             <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="name">
                                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati:</label>
+                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">
+
                                         </div>
 
 

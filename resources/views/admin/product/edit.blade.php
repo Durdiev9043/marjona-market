@@ -84,7 +84,11 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-
+                            <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">
+                            <img src="{{ asset('/storage/galereya/'.$product->img2) }}" width="150px" alt="">
+                            <img src="{{ asset('/storage/galereya/'.$product->img3) }}" width="150px" alt="">
+                            <img src="{{ asset('/storage/galereya/'.$product->img4) }}" width="150px" alt="">
+                            <img src="{{ asset('/storage/galereya/'.$product->img5) }}" width="150px" alt="">
 
                             <form method="POST" action="{{route('product.update',$product->id)}}"  accept-charset="UTF-8"
                                   enctype="multipart/form-data">

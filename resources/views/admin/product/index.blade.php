@@ -207,9 +207,44 @@
                                             <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
                                             <textarea class="form-control" name="more" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <label for="exampleInputEmail1">Surati:</label>--}}
+{{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+{{--                                        </div>--}}
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Surati:</label>
-                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">
+                                            <input type=file name="img" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+                                            <img id="pic"  width="100px"/>
+{{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati 2:</label>
+                                            <input type=file name="img2" oninput="pic2.src=window.URL.createObjectURL(this.files[0])">
+                                            <img id="pic2"  width="100px"/>
+                                            {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati 3:</label>
+                                            <input type=file name="img3" oninput="pic3.src=window.URL.createObjectURL(this.files[0])">
+                                            <img id="pic3"  width="100px"/>
+                                            {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati 4:</label>
+                                            <input type=file name="img4" oninput="pic4.src=window.URL.createObjectURL(this.files[0])">
+                                            <img id="pic4"  width="100px"/>
+                                            {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati 5:</label>
+                                            <input type=file name="img5" oninput="pic5.src=window.URL.createObjectURL(this.files[0])">
+                                            <img id="pic5"  width="100px"/>
+                                            {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
 
                                         </div>
                                         <div class="form-group">

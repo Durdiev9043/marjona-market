@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -23,8 +24,18 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        Category::create($request->all());
-        return redirect()->route('category.index');
+        if ($request->img){
+
+            $uuid = Str::uuid()->toString();
+            $fileName = $uuid . '-' . time() . '.' . $request->img->getExtension();
+            $request->img->move(public_path('../public/storage/galereya/'), $fileName);
+            Category::create([
+                'name'=>$request->name,
+                'img'=>$fileName,
+            ]);
+        }
+
+        return redirect()->route('category.index')->with('success','Mahsulot kategoryasi saqlandi');
     }
 
 
@@ -47,8 +58,9 @@ class CategoryController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+return redirect()->back()->with('success','Mahsulot kategoryasi ochirildi');
     }
 }
