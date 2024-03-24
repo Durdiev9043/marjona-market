@@ -110,13 +110,13 @@
                                 <tbody>
 
 
-{{--                                                                @foreach($products as $product)--}}
-{{--                                                                    <tr>--}}
+                                                                @foreach($products as $product)
+                                                                    <tr>
 
-{{--                                                                        <th scope="row"><a href="#">{{$product -> id }}</a></th>--}}
-{{--                                                                        <td>{{$product->name}}</td>--}}
-{{--                                                                        <td>{{$product->code}}</td>--}}
-{{--                                                                        <td>{{ Illuminate\Support\Str::limit($product->more, $limit = 50, $end = '...') }}</td>--}}
+                                                                        <th scope="row"><a href="#">{{$product -> id }}</a></th>
+                                                                        <td>{{$product->name}}</td>
+                                                                        <td>{{$product->code}}</td>
+                                                                        <td>{{ Illuminate\Support\Str::limit($product->more, $limit = 50, $end = '...') }}</td>
 
 {{--                                                                        <td>--}}
 {{--                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">--}}
@@ -130,37 +130,37 @@
 {{--                                                                            </form>--}}
 
 {{--                                                                        </td>--}}
-{{--                                                                        <td>--}}
-{{--                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">--}}
-{{--                                                                                @csrf--}}
-{{--                                                                                @method('PUT')--}}
-{{--                                                                                <input style="border:none" type="text" name="price" value="{{$product->price}}">--}}
-{{--                                                                            </form>--}}
-{{--                                                                        </td>--}}
+                                                                        <td>
+                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">
+                                                                                @csrf
+                                                                                @method('PUT')
+                                                                                <input style="border:none" type="text" name="price" value="{{$product->price}}">
+                                                                            </form>
+                                                                        </td>
 
-{{--                                                                        <td>{{$product->category->name}}</td>--}}
-{{--                                                                        <td>{{$product->aksiya[$product->status]}}</td>--}}
+                                                                        <td>{{$product->category->name}}</td>
+                                                                        <td>{{$product->aksiya[$product->status]}}</td>
 
-{{--                                                                        <td width="200px">--}}
-{{--                                                                            <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">--}}
-{{--                                                                        </td>--}}
-{{--                                                                        <td>--}}
-{{--                                                                            <form action="{{ route('product.destroy',$product ->id) }}" method="POST">--}}
-{{--                                                                                @csrf--}}
-{{--                                                                                @method('DELETE')--}}
-{{--                                                                                <a class="btn btn-warning btn-sm m-1" href="{{ route('product.edit',$product->id) }}">--}}
-{{--                                                                                    <span class="btn-label">--}}
-{{--                                                                                        <i class="fa fa-edit"></i>--}}
-{{--                                                                                    </span>--}}
-{{--                                                                                </a>--}}
+                                                                        <td width="200px">
+                                                                            <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">
+                                                                        </td>
+                                                                        <td>
+                                                                            <form action="{{ route('product.destroy',$product ->id) }}" method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <a class="btn btn-warning btn-sm m-1" href="{{ route('product.edit',$product->id) }}">
+                                                                                    <span class="btn-label">
+                                                                                        <i class="fa fa-edit"></i>
+                                                                                    </span>
+                                                                                </a>
 
-{{--                                                                                <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">--}}
-{{--                                        <i class="fa fa-trash"></i>--}}
-{{--                                    </span></button>--}}
-{{--                                                                            </form>--}}
-{{--                                                                        </td>--}}
-{{--                                                                    </tr>--}}
-{{--                                                                @endforeach--}}
+                                                                                <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span></button>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
 
                                 </tbody>
                             </table>
