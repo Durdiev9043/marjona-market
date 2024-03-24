@@ -112,7 +112,7 @@
 
                                                                 @foreach($products as $product)
                                                                     <tr>
-
+@dd($product)
                                                                         <th scope="row"><a href="#">{{$product -> id }}</a></th>
                                                                         <td>{{$product->name}}</td>
                                                                         <td>{{$product->code}}</td>
