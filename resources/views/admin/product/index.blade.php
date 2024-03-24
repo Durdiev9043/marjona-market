@@ -116,20 +116,20 @@
                                                                         <th scope="row"><a href="#">{{$product -> id }}</a></th>
                                                                         <td>{{$product->name}}</td>
                                                                         <td>{{$product->code}}</td>
-                                                                        <td>{{ Illuminate\Support\Str::limit($product->more, $limit = 50, $end = '...') }}</td>
+{{--                                                                        <td>{{ Illuminate\Support\Str::limit($product->more, $limit = 50, $end = '...') }}</td>--}}
 
-{{--                                                                        <td>--}}
-{{--                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">--}}
-{{--                                                                                @csrf--}}
-{{--                                                                                @method('PUT')--}}
-{{--                                                                            @if($product->count>0)--}}
-{{--                                                                                <input style="border:none" type="text" name="count" value="{{$product->count}}">--}}
-{{--                                                                            @else--}}
-{{--                                                                                <input style="border:none" type="text" name="miqdori" value="{{$product->miqdori}}">--}}
-{{--                                                                            @endif--}}
-{{--                                                                            </form>--}}
+                                                                        <td>
+                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">
+                                                                                @csrf
+                                                                                @method('PUT')
+                                                                            @if($product->count>0)
+                                                                                <input style="border:none" type="text" name="count" value="{{$product->count}}">
+                                                                            @else
+                                                                                <input style="border:none" type="text" name="miqdori" value="{{$product->miqdori}}">
+                                                                            @endif
+                                                                            </form>
 
-{{--                                                                        </td>--}}
+                                                                        </td>
                                                                         <td>
                                                                             <form action="{{ route('product.update',$product->id) }}" method="post">
                                                                                 @csrf
