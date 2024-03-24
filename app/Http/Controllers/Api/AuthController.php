@@ -46,17 +46,17 @@ class AuthController extends BaseController
             $res = [
                 'success' => true,
                 'data' => $request->phone,
-                'message' => 'telefon qaqam saqlandi',
+                'message' => 'telefon raqam saqlandi',
             ];
 
             return response()->json($res, 200);
         }else{
-            if ($this->service->sendMessage($smsphone, $code) != 200)
-            {
-                redirect()->back()->with('failed', 'invalid Phone');
-            }
-            else {
-            $role = 'client';
+//            if ($this->service->sendMessage($smsphone, $code) != 200)
+//            {
+//                redirect()->back()->with('failed', 'invalid Phone');
+//            }
+//            else {
+                $role = 'client';
                 $user = User::create([
                     'phone' => $request->phone,
                     'role' => '2',
@@ -65,10 +65,9 @@ class AuthController extends BaseController
                     'verify_code_status' => false
                 ]);
                 $user->assignRole($role);
-            }
+//            }
             $res = [
                 'success' => true,
-                //            array_key_first($data) => array_values($data),
                 'data' => $request->phone,
                 'message' => 'telefon qaqam saqlandi',
             ];
