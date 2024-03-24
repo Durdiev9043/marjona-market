@@ -18,8 +18,38 @@ class GeneralController extends BaseController
         return $this->sendSuccess($cat,'Dokondagi barcha Mahsulotlar Toifalari');
     }
     public function productlist(){
-        $product=Product::all();
-       return $this->sendSuccess($product,'Dokondagi barcha Mahsulotlar');
+        $products=Product::all();
+        $tt=[];
+//        $data=[];
+        foreach ($products as $product){
+//            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
+            $data=[];
+            $data['category_id']=$product->category_id;
+            $data['name']=$product->name;
+            $data['more']=$product->more;
+            $data['price']=$product->price;
+            $data['count']=$product->count;
+            $data['miqdori']=$product->miqdori;
+            $data['code']=$product->code;
+            $data['type']=$product->type;
+            if ($product->img) {
+                $data['img'][] = $product->img;
+            }
+            if ($product->img2) {
+                $data['img'][] = $product->img2;
+            }
+            if ($product->img3) {
+                $data['img'][] = $product->img3;
+            }
+            if ($product->img4) {
+                $data['img'][] = $product->img4;
+            }
+            if ($product->img5) {
+                $data['img'][] = $product->img5;
+            }
+            $tt[]=$data;
+        }
+       return $this->sendSuccess($tt,'Dokondagi barcha Mahsulotlar');
     }
     public function productfilter($id){
         $product=Product::where('category_id',$id)->get();
