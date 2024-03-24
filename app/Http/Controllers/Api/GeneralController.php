@@ -24,6 +24,7 @@ class GeneralController extends BaseController
         foreach ($products as $product){
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
             $data=[];
+            $data['id']=$product->id;
             $data['category_id']=$product->category_id;
             $data['name']=$product->name;
             $data['more']=$product->more;
@@ -58,6 +59,7 @@ class GeneralController extends BaseController
         foreach ($products as $product) {
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
             $data = [];
+            $data['id'] = $product->id;
             $data['category_id'] = $product->category_id;
             $data['name'] = $product->name;
             $data['more'] = $product->more;
