@@ -92,11 +92,42 @@ class GeneralController extends BaseController
         $cat=Category::all();
         $product=Product::all();
         $data=[];
-        $tt=[];
+
         foreach ($cat as $item){
+            $tt=[];
             $tt['cat_id']=$item->id;
             $tt['name']=$item->name;
-            $tt['products']=Product::where('category_id',$item->id)->get();
+            $products=Product::where('category_id',$item->id)->get();
+            foreach ($products as $product) {
+//            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
+                $pp = [];
+                $pp['id'] = $product->id;
+                $pp['category_id'] = $product->category_id;
+                $pp['name'] = $product->name;
+                $pp['more'] = $product->more;
+                $pp['price'] = $product->price;
+                $pp['count'] = $product->count;
+                $pp['miqdori'] = $product->miqdori;
+                $pp['code'] = $product->code;
+                $pp['type'] = $product->type;
+                if ($product->img) {
+                    $pp['img'][] = $product->img;
+                }
+                if ($product->img2) {
+                    $pp['img'][] = $product->img2;
+                }
+                if ($product->img3) {
+                    $pp['img'][] = $product->img3;
+                }
+                if ($product->img4) {
+                    $pp['img'][] = $product->img4;
+                }
+                if ($product->img5) {
+                    $pp['img'][] = $product->img5;
+                }
+
+                $tt['products'][] = $pp;
+            }
             $data[]=$tt;
         }
 
