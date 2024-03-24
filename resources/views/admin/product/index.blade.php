@@ -108,7 +108,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @dd($products)
+
 
                                                                 @foreach($products as $product)
                                                                     <tr>
