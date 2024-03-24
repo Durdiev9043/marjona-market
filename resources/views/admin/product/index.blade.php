@@ -96,7 +96,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Nomi</th>
                                     <th scope="col">Shtrix kod</th>
-                                    <th scope="col">izoh</th>
+{{--                                    <th scope="col">izoh</th>--}}
                                     <th scope="col">Miqdori</th>
                                     <th scope="col">Narxi</th>
                                     <th scope="col">Turi</th>
