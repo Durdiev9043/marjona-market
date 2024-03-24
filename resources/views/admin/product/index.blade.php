@@ -110,162 +110,162 @@
                                 <tbody>
 
 
-                                                                @foreach($products as $product)
-                                                                    <tr>
+{{--                                                                @foreach($products as $product)--}}
+{{--                                                                    <tr>--}}
 
-                                                                        <th scope="row"><a href="#">{{$product -> id }}</a></th>
-                                                                        <td>{{$product->name}}</td>
-                                                                        <td>{{$product->code}}</td>
-                                                                        <td>{{ Illuminate\Support\Str::limit($product->more, $limit = 50, $end = '...') }}</td>
+{{--                                                                        <th scope="row"><a href="#">{{$product -> id }}</a></th>--}}
+{{--                                                                        <td>{{$product->name}}</td>--}}
+{{--                                                                        <td>{{$product->code}}</td>--}}
+{{--                                                                        <td>{{ Illuminate\Support\Str::limit($product->more, $limit = 50, $end = '...') }}</td>--}}
 
-                                                                        <td>
-                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">
-                                                                                @csrf
-                                                                                @method('PUT')
-                                                                            @if($product->count>0)
-                                                                                <input style="border:none" type="text" name="count" value="{{$product->count}}">
-                                                                            @else
-                                                                                <input style="border:none" type="text" name="miqdori" value="{{$product->miqdori}}">
-                                                                            @endif
-                                                                            </form>
+{{--                                                                        <td>--}}
+{{--                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">--}}
+{{--                                                                                @csrf--}}
+{{--                                                                                @method('PUT')--}}
+{{--                                                                            @if($product->count>0)--}}
+{{--                                                                                <input style="border:none" type="text" name="count" value="{{$product->count}}">--}}
+{{--                                                                            @else--}}
+{{--                                                                                <input style="border:none" type="text" name="miqdori" value="{{$product->miqdori}}">--}}
+{{--                                                                            @endif--}}
+{{--                                                                            </form>--}}
 
-                                                                        </td>
-                                                                        <td>
-                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">
-                                                                                @csrf
-                                                                                @method('PUT')
-                                                                                <input style="border:none" type="text" name="price" value="{{$product->price}}">
-                                                                            </form>
-                                                                        </td>
+{{--                                                                        </td>--}}
+{{--                                                                        <td>--}}
+{{--                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">--}}
+{{--                                                                                @csrf--}}
+{{--                                                                                @method('PUT')--}}
+{{--                                                                                <input style="border:none" type="text" name="price" value="{{$product->price}}">--}}
+{{--                                                                            </form>--}}
+{{--                                                                        </td>--}}
 
-                                                                        <td>{{$product->category->name}}</td>
-                                                                        <td>{{$product->aksiya[$product->status]}}</td>
+{{--                                                                        <td>{{$product->category->name}}</td>--}}
+{{--                                                                        <td>{{$product->aksiya[$product->status]}}</td>--}}
 
-                                                                        <td width="200px">
-                                                                            <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">
-                                                                        </td>
-                                                                        <td>
-                                                                            <form action="{{ route('product.destroy',$product ->id) }}" method="POST">
-                                                                                @csrf
-                                                                                @method('DELETE')
-                                                                                <a class="btn btn-warning btn-sm m-1" href="{{ route('product.edit',$product->id) }}">
-                                                                                    <span class="btn-label">
-                                                                                        <i class="fa fa-edit"></i>
-                                                                                    </span>
-                                                                                </a>
+{{--                                                                        <td width="200px">--}}
+{{--                                                                            <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">--}}
+{{--                                                                        </td>--}}
+{{--                                                                        <td>--}}
+{{--                                                                            <form action="{{ route('product.destroy',$product ->id) }}" method="POST">--}}
+{{--                                                                                @csrf--}}
+{{--                                                                                @method('DELETE')--}}
+{{--                                                                                <a class="btn btn-warning btn-sm m-1" href="{{ route('product.edit',$product->id) }}">--}}
+{{--                                                                                    <span class="btn-label">--}}
+{{--                                                                                        <i class="fa fa-edit"></i>--}}
+{{--                                                                                    </span>--}}
+{{--                                                                                </a>--}}
 
-                                                                                <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
-                                        <i class="fa fa-trash"></i>
-                                    </span></button>
-                                                                            </form>
-                                                                        </td>
-                                                                    </tr>
-                                                                @endforeach
+{{--                                                                                <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">--}}
+{{--                                        <i class="fa fa-trash"></i>--}}
+{{--                                    </span></button>--}}
+{{--                                                                            </form>--}}
+{{--                                                                        </td>--}}
+{{--                                                                    </tr>--}}
+{{--                                                                @endforeach--}}
 
                                 </tbody>
                             </table>
-{{--                            <div id="myModal" class="modal" >--}}
+                            <div id="myModal" class="modal" >
 
-{{--                                <!-- Modal content -->--}}
-{{--                                <div class="modal-content">--}}
-{{--                                    <span class="close">&times;</span>--}}
-{{--                                    <form method="POST" action="{{ route('product.store') }}" accept-charset="UTF-8"--}}
-{{--                                          enctype="multipart/form-data">--}}
-{{--                                        @csrf--}}
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <form method="POST" action="{{ route('product.store') }}" accept-charset="UTF-8"
+                                          enctype="multipart/form-data">
+                                        @csrf
 
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>--}}
-{{--                                            <select class="form-control form-control-sm"  name="category_id">--}}
-{{--                                                @foreach($cats as $item)<option value="{{$item->id}}">{{ $item->name }}</option>@endforeach--}}
-{{--                                            </select>--}}
-{{--                                        </div>--}}
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
+                                            <select class="form-control form-control-sm"  name="category_id">
+                                                @foreach($cats as $item)<option value="{{$item->id}}">{{ $item->name }}</option>@endforeach
+                                            </select>
+                                        </div>
 
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">nomi</label>--}}
-{{--                                            <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="nomi">--}}
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">nomi</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="nomi">
 
-{{--                                        </div>--}}
+                                        </div>
 {{--                                        <div class="form-group">--}}
 {{--                                            <label for="exampleInputEmail1">batafsil</label>--}}
 {{--                                            <input type="text" class="form-control" id="exampleInputEmail1" name="more" aria-describedby="emailHelp" placeholder="batafsil">--}}
 
 {{--                                        </div>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">narxi</label>--}}
-{{--                                            <input type="text" class="form-control" id="exampleInputEmail1" name="price" aria-describedby="emailHelp" placeholder="narxi">--}}
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">narxi</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1" name="price" aria-describedby="emailHelp" placeholder="narxi">
 
-{{--                                        </div>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">Soni</label>--}}
-{{--                                            <input type="text" class="form-control" id="exampleInputEmail1" name="count" aria-describedby="emailHelp" placeholder="Soni">--}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Soni</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1" name="count" aria-describedby="emailHelp" placeholder="Soni">
 
-{{--                                        </div>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">Miqdori</label>--}}
-{{--                                            <input type="text" class="form-control" id="exampleInputEmail1" name="miqdori" aria-describedby="emailHelp" placeholder="Soni">--}}
-{{--                                        </div>--}}
-{{--                                        <div class="mb-3">--}}
-{{--                                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>--}}
-{{--                                            <textarea class="form-control" name="more" id="exampleFormControlTextarea1" rows="3"></textarea>--}}
-{{--                                        </div>--}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Miqdori</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1" name="miqdori" aria-describedby="emailHelp" placeholder="Soni">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                                            <textarea class="form-control" name="more" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
 {{--                                        <div class="form-group">--}}
 {{--                                            <label for="exampleInputEmail1">Surati:</label>--}}
 {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
 
 {{--                                        </div>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">Surati:</label>--}}
-{{--                                            <input type=file name="img" oninput="pic.src=window.URL.createObjectURL(this.files[0])">--}}
-{{--                                            <img id="pic"  width="100px"/>--}}
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati:</label>
+                                            <input type=file name="img" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+                                            <img id="pic"  width="100px"/>
 {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
 
-{{--                                        </div>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">Surati 2:</label>--}}
-{{--                                            <input type=file name="img2" oninput="pic2.src=window.URL.createObjectURL(this.files[0])">--}}
-{{--                                            <img id="pic2"  width="100px"/>--}}
-{{--                                            --}}{{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati 2:</label>
+                                            <input type=file name="img2" oninput="pic2.src=window.URL.createObjectURL(this.files[0])">
+                                            <img id="pic2"  width="100px"/>
+                                            {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
 
-{{--                                        </div>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">Surati 3:</label>--}}
-{{--                                            <input type=file name="img3" oninput="pic3.src=window.URL.createObjectURL(this.files[0])">--}}
-{{--                                            <img id="pic3"  width="100px"/>--}}
-{{--                                            --}}{{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati 3:</label>
+                                            <input type=file name="img3" oninput="pic3.src=window.URL.createObjectURL(this.files[0])">
+                                            <img id="pic3"  width="100px"/>
+                                            {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
 
-{{--                                        </div>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">Surati 4:</label>--}}
-{{--                                            <input type=file name="img4" oninput="pic4.src=window.URL.createObjectURL(this.files[0])">--}}
-{{--                                            <img id="pic4"  width="100px"/>--}}
-{{--                                            --}}{{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati 4:</label>
+                                            <input type=file name="img4" oninput="pic4.src=window.URL.createObjectURL(this.files[0])">
+                                            <img id="pic4"  width="100px"/>
+                                            {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
 
-{{--                                        </div>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">Surati 5:</label>--}}
-{{--                                            <input type=file name="img5" oninput="pic5.src=window.URL.createObjectURL(this.files[0])">--}}
-{{--                                            <img id="pic5"  width="100px"/>--}}
-{{--                                            --}}{{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Surati 5:</label>
+                                            <input type=file name="img5" oninput="pic5.src=window.URL.createObjectURL(this.files[0])">
+                                            <img id="pic5"  width="100px"/>
+                                            {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
 
-{{--                                        </div>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">Tovarning shtrix kodi</label>--}}
-{{--                                            <input type="number" class="form-control" id="exampleInputEmail1" name="code" aria-describedby="emailHelp" placeholder="nomi">--}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Tovarning shtrix kodi</label>
+                                            <input type="number" class="form-control" id="exampleInputEmail1" name="code" aria-describedby="emailHelp" placeholder="nomi">
 
-{{--                                        </div>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="exampleInputEmail1">Mahsulot aksiyadami</label>--}}
-{{--                                            <select class="form-control form-control-sm"  name="status">--}}
-{{--                                                <option value="0">Hozirda aksiyada emas</option>--}}
-{{--                                                <option value="1">Hozirda aksiyada</option>--}}
-{{--                                            </select>--}}
-{{--                                        </div>--}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Mahsulot aksiyadami</label>
+                                            <select class="form-control form-control-sm"  name="status">
+                                                <option value="0">Hozirda aksiyada emas</option>
+                                                <option value="1">Hozirda aksiyada</option>
+                                            </select>
+                                        </div>
 
 
-{{--                                        <button type="submit" class="btn btn-primary">Submit</button>--}}
-{{--                                    </form>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
