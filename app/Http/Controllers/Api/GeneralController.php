@@ -150,6 +150,8 @@ class GeneralController extends BaseController
         foreach ($jsonData['products'] as $product){
             OrderProduct::create([
                 'product_id'=>$product['product_id'],
+                'name'=>Product::where('id',$product['product_id'])->first()->name,
+                'img'=>Product::where('id',$product['product_id'])->first()->img,
                 'count'=>$product['count'],
                 'miqdor'=>$product['miqdor'],
                 'total_price'=>$product['total_price'],
@@ -162,18 +164,28 @@ class GeneralController extends BaseController
     public function orderhistory($id)
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
     {
+
         $user=User::where('id',$id)->first();
-        $today=DB::table('order_products')
-            ->select('orders.id',
-                'orders.user_id',
-                'orders.status',
-                'order_products.product_id',
-                'order_products.miqdor',
-                'order_products.total_price',
-                'order_products.order_id as po_id',
-                )
-            ->join('orders', 'orders.id', '=', 'order_products.order_id')
-            ->where('user_id',$user->id)->get();
-        return $this->sendSuccess($today,'Buyurtmalar tarixi');
+        $data=Order::where('user_id',$user->id)->get();
+        $res=[];
+        foreach ($data as $item){
+            $pr=OrderProduct::where('order_id',$item->id)->get();
+            $tt=[];
+            $tt['id']=$item->id;
+            $tt['status']=$item->status;
+            $tt['time']=$item->created_at->addMinutes(300)->format('d.m.Y  H:i');
+            foreach ($pr as $pp){
+                $ppt=[];
+                $ppt['name']=$pp->name;
+                $ppt['img']=$pp->img;
+                $ppt['miqdor']=$pp->miqdor;
+                $ppt['count']=$pp->count;
+                $ppt['total_price']=$pp->total_price;
+                $tt['products'][]=$ppt;
+            }
+            $res[]=$tt;
+        }
+
+        return $this->sendSuccess($res,'Buyurtmalar tarixi');
     }
 }

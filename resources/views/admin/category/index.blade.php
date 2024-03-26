@@ -91,6 +91,7 @@
                                     {{--                                    <th scope="col">#</th>--}}
                                     <th scope="col">#</th>
                                     <th scope="col">Nomi</th>
+                                    <th scope="col">Hash nomi</th>
                                     <th scope="col">Surati</th>
                                     <th scope="col">Amallar</th>
 
@@ -113,6 +114,7 @@
                                                                                 <input style="border:none" type="text" name="name" value="{{$cat->name}}" >
                                                                             </form>
                                                                         </td>
+                                                                        <td>@if(!$cat->cat_id == NULL) {{ $cat->cat->name }} @endif</td>
                                                                         <td><img src="{{ asset('/storage/galereya/'.$cat->img) }}" width="150px" alt=""></td>
                                                                         <td>
                                                                             <form action="{{ route('category.destroy',$cat ->id) }}" method="POST">
@@ -139,7 +141,13 @@
                                     <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data">
                                         @csrf
 
-
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
+                                            <select class="form-control form-control-sm"  name="cat_id">
+                                                <option></option>
+                                                @foreach($data as $item)<option value="{{$item->id}}">{{ $item->name }}</option>@endforeach
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">name</label>
                                             <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="name">

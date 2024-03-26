@@ -18,9 +18,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('order_id');
+            $table->text('name')->nullable();
+            $table->text('img')->nullable();
             $table->integer('count')->nullable();
             $table->double('miqdor')->nullable();
             $table->double('total_price');
+            $table->integer('cancel')->nullable();
+            $table->text('comment')->nullable();
+
+
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('order_id')->on('orders')->references('id');

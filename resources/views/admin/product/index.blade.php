@@ -100,6 +100,7 @@
                                     <th scope="col">Miqdori</th>
                                     <th scope="col">Narxi</th>
                                     <th scope="col">Turi</th>
+                                    <th scope="col">Hash</th>
                                     <th scope="col">Holati</th>
                                     <th scope="col">Surati</th>
                                     <th scope="col">Amallar</th>
@@ -139,6 +140,7 @@
                                                                         </td>
 
                                                                         <td>{{$product->category->name}}</td>
+                                                                        <td>@if($product->hash_id) {{$product->hash->name}} @endif</td>
                                                                         <td>{{$product->aksiya[$product->status]}}</td>
 
                                                                         <td width="200px">
@@ -175,10 +177,15 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
-                                            <select class="form-control form-control-sm"  name="category_id">
+                                            <select class="form-control form-control-sm" id="category_id" onchange="cat()" name="category_id">
                                                 @foreach($cats as $item)<option value="{{$item->id}}">{{ $item->name }}</option>@endforeach
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Hash toifani tanlang</label>
+                                            <select class="form-control form-control-sm"   id="hash_id" name="hash_id">
+                                                <option value=""></option>
+                                            </select></div>
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">nomi</label>
@@ -296,6 +303,29 @@
 
 
     <script>
+        function cat(cat) {
+            cat = $('#category_id').val();
+
+            $.ajax(
+                "{{route('cat.filter')}}",
+                {
+                    method: 'post',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{csrf_token()}}'
+                    },
+                    data: {
+                        cat: cat,
+                    },
+                    success: function (data) {
+
+                        $('#hash_id').empty()
+                        for (let d in data) {
+                            let option = '<option value=' + data[d].id + '>' + data[d].name + '</option>';
+                            $('#hash_id').append(option)
+                        }
+                    }
+                });
+        }
         $(document).ready( function () {
             $('#table').DataTable({
                 dom: 'Bfrtip',
@@ -309,6 +339,7 @@
             $('#exportButton').on('click', function() {
                 exportToExcel();
             });
+
 
             function exportToExcel() {
                 var wb = XLSX.utils.table_to_book(document.getElementById('table'), {sheet: 'Sheet JS'});

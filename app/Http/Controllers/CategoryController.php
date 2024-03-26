@@ -12,7 +12,8 @@ class CategoryController extends Controller
     public function index()
     {
         $cats=Category::all();
-        return view('admin.category.index',['cats'=>$cats]);
+        $data=Category::whereNull('cat_id')->get();
+        return view('admin.category.index',['cats'=>$cats,'data'=>$data]);
     }
 
 
@@ -31,8 +32,11 @@ class CategoryController extends Controller
             $request->img->move(public_path('../public/storage/galereya/'), $fileName);
             Category::create([
                 'name'=>$request->name,
+                'name'=>$request->cat_id,
                 'img'=>$fileName,
             ]);
+        }else{
+            Category::create($request->all());
         }
 
         return redirect()->route('category.index')->with('success','Mahsulot kategoryasi saqlandi');

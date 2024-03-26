@@ -11,7 +11,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $cats=Category::all();
+        $cats=Category::whereNull('cat_id')->get();
         $products=Product::all();
         return view('admin.product.index',['cats'=>$cats,'products'=>$products]);
     }
@@ -48,6 +48,7 @@ class ProductController extends Controller
             if ($request->count>0) {
                 Product::create([
                     'category_id' => $request->category_id,
+                    'hash_id' => $request->hash_id,
                     'img' => $fileName,
                     'img2' => $fileName2,
                     'img3' => $fileName3,
@@ -63,6 +64,7 @@ class ProductController extends Controller
                 ]);
             }else{
                 Product::create([
+                    'hash_id' => $request->hash_id,
                     'category_id' => $request->category_id,
                     'img' => $fileName,
                     'img2' => $fileName2,
@@ -96,6 +98,7 @@ class ProductController extends Controller
             $request->img4->move(public_path('../public/storage/galereya/'), $fileName4);
             if ($request->count>0) {
                 Product::create([
+                    'hash_id' => $request->hash_id,
                     'category_id' => $request->category_id,
                     'img' => $fileName,
                     'img2' => $fileName2,
@@ -111,6 +114,7 @@ class ProductController extends Controller
                 ]);
             }else{
                 Product::create([
+                    'hash_id' => $request->hash_id,
                     'category_id' => $request->category_id,
                     'img' => $fileName,
                     'img2' => $fileName2,
@@ -140,6 +144,7 @@ class ProductController extends Controller
             $request->img3->move(public_path('../public/storage/galereya/'), $fileName3);
             if ($request->count>0) {
                 Product::create([
+                    'hash_id' => $request->hash_id,
                     'category_id' => $request->category_id,
                     'img' => $fileName,
                     'img2' => $fileName2,
@@ -154,6 +159,7 @@ class ProductController extends Controller
                 ]);
             }else{
                 Product::create([
+                    'hash_id' => $request->hash_id,
                     'category_id' => $request->category_id,
                     'img' => $fileName,
                     'img2' => $fileName2,
@@ -179,6 +185,7 @@ class ProductController extends Controller
             $request->img2->move(public_path('../public/storage/galereya/'), $fileName2);
             if ($request->count>0) {
                 Product::create([
+                    'hash_id' => $request->hash_id,
                     'category_id' => $request->category_id,
                     'img' => $fileName,
                     'img2' => $fileName2,
@@ -192,6 +199,7 @@ class ProductController extends Controller
                 ]);
             }else{
                 Product::create([
+                    'hash_id' => $request->hash_id,
                     'category_id' => $request->category_id,
                     'img' => $fileName,
                     'img2' => $fileName2,
@@ -212,6 +220,7 @@ class ProductController extends Controller
         $request->img->move(public_path('../public/storage/galereya/'), $fileName);
         if ($request->count>0) {
             Product::create([
+                'hash_id' => $request->hash_id,
                 'category_id' => $request->category_id,
                 'img' => $fileName,
                 'name' => $request->name,
@@ -224,6 +233,7 @@ class ProductController extends Controller
             ]);
         }else{
             Product::create([
+                'hash_id' => $request->hash_id,
                 'category_id' => $request->category_id,
                 'img' => $fileName,
                 'name' => $request->name,
@@ -238,6 +248,7 @@ class ProductController extends Controller
         }else{
             if ($request->count>0) {
                 Product::create([
+                    'hash_id' => $request->hash_id,
                     'category_id' => $request->category_id,
                     'name' => $request->name,
                     'more' => $request->more,
@@ -249,6 +260,7 @@ class ProductController extends Controller
                 ]);
             }else{
                 Product::create([
+                    'hash_id' => $request->hash_id,
                     'category_id' => $request->category_id,
                     'name' => $request->name,
                     'more' => $request->more,

@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('address_name')->nullable();
             $table->tinyInteger('type')->nullable();
             $table->tinyInteger('pay_type')->nullable();
+            $table->tinyInteger('discount')->nullable();
+            $table->text('comment')->nullable();
 
             $table->foreign('user_id')->on('users')->references('id');
             $table->foreign('supplier_id')->on('users')->references('id');

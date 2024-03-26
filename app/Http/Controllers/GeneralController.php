@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
@@ -106,5 +107,10 @@ return redirect()->back();
     {
         $product=Product::where('code',$request->code)->first();
         return $product;
+    }
+    public function region(Request $request){
+//        $data=Category::where('cat_id',$request->category_id)->whereNotNull('cat_id')->get();
+        $data=DB::table('categories')->select('*')->where('cat_id',$request->cat)->whereNotNull('cat_id')->get();
+        return $data;
     }
 }
