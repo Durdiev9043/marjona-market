@@ -2,7 +2,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-            <img src="{{ asset('LogoMarjonaSupermarket.png') }}" alt="" width="70%" >
+            <img src="{{ asset('logo.png') }}" alt=""  >
 {{--            <span class="d-none d-lg-block">Marjona <br> market</span>--}}
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>

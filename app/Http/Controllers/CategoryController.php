@@ -32,7 +32,7 @@ class CategoryController extends Controller
             $request->img->move(public_path('../public/storage/galereya/'), $fileName);
             Category::create([
                 'name'=>$request->name,
-                'name'=>$request->cat_id,
+                'cat_id'=>$request->cat_id,
                 'img'=>$fileName,
             ]);
         }else{
