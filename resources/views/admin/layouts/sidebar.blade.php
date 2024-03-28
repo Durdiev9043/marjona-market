@@ -26,6 +26,12 @@
                 <span>Mahsulot kirim qilish</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('orderCancel') }}">
+                <i class="bi bi-grid"></i>
+                <span>Bekor qilingan buyrtmalar</span>
+            </a>
+        </li>
         <!-- End Dashboard Nav -->
 
 

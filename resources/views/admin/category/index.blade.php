@@ -56,8 +56,8 @@
         <div class="pagetitle">
             <h1>Dashboard</h1>
 
-                        <div class="btn-add">
-                            <a id="myBtn" href="#">Qoshish</a>
+                        <div class="btn-add bg" >
+                            <a id="myBtn" class="bgh" href="#">Qoshish</a>
                         </div>
 
         </div><!-- End Page Title -->

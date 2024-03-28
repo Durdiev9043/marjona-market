@@ -18,11 +18,11 @@
             </div>
         @endif
         <div class="pagetitle">
-            <h1>Buyurtmalar holati boyicha ma'lumot</h1>
+            <h1>Bekor qilingan buyurtmalar ro'yxati</h1>
 
-{{--            <div class="btn-add">--}}
-{{--                <a href="{{ route('patient.create') }}">Be`mor qoshish</a>--}}
-{{--            </div>--}}
+            {{--            <div class="btn-add">--}}
+            {{--                <a href="{{ route('patient.create') }}">Be`mor qoshish</a>--}}
+            {{--            </div>--}}
 
         </div><!-- End Page Title -->
 
@@ -47,12 +47,12 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Buyurmalar tarixi</h5>
+                            <h5 class="card-title"> </h5>
 
                             <table class="table table-borderless datatable">
                                 <thead>
                                 <tr>
-{{--                                    <th scope="col">#</th>--}}
+                                    {{--                                    <th scope="col">#</th>--}}
                                     <th scope="col">№</th>
                                     <th scope="col">Buyurmachi</th>
                                     <th scope="col">Mahsulot</th>
@@ -68,28 +68,28 @@
 
                                 @foreach($orders as $order)
                                     <tr>
-                                    <th scope="row"><a href="#">{{$order -> id }}</a></th>
-                                    <td> {{$order->user->phone }} </td>
-                                        <?php
-                                        $pri=0;
-                                        ?>
+                                        <th scope="row"><a href="#">{{$order -> id }}</a></th>
+                                        <td> {{$order->user->phone }} </td>
+                                            <?php
+                                            $pri=0;
+                                            ?>
                                         <td>
 
-                                        @foreach($orderproducts as $orderproduct)
-                                            @if($orderproduct->order_id == $order->id)
-                                                    <?php
-                                                    $pri=$pri+$orderproduct->total_price;
-                                                    ?>
+                                            @foreach($orderproducts as $orderproduct)
+                                                @if($orderproduct->order_id == $order->id)
+                                                        <?php
+                                                        $pri=$pri+$orderproduct->total_price;
+                                                        ?>
 
                                                     <b>{{$orderproduct->product->name }} (
-                                                            @if($orderproduct->count == 0)
-                                                                {{$orderproduct->miqdor }} KG
-                                                            @else
-                                                                {{$orderproduct->count }} ta
-                                                            @endif
-                                                        ) <br></b>
+                                                        @if($orderproduct->count == 0)
+                                                            {{$orderproduct->miqdor }} KG
+                                                        @else
+                                                            {{$orderproduct->count }} ta
+                                                        @endif
+                                                    ) <br></b>
 
-                                            @endif
+                                        @endif
                                         @endforeach
 
                                         <td>{{$pri }} so'm </td>

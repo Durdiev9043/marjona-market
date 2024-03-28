@@ -33,6 +33,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('incoming',IncomingController::class);
     Route::post('cat/fil',[App\Http\Controllers\GeneralController::class,'region'])->name('cat.filter');
     Route::get('order/index/web',[\App\Http\Controllers\GeneralController::class,'orderIndex'])->name('orderIndex');
+    Route::get('order/cancel',[\App\Http\Controllers\OrderController::class,'orderCancel'])->name('orderCancel');
     Route::put('order/status,{id}',[\App\Http\Controllers\GeneralController::class,'orderstatus'])->name('orderstatus');
     Route::post('code/search',[\App\Http\Controllers\GeneralController::class,'codeSearch'])->name('code.search');
     Route::get('add/card',[\App\Http\Controllers\GeneralController::class,'addToCart'])->name('addcart');

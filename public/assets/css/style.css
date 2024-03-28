@@ -725,7 +725,6 @@ h6 {
 .sidebar-nav .nav-link:hover {
     color: #ef3e3e;
     background: #ffffff;
-    border: 1px solid;
 }
 
 .sidebar-nav .nav-link:hover i {
@@ -1278,7 +1277,26 @@ h6 {
 }
 .btn-add>a {
     color:#ffffff !important;
+    font-weight: 700;
 }
 .btn-add>a:hover {
-    color:#dbdbdb !important;
+    color:#ed2f2f !important;
+    font-weight: 700;
+
 }
+.btn-add:hover>a{
+    color:#ed2f2f !important;
+}
+.bg {
+    background: #4abb5a;
+    border: none;
+    font-weight: 700;
+}
+ .bg:hover{
+     background: none;
+     border: 1px solid #ed2f2f;
+ }
+
+
+
+

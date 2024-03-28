@@ -26,11 +26,12 @@ class GeneralController extends Controller
 //            )
 //            ->join('orders', 'orders.id', '=', 'order_products.order_id')
 //            ->get();
-        $orders=Order::all();
+        $orders=Order::where('status','>',-1)->get();
         $users=User::all();
         $orderproducts=OrderProduct::all();
         return view('admin.home',['orders'=>$orders,'orderproducts'=>$orderproducts,'users'=>$users]);
     }
+
     public function orderstatus(Request $request,$order)
     {
         $order=Order::where('id',$order)->first();

@@ -14,5 +14,5 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public $st=['jarayonda','bajarildi'];
+    public $st=[-1=>'bekor qilindi',0=>'jarayonda',1=>'bajarildi'];
 }

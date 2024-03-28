@@ -2,7 +2,8 @@
 
     <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-            <img src="{{ asset('logo.png') }}" alt=""  >
+            <img src="{{ asset('logo.png') }}" alt="" width="20%" >
+            <span style="text-align: center;color: #ed2f2f;margin-left: 10px;">MARJONA<br> <span style="color: #4abb5a;">Online Market</span></span>
 {{--            <span class="d-none d-lg-block">Marjona <br> market</span>--}}
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
