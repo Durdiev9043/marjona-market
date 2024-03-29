@@ -31,7 +31,10 @@ class GeneralController extends Controller
         $orderproducts=OrderProduct::all();
         return view('admin.home',['orders'=>$orders,'orderproducts'=>$orderproducts,'users'=>$users]);
     }
-
+    public function orderView($id)
+    {
+    //
+    }
     public function orderstatus(Request $request,$order)
     {
         $order=Order::where('id',$order)->first();
