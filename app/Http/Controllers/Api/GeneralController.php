@@ -14,8 +14,17 @@ use Illuminate\Support\Facades\DB;
 class GeneralController extends BaseController
 {
     public function category(){
-        $cat=Category::all();
-        return $this->sendSuccess($cat,'Dokondagi barcha Mahsulotlar Toifalari');
+        $cats=Category::whereNull('cat_id')->get();
+        $data=[];
+        foreach ($cats as $cat){
+            $tt=[];
+            $tt['id']=$cat->id;
+            $tt['name']=$cat->name;
+            $tt['img']=$cat->img;
+            $tt['hashs']=DB::table('categories')->select('*')->where('cat_id',$cat->id)->whereNotNull('cat_id')->get();
+            $data[]=$tt;
+        }
+        return $this->sendSuccess($data,'Dokondagi barcha Mahsulotlar Toifalari');
     }
     public function getHashesByHashId($id)
     {
