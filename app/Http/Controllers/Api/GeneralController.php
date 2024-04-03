@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\DB;
 
 class GeneralController extends BaseController
 {
+
+    public function search(Request $request)
+    {
+        $results = Product::where('name', 'like', "%$request->name%")->get();
+        return $this->sendSuccess($results,'qiduruv natijasi');
+    }
     public function category(){
         $cats=Category::whereNull('cat_id')->get();
         $data=[];
