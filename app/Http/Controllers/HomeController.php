@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $today=DB::table('orders')->where('status',2)->whereDate('created_at', Carbon::today())->count();
+        $today=DB::table('orders')->where('status',2)->whereDate('created_at', Carbon::today())->get()->count();
         $today_cancel=DB::table('orders')->where('status',-1)->whereDate('created_at', Carbon::today())->count();
         $today_sum=DB::table('orders')
             ->select('orders.id','orders.status','order_products.created_at','order_products.total_price','order_products.order_id')
