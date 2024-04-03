@@ -193,7 +193,8 @@ class GeneralController extends BaseController
     }
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
     public function orderstory(Request $request,$id)
-    {$user=User::where('id',$id)->first();
+    {
+        $user=User::where('id',$id)->first();
         $jsonData = $request->json()->all();
 //        dd($jsonData['lat']);
 //        $rrr= json_decode($request->json(), true);
@@ -228,6 +229,7 @@ class GeneralController extends BaseController
         $res=[];
         foreach ($data as $item){
             $pr=OrderProduct::where('order_id',$item->id)->get();
+            if ($pr){
             $tt=[];
             $tt['id']=$item->id;
             $tt['status']=$item->status;
@@ -242,6 +244,7 @@ class GeneralController extends BaseController
                 $tt['products'][]=$ppt;
             }
             $res[]=$tt;
+            }
         }
 
         return $this->sendSuccess($res,'Buyurtmalar tarixi');
