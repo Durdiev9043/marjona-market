@@ -16,7 +16,7 @@ class GeneralController extends BaseController
 
     public function search(Request $request)
     {
-        $results = Product::where('name', 'like', "%$request->name%")->get();
+        $results = Product::where('name', 'like', '%'.$request->name.'%')->get();
         return $this->sendSuccess($results,'qiduruv natijasi');
     }
     public function category(){
