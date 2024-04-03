@@ -26,14 +26,22 @@ class GeneralController extends Controller
 //            )
 //            ->join('orders', 'orders.id', '=', 'order_products.order_id')
 //            ->get();
-        $orders=Order::where('status','>',-1)->get();
+        $orders=Order::where('status','>',-1)->where('status','<',1)->get();
         $users=User::all();
-        $orderproducts=OrderProduct::all();
-        return view('admin.home',['orders'=>$orders,'orderproducts'=>$orderproducts,'users'=>$users]);
+        $orderproducts=OrderProduct::whereNull('cancel')->whereNull('comment')->get();
+        return view('admin.order.new',['orders'=>$orders,'orderproducts'=>$orderproducts,'users'=>$users]);
     }
-    public function orderView($id)
+    public function orderView(Order $order)
     {
-    //
+        $orderproducts=OrderProduct::where('order_id',$order->id)->get();
+        return view('admin.order.view',['order'=>$order,'orderproducts'=>$orderproducts]);
+    }
+    public function orderDone()
+    {
+        $orders=Order::where('status',1)->get();
+        $users=User::all();
+        $orderproducts=OrderProduct::whereNull('cancel')->get();
+        return view('admin.order.done',['orders'=>$orders,'orderproducts'=>$orderproducts,'users'=>$users]);
     }
     public function orderstatus(Request $request,$order)
     {
@@ -50,6 +58,11 @@ class GeneralController extends Controller
         ]);
 
         return redirect()->back();
+    }
+    public function orderProductCancel(Request $request,$id)
+    {
+OrderProduct::where('id',$id)->update(['comment'=>$request->comment]);
+return redirect()->back()->with('success','Mahsulot buyurtmadan bekor qilindi');
     }
 
     public function addToCart(Request $request)

@@ -47,75 +47,66 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Buyurmalar tarixi</h5>
+                            <h5 class="card-title">{{ $order->id }} sonli buyurtma haqida ma'lumot</h5>
+                            <h6>Buyurtmachi tel: {{ $order->user->phone }}</h6>
+                            <h6>Buyurtmaning umumiy Bahosi: {{ $orderproducts->sum('total_price') }}</h6>
+                            <h6>Buyurtmaning manzili: {{ $orderproducts->sum('address_name') }}</h6>
 
                             <table class="table table-borderless datatable">
                                 <thead>
                                 <tr>
                                     {{--                                    <th scope="col">#</th>--}}
                                     <th scope="col">№</th>
-                                    <th scope="col">Buyurmachi</th>
+
                                     <th scope="col">Mahsulot</th>
 
                                     <th scope="col">Narxi</th>
-                                    <th scope="col">Holat</th>
-                                    <th scope="col">Buyurtma qilinga vaqti</th>
+                                    <th scope="col">miqdori</th>
+                                    <th scope="col" colspan="2">Amallar</th>
                                     <th scope="col" colspan="2"></th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                @foreach($orders as $order)
+                                @foreach($orderproducts as $orderproduct)
                                     <tr>
+
                                         <th scope="row"><a href="#">{{$order -> id }}</a></th>
-                                        <td> {{$order->user->phone }} </td>
-                                            <?php
-                                            $pri=0;
-                                            ?>
-                                        <td>
 
-                                            @foreach($orderproducts as $orderproduct)
-                                                @if($orderproduct->order_id == $order->id)
-                                                        <?php
-                                                        $pri=$pri+$orderproduct->total_price;
-                                                        ?>
 
-                                                    <b>{{$orderproduct->product->name }} (
-                                                        @if($orderproduct->count == 0)
-                                                            {{$orderproduct->miqdor }} KG
-                                                        @else
-                                                            {{$orderproduct->count }} ta
-                                                        @endif
-                                                    ) <br></b>
+                                <th>
 
+
+                                                   {{$orderproduct->product->name }}
+
+                                </th>
+
+
+                                        <th>{{$orderproduct->total_price }} so'm </th>
+                                            <th>@if($orderproduct->count == 0)
+                                                                 {{$orderproduct->miqdor }} KG
+                                           @else
+                                                          {{$orderproduct->count }} ta
+                                             @endif</th>
+                                    <th>
+                                        @if($orderproduct->comment)..@else
+                                        <form action="{{ route('orderProduct.cancel',$orderproduct ->id) }}" method="POST">
+                                            @csrf
+                                            <input  type="text" name="comment"  >
+
+
+                                            <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                                                            <i class="fa fa-trash"></i>
+                                                                       </span></button>
+                                        </form>
                                         @endif
-                                        @endforeach
+                                </th>
+                                        <th>
+                                            @if($orderproduct->comment) Bekor qilinish sababi: {{ $orderproduct->comment }}@endif
+                                        </th>
 
-                                        <td>{{$pri }} so'm </td>
-
-
-                                        <td>
-                                            @if($order->status == 0)
-                                                <form action="{{ route('orderstatus', $order->id) }}" method="post">
-                                                    @csrf
-                                                    @method('put')
-                                                    <div class="form-group">
-                                                        <select class="form-control" name="status" id="exampleFormControlSelect1">
-                                                            <option value="{{ $order->status }}">{{$order->st[$order->status] }}</option>
-                                                            <option value="1">Bajarildi</option>
-                                                            <option value="-1">Bekor qilish</option>
-                                                        </select>
-                                                    </div>
-                                                    <button>saqlash</button>
-                                                </form>
-                                            @else
-                                                {{$order->st[$order->status] }}  {{$order->updated_at->addMinutes(300)->format('d.m.Y  H:i') }}
-                                            @endif
-                                        </td>
-                                        <td>{{$order->created_at->addMinutes(300)->format('d.m.Y  H:i') }}  </td>
                                     </tr>
-                                @endforeach
+                                    @endforeach
 
                                 </tbody>
                             </table>

@@ -9,6 +9,25 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link " href="{{ route('orderIndex') }}">
+                <i class="bi bi-grid"></i>
+                <span>Yangi Buyurtmalar</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('orderDone') }}">
+                <i class="bi bi-grid"></i>
+                <span>Yetkazib berilgan buyrtmalar</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('orderCancel') }}">
+                <i class="bi bi-grid"></i>
+                <span>Bekor qilingan buyrtmalar</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link " href="{{ route('category.index') }}">
                 <i class="bi bi-grid"></i>
                 <span>Mahsulot Toifalari</span>
@@ -26,12 +45,7 @@
                 <span>Mahsulot kirim qilish</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link " href="{{ route('orderCancel') }}">
-                <i class="bi bi-grid"></i>
-                <span>Bekor qilingan buyrtmalar</span>
-            </a>
-        </li>
+
         <!-- End Dashboard Nav -->
 
 
