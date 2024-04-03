@@ -229,7 +229,7 @@ class GeneralController extends BaseController
         $res=[];
         foreach ($data as $item){
             $pr=OrderProduct::where('order_id',$item->id)->get();
-            if ($pr){
+            if (count($pr)){
             $tt=[];
             $tt['id']=$item->id;
             $tt['status']=$item->status;
