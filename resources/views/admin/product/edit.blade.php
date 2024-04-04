@@ -90,7 +90,7 @@
                             <img src="{{ asset('/storage/galereya/'.$product->img4) }}" width="150px" alt="">
                             <img src="{{ asset('/storage/galereya/'.$product->img5) }}" width="150px" alt="">
 
-                            <form method="POST" action="{{route('product.update',$product->id)}}"  accept-charset="UTF-8"
+                            <form method="POST" action="{{route('product.update',$product->id)}}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -130,23 +130,46 @@
                                     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
                                     <textarea class="form-control" name="more"  id="exampleFormControlTextarea1" rows="3">{{ $product->more }}</textarea>
                                 </div>
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="exampleInputEmail1">Surati:</label>--}}
-{{--                                    <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
-
-{{--                                </div>--}}
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tovarning shtrix kodi</label>
                                     <input type="number" class="form-control" value="{{ $product->code }}" id="exampleInputEmail1" name="code" aria-describedby="emailHelp" placeholder="nomi">
 
                                 </div>
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="exampleInputEmail1">Mahsulot aksiyadami</label>--}}
-{{--                                    <select class="form-control form-control-sm"  name="status">--}}
-{{--                                        <option value="0">Hozirda aksiyada emas</option>--}}
-{{--                                        <option value="1">Hozirda aksiyada</option>--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Surati:</label>
+                                    <input type=file name="img" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+                                    <img id="pic"  width="100px"/>
+                                    {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Surati 2:</label>
+                                    <input type=file name="img2" @if(!$product->img) disabled @endif oninput="pic2.src=window.URL.createObjectURL(this.files[0])">
+                                    <img id="pic2"  width="100px"/>
+                                    {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Surati 3:</label>
+                                    <input type=file name="img3"  @if(!$product->img2) disabled @endif oninput="pic3.src=window.URL.createObjectURL(this.files[0])">
+                                    <img id="pic3"  width="100px"/>
+                                    {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Surati 4:</label>
+                                    <input type=file name="img4"  @if(!$product->img3) disabled @endif oninput="pic4.src=window.URL.createObjectURL(this.files[0])">
+                                    <img id="pic4"  width="100px"/>
+                                    {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Surati 5:</label>
+                                    <input type=file name="img5"  @if(!$product->img4) disabled @endif oninput="pic5.src=window.URL.createObjectURL(this.files[0])">
+                                    <img id="pic5"  width="100px"/>
+                                    {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+                                </div>
 
 
                                 <button type="submit" class="btn btn-primary">Submit</button>

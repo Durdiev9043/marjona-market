@@ -291,7 +291,58 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        $product->update($request->all());
+//        dd($request->file('img'));
+        $product->update([
+            'name' => $request->name,
+            'more' => $request->more,
+            'price' => $request->price,
+            'miqdori' => $request->miqdori,
+            'count' => $request->count,
+//            'status' => $request->status,
+            'type' => 1,
+            'code' => $request->code
+        ]);
+        if ($request->hasFile('img')){
+            $uuid = Str::uuid()->toString();
+            $fileName = $uuid . '-' . time() . '.' . $request->img->getExtension();
+            $request->img->move(public_path('../public/storage/galereya/'), $fileName);
+            $product->update([
+                'img' => $fileName,
+                ]);
+
+        }
+        if ($request->hasFile('img2')){
+            $uuid = Str::uuid()->toString();
+            $fileName = $uuid . '-' . time() . '.' . $request->img2->getExtension();
+            $request->img2->move(public_path('../public/storage/galereya/'), $fileName);
+            $product->update([
+                'img2' => $fileName,
+            ]);
+        }
+        if ($request->hasFile('img3')){
+            $uuid = Str::uuid()->toString();
+            $fileName = $uuid . '-' . time() . '.' . $request->img3->getExtension();
+            $request->img3->move(public_path('../public/storage/galereya/'), $fileName);
+            $product->update([
+                'img3' => $fileName,
+            ]);
+        }
+        if ($request->hasFile('img4')){
+            $uuid = Str::uuid()->toString();
+            $fileName = $uuid . '-' . time() . '.' . $request->img4->getExtension();
+            $request->img4->move(public_path('../public/storage/galereya/'), $fileName);
+            $product->update([
+                'img4' => $fileName,
+            ]);
+        }
+        if ($request->hasFile('img5')){
+            $uuid = Str::uuid()->toString();
+            $fileName = $uuid . '-' . time() . '.' . $request->img5->getExtension();
+            $request->img5->move(public_path('../public/storage/galereya/'), $fileName);
+            $product->update([
+                'img5' => $fileName,
+            ]);
+        }
         return redirect()->route('product.index')->with('success','O\'zgarish saqlandi');
     }
 
