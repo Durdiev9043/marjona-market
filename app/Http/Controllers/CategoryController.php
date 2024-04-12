@@ -13,7 +13,8 @@ class CategoryController extends Controller
     {
         $cats=Category::all();
         $data=Category::whereNotNull('cat_id')->get();
-        return view('admin.category.index',['cats'=>$cats,'data'=>$data]);
+        $category=Category::whereNull('cat_id')->get();
+        return view('admin.category.index',['cats'=>$cats,'data'=>$data,'category'=>$category]);
     }
 
 

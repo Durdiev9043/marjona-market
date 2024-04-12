@@ -153,7 +153,7 @@
                                             <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
                                             <select class="form-control form-control-sm"  name="cat_id">
                                                 <option></option>
-                                                @foreach($data as $item)<option value="{{$item->id}}">{{ $item->name }}</option>@endforeach
+                                                @foreach($category as $item)<option value="{{$item->id}}">{{ $item->name }}</option>@endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">

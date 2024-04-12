@@ -285,7 +285,8 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        return view('admin.product.edit',['product'=>$product]);
+        $cats=Category::whereNull('cat_id')->get();
+        return view('admin.product.edit',['product'=>$product,'cats'=>$cats]);
     }
 
 
@@ -300,7 +301,9 @@ class ProductController extends Controller
             'count' => $request->count,
 //            'status' => $request->status,
             'type' => 1,
-            'code' => $request->code
+            'code' => $request->code,
+            'category_id' => $request->category_id,
+            'hash_id' => $request->hash_id
         ]);
         if ($request->hasFile('img')){
             $uuid = Str::uuid()->toString();
