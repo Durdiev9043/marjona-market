@@ -126,7 +126,8 @@ class GeneralController extends BaseController
             $data['id'] = $product->id;
             $data['category_id'] = $product->category_id;
             if ($product->hash_id){
-            $data['hash'] = Category::where('id',$product->hash_id)->first()->name;}
+            $data['hash'] = Category::where('id',$product->hash_id)->first()->name;
+            $data['hash_id'] = Category::where('id',$product->hash_id)->first()->id;}
             $data['name'] = $product->name;
             $data['more'] = $product->more;
             $data['price'] = $product->price;
