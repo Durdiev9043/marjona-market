@@ -166,6 +166,7 @@
 
                                 </tbody>
                             </table>
+                            {{ $products->links() }}
                             <div id="myModal" class="modal" >
 
                                 <!-- Modal content -->
