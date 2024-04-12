@@ -12,7 +12,7 @@ class ProductController extends Controller
     public function index()
     {
         $cats=Category::whereNull('cat_id')->get();
-        $products=Product::all();
+        $products=Product::paginate(100);
         return view('admin.product.index',['cats'=>$cats,'products'=>$products]);
     }
 
