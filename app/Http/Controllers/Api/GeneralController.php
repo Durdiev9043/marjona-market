@@ -35,7 +35,7 @@ class GeneralController extends BaseController
     public function getHashesByHashId($id)
     {
         $data=[];
-        $cat_id=Category::where('id',$id)->first()->cat_id;
+        $cat_id=Category::where('id',$id)->first()->id;
         $cat_name=Category::where('id',$cat_id)->first()->name;
         $hashs=Category::where('cat_id',$cat_id)->get();
         $data['cat_id']=$cat_id;

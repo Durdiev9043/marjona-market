@@ -103,7 +103,7 @@
                                 <tbody>
 
                                                                 @foreach($cats as $cat)
-
+                                                                @if($cat->cat_id == NULL)
                                                                     <tr>
                                                                         <th scope="row"><a href="#">{{$cat -> id }}</a></th>
                                                                         <td>
@@ -114,7 +114,15 @@
                                                                                 <input style="border:none" type="text" name="name" value="{{$cat->name}}" >
                                                                             </form>
                                                                         </td>
-                                                                        <td>@if(!$cat->cat_id == NULL) {{ $cat->cat->name }} @endif</td>
+                                                                        <td>
+                                                                            @foreach($data as $item)
+                                                                                @if($item->cat_id == $cat->id)
+                                                                            {{$item->name}}, <br>
+
+                                                                                @endif
+                                                                            @endforeach
+
+                                                                        </td>
                                                                         <td><img src="{{ asset('/storage/galereya/'.$cat->img) }}" width="150px" alt=""></td>
                                                                         <td>
                                                                             <form action="{{ route('category.destroy',$cat ->id) }}" method="POST">
@@ -128,7 +136,7 @@
                                                                             </form>
                                                                         </td>
                                                                     </tr>
-
+                                                                @endif
                                                                 @endforeach
 
                                 </tbody>

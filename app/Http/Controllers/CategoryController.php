@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
         $cats=Category::all();
-        $data=Category::whereNull('cat_id')->get();
+        $data=Category::whereNotNull('cat_id')->get();
         return view('admin.category.index',['cats'=>$cats,'data'=>$data]);
     }
 
