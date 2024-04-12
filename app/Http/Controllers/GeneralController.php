@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\DB;
 
 class GeneralController extends Controller
 {
+
+    public function search(Request $request)
+    {
+        $cats=Category::whereNull('cat_id')->get();
+        $products=Product::where('code',$request->code)->paginate(50);
+        return view('admin.product.index',['cats'=>$cats,'products'=>$products]);
+    }
     public function orderIndex()
     {
 

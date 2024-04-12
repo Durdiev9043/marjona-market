@@ -88,7 +88,10 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-
+                            <form action="{{ route('product.filter') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                                @csrf
+                                <input type="text" placeholder="Shtrix kod:" class="mb-3" name="code">
+                            </form>
                             <table class="table table-borderless datatable">
                                 <thead>
                                 <tr>
