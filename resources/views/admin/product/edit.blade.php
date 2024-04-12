@@ -172,7 +172,9 @@
                                 </div>
 
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary m-2">Saqlash</button>
+                                <button type="reset" class="btn btn-primary m-2">Tozalash</button>
+                                <a href="{{ route('product.index') }}" class="btn btn-danger m-2">Bekor qilish</a>
                             </form>
                         </div>
 
