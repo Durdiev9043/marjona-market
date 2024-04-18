@@ -52,23 +52,27 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-//
+ return view('admin.category.view',['cat'=>$category]);
     }
 
 
     public function update(Request $request, Category $category)
     {
 
+
         if ($request->img){
+
             $uuid = Str::uuid()->toString();
             $fileName = $uuid . '-' . time() . '.' . $request->img->getExtension();
             $request->img->move(public_path('../public/storage/galereya/'), $fileName);
             $category->update([
-                'img' => $fileName,
+                'img'=>$fileName,
             ]);
-
         }
-        $category->update($request->all());
+        if ($request->name){
+            $category->update([$request->name]);
+        }
+
         return redirect()->back();
     }
 
