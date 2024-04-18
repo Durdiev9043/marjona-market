@@ -93,6 +93,7 @@
                                     <th scope="col">Nomi</th>
                                     <th scope="col">Hash nomi</th>
                                     <th scope="col">Surati</th>
+                                    <th scope="col">Surati</th>
                                     <th scope="col">Amallar</th>
 
 
@@ -124,6 +125,20 @@
 
                                                                         </td>
                                                                         <td><img src="{{ asset('/storage/galereya/'.$cat->img) }}" width="150px" alt=""></td>
+                                                                        <td>  <form method="POST" action="{{route('category.update',$cat->id)}}"
+                                                                                    enctype="multipart/form-data">
+                                                                                @csrf
+                                                                                @method('PUT')
+                                                                            <div class="form-group">
+                                                                                <label for="exampleInputEmail1">Surati ozgartirish:</label>
+                                                                                <input type=file name="img" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+                                                                                <img id="pic"  width="100px"/>
+                                                                                {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+
+                                                                            </div>
+                                                                                <button type="submit" class="btn btn-primary">Saqlash</button>
+                                                                            </form>
+                                                                        </td>
                                                                         <td>
                                                                             <form action="{{ route('category.destroy',$cat ->id) }}" method="POST">
                                                                                 @csrf
