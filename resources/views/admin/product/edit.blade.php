@@ -113,7 +113,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Hash toifani tanlang</label>
                                         <select class="form-control form-control-sm"   id="hash_id" name="hash_id">
-                                            <option value="{{ $product->hash_id }}">{{ $product->hash->name }}</option>
+                                            <option @if(isset($product->hash_id))value="{{ $product->hash_id }}@endif">@if(isset($product->hash_id)){{ $product->hash->name }}@endif</option>
                                         </select></div>
 
                                     <label for="exampleInputEmail1">nomi</label>

@@ -88,9 +88,13 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-                            <form action="{{ route('product.filter') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                            <form action="{{ route('product.filter') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">
                                 @csrf
                                 <input type="text" placeholder="Shtrix kod:" class="mb-3" name="code">
+                            </form>
+                            <form action="{{ route('name.search') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">
+                                @csrf
+                                <input type="text" placeholder="nomi:" class="mb-3" @if(isset($name))value="{{$name}}"@endif name="name">
                             </form>
                             <table class="table table-borderless datatable">
                                 <thead>

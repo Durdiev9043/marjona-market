@@ -137,4 +137,11 @@ return redirect()->back();
         $data=DB::table('categories')->select('*')->where('cat_id',$request->cat)->whereNotNull('cat_id')->get();
         return $data;
     }
+
+    public function nameSearch(Request $request){
+        $cats=Category::whereNull('cat_id')->get();
+        $products=Product::where('name','like','%'.$request->name.'%')->paginate(50);
+        $name=$request->name;
+        return view('admin.product.index',['cats'=>$cats,'products'=>$products,'name'=>$name]);
+    }
 }

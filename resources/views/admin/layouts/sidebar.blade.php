@@ -45,6 +45,12 @@
                 <span>Mahsulot kirim qilish</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('courier.index') }}">
+                <i class="bi bi-grid"></i>
+                <span>Kruyerlar</span>
+            </a>
+        </li>
 
         <!-- End Dashboard Nav -->
 

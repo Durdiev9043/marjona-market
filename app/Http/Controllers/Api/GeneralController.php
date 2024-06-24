@@ -258,4 +258,6 @@ class GeneralController extends BaseController
 
         return $this->sendSuccess($res,'Buyurtmalar tarixi');
     }
+
+
 }
