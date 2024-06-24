@@ -144,4 +144,10 @@ return redirect()->back();
         $name=$request->name;
         return view('admin.product.index',['cats'=>$cats,'products'=>$products,'name'=>$name]);
     }
+    public function idSearch(Request $request){
+        $cats=Category::whereNull('cat_id')->get();
+        $products=Product::where('id','like','%'.$request->id.'%')->paginate(50);
+        $id=$request->id;
+        return view('admin.product.index',['cats'=>$cats,'products'=>$products,'id'=>$id]);
+    }
 }

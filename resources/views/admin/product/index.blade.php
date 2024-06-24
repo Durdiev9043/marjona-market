@@ -96,6 +96,10 @@
                                 @csrf
                                 <input type="text" placeholder="nomi:" class="mb-3" @if(isset($name))value="{{$name}}"@endif name="name">
                             </form>
+                            <form action="{{ route('id.search') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">
+                                @csrf
+                                <input type="text" placeholder="#id:" class="mb-3" @if(isset($id))value="{{$id}}"@endif name="id">
+                            </form>
                             <table class="table table-borderless datatable">
                                 <thead>
                                 <tr>
