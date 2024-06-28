@@ -150,15 +150,27 @@ class AuthController extends BaseController
                 $name=User::where('phone', $request->phone)->first()->name;
                 $phone=User::where('phone', $request->phone)->first()->phone;
             }
-            return response()->json([
-                'status' => true,
-                'message' => 'User Logged In Successfully',
+            $data=[
                 'token' => $user->createToken("API TOKEN")->plainTextToken,
                 'role' => $role,
                 'user_id'=>$user_id,
                 'name'=>$name,
                 'phone'=>$phone
+            ];
+            return response()->json([
+                'success' => true,
+                'message' => 'User Logged In Successfully',
+                'data' => $data
             ], 200);
+//            return response()->json([
+//                'status' => true,
+//                'message' => 'User Logged In Successfully',
+//                'token' => $user->createToken("API TOKEN")->plainTextToken,
+//                'role' => $role,
+//                'user_id'=>$user_id,
+//                'name'=>$name,
+//                'phone'=>$phone
+//            ], 200);
 
         } catch (\Throwable $th) {
             return response()->json([
