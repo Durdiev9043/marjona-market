@@ -194,10 +194,10 @@ class AuthController extends BaseController
 //            $user = User::where('phone', $request->phone)->first();
 
             if ($user) {
-                $role = User::where('phone', $request->phone)->first()->role;
-                $user_id = User::where('phone', $request->phone)->first()->id;
-                $name = User::where('phone', $request->phone)->first()->name;
-                $phone = User::where('phone', $request->phone)->first()->phone;
+                $role = $user->role;
+                $user_id = $user->id;
+                $name = $user->name;
+                $phone = $user->phone;
 
                 return response()->json([
                     'status' => true,
