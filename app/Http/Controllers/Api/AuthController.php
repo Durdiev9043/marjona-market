@@ -190,7 +190,7 @@ class AuthController extends BaseController
             }
 
             $user=User::where('role',3)->where('phone',$request->phone)->first();
-return $user;
+
 //            $user = User::where('phone', $request->phone)->first();
 
             if ($user) {
