@@ -212,14 +212,26 @@ class AuthController extends BaseController
                 $name = $user->name;
                 $phone = $user->phone;
 
-                return response()->json([
-                    'status' => true,
-                    'message' => 'User Logged In Successfully',
+//                return response()->json([
+//                    'status' => true,
+//                    'message' => 'User Logged In Successfully',
+//                    'token' => $user->createToken("API TOKEN")->plainTextToken,
+//                    'role' => $role,
+//                    'user_id' => $user_id,
+//                    'name' => $name,
+//                    'phone' => $phone
+//                ], 200);
+                $data=[
                     'token' => $user->createToken("API TOKEN")->plainTextToken,
                     'role' => $role,
-                    'user_id' => $user_id,
-                    'name' => $name,
-                    'phone' => $phone
+                    'user_id'=>$user_id,
+                    'name'=>$name,
+                    'phone'=>$phone
+                ];
+                return response()->json([
+                    'success' => true,
+                    'message' => 'User Logged In Successfully',
+                    'data' => $data
                 ], 200);
             }else{
                 return response()->json([
