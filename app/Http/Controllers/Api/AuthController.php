@@ -189,30 +189,31 @@ class AuthController extends BaseController
                 ], 401);
             }
 
-            if(!Auth::attempt($request->only(['phone', 'password']))){
+            $user=User::where('phone',$request->phone)->where('role',3)->first();
+
+//            $user = User::where('phone', $request->phone)->first();
+
+            if ($user) {
+                $role = User::where('phone', $request->phone)->first()->role;
+                $user_id = User::where('phone', $request->phone)->first()->id;
+                $name = User::where('phone', $request->phone)->first()->name;
+                $phone = User::where('phone', $request->phone)->first()->phone;
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'User Logged In Successfully',
+                    'token' => $user->createToken("API TOKEN")->plainTextToken,
+                    'role' => $role,
+                    'user_id' => $user_id,
+                    'name' => $name,
+                    'phone' => $phone
+                ], 200);
+            }else{
                 return response()->json([
                     'status' => false,
                     'message' => 'Phone & Password does not match with our record.',
                 ], 401);
             }
-
-            $user = User::where('phone', $request->phone)->first();
-            if ($user)
-            {
-                $role=User::where('phone', $request->phone)->first()->role;
-                $user_id=User::where('phone', $request->phone)->first()->id;
-                $name=User::where('phone', $request->phone)->first()->name;
-                $phone=User::where('phone', $request->phone)->first()->phone;
-            }
-            return response()->json([
-                'status' => true,
-                'message' => 'User Logged In Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken,
-                'role' => $role,
-                'user_id'=>$user_id,
-                'name'=>$name,
-                'phone'=>$phone
-            ], 200);
 
         } catch (\Throwable $th) {
             return response()->json([
