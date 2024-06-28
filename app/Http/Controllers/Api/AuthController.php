@@ -194,6 +194,7 @@ class AuthController extends BaseController
 //            $user = User::where('phone', $request->phone)->first();
 
             if ($user) {
+                Auth::login($user);
                 $role = $user->role;
                 $user_id = $user->id;
                 $name = $user->name;
