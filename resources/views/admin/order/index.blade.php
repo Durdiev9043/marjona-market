@@ -100,17 +100,31 @@
                                                 <form action="{{ route('orderstatus', $order->id) }}" method="post">
                                                     @csrf
                                                     @method('put')
-                                                    <div class="form-group">
-                                                        <select class="form-control" name="status" id="exampleFormControlSelect1">
-                                                            <option value="{{ $order->status }}">{{$order->st[$order->status] }}</option>
-                                                            <option value="1">Bajarildi</option>
-                                                            <option value="-1">Bekor qilish</option>
-                                                        </select>
-                                                    </div>
-                                                    <button>saqlash</button>
+                                                    <input type="hidden" name="status" value="1">
+{{--                                                    <div class="form-group">--}}
+{{--                                                        <select class="form-control" name="status" id="exampleFormControlSelect1">--}}
+{{--                                                            <option value="{{ $order->status }}">{{$order->st[$order->status] }}</option>--}}
+{{--                                                            <option value="1">Bajarildi</option>--}}
+{{--                                                            <option value="-1">Bekor qilish</option>--}}
+{{--                                                        </select>--}}
+{{--                                                    </div>--}}
+                                                    <button>Yig`ilmoqda</button>
                                                 </form>
-                                            @else
-                                                {{$order->st[$order->status] }}  {{$order->updated_at->addMinutes(300)->format('d.m.Y  H:i') }}
+                                            @elseif($order->status == 1)
+                                                <form action="{{ route('orderstatus', $order->id) }}" method="post">
+                                                    @csrf
+                                                    @method('put')
+                                                    <input type="hidden" name="status" value="2">
+                                                    <button>Yetkazib beruvchiga topshirish</button>
+                                                </form>
+{{--                                                {{$order->st[$order->status] }}  {{$order->updated_at->addMinutes(300)->format('d.m.Y  H:i') }}--}}
+                                            @elseif($order->status == 2)
+                                                <form action="{{ route('orderstatus', $order->id) }}" method="post">
+                                                    @csrf
+                                                    @method('put')
+                                                    <input type="hidden" name="status" value="3">
+                                                    <button>Buyurutmani tugatish</button>
+                                                </form>
                                             @endif
                                         </td>
                                         <td>{{$order->created_at->addMinutes(300)->format('d.m.Y  H:i') }}  </td>

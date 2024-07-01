@@ -45,7 +45,7 @@ class GeneralController extends Controller
     }
     public function orderDone()
     {
-        $orders=Order::where('status',1)->get();
+        $orders=Order::where('status',3)->get();
         $users=User::all();
         $orderproducts=OrderProduct::whereNull('cancel')->get();
         return view('admin.order.done',['orders'=>$orders,'orderproducts'=>$orderproducts,'users'=>$users]);
@@ -129,7 +129,8 @@ return redirect()->back();
     }
     public function codeSearch(Request $request)
     {
-        $product=Product::where('code',$request->code)->first();
+        $product=Product::where('code',$request->code)->Orwhere('id',$request->id)->first();
+
         return $product;
     }
     public function region(Request $request){

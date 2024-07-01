@@ -71,7 +71,19 @@ class IncomingController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $pr=IncomingProduct::where('id',$id)->first();
+        if ($pr->count){
+        $total_price=($pr->count)*($request->price);}
+        else{
+            $total_price=($pr->miqdori)*($request->price);
+        }
+        $pr->update(
+            [
+                'total_price'=>$total_price,
+                'price'=>$request->price,
+            ]
+        );
+        return redirect()->back();
     }
 
 

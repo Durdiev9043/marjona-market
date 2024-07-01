@@ -25,21 +25,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $today=DB::table('orders')->where('status',2)->whereDate('created_at', Carbon::today())->get()->count();
-        $today_cancel=DB::table('orders')->where('status',-1)->whereDate('created_at', Carbon::today())->count();
+        $today=DB::table('orders')->where('status',2)->whereDate('updated_at', Carbon::today())->get()->count();
+        $today_cancel=DB::table('orders')->where('status',-1)->whereDate('updated_at', Carbon::today())->count();
         $today_sum=DB::table('orders')
-            ->select('orders.id','orders.status','order_products.created_at','order_products.total_price','order_products.order_id')
+            ->select('orders.id','orders.status','order_products.updated_at','order_products.total_price','order_products.order_id')
             ->join('order_products', 'orders.id', '=', 'order_products.order_id')
             ->where('orders.status',2)
-            ->whereDate('orders.created_at', Carbon::today())->sum('total_price');
+            ->whereDate('orders.updated_at', Carbon::today())->sum('total_price');
         $today_cancel_sum=DB::table('orders')
-            ->select('orders.id','orders.status','order_products.created_at','order_products.total_price','order_products.order_id')
+            ->select('orders.id','orders.status','order_products.updated_at','order_products.total_price','order_products.order_id')
             ->join('order_products', 'orders.id', '=', 'order_products.order_id')
             ->where('orders.status',-1)
-            ->whereDate('orders.created_at', Carbon::today())->sum('total_price');
-        $today_price=DB::table('orders')->where('status',-1)->whereDate('created_at', Carbon::today())->get();
-        $yesterday=DB::table('orders')->where('status',2)->whereDate('created_at', Carbon::yesterday())->count();
-        $yesterday_cancel=DB::table('orders')->where('status',-1)->whereDate('created_at', Carbon::yesterday())->count();
+            ->whereDate('orders.updated_at', Carbon::today())->sum('total_price');
+        $today_price=DB::table('orders')->where('status',-1)->whereDate('updated_at', Carbon::today())->get();
+        $yesterday=DB::table('orders')->where('status',2)->whereDate('updated_at', Carbon::yesterday())->count();
+        $yesterday_cancel=DB::table('orders')->where('status',-1)->whereDate('updated_at', Carbon::yesterday())->count();
         return view('admin.home', [
             'today'=>$today,
             'yesterday'=>$yesterday,

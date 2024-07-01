@@ -107,7 +107,13 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->product->name }}</td>
                                         <td>{{ $item->count }}</td>
-                                        <td>{{ $item->price }}</td>
+                                        <td>
+                                            <form action="{{ route('incoming.update',$item->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input style="border:none" type="text" name="price" value="{{ $item->price }}">
+                                            </form>
+                                            </td>
                                         <td>{{ $item->total_price }}</td>
                                         <td>{{ $item->created_at->addMinutes(300)->format('d.m.Y  H:i') }}</td>
                                     </tr>

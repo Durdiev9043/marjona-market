@@ -15,6 +15,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link " href="{{ route('orderProgress') }}">
+                <i class="bi bi-grid"></i>
+                <span>Jarayondagi buyurtmalar</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link " href="{{ route('orderDone') }}">
                 <i class="bi bi-grid"></i>
                 <span>Yetkazib berilgan buyrtmalar</span>

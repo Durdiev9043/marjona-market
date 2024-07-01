@@ -108,6 +108,8 @@
 {{--                                        'product_id','count','price','total_price','tel','org','zapas','miqdori'--}}
                                     <label for="">Shtrix kod</label>
                                     <input type="number" name="code" id="code" onchange="product(code)">
+                                    <label for="">ID:</label>
+                                    <input type="number" name="id" id="id" onchange="product(id)">
                                         <table>
                                             <form action="{{ route('addcart') }}">
                                             <tr style="width: 100% !important;margin-bottom: 10px">
@@ -261,6 +263,7 @@
                                     }
                                     function product(code) {
                                         code = code.value;
+                                        id = id.value;
                                         // 'product_id','count','price','total_price','tel','org','zapas','miqdori'
                                         $.ajax(
                                             "{{route('code.search')}}",
@@ -271,6 +274,7 @@
                                                 },
                                                 data: {
                                                     code: code,
+                                                    id: id,
                                                 },
                                                 success: function (data) {
 
