@@ -155,7 +155,12 @@
                                                                         <td>{{$product->aksiya[$product->status]}}</td>
 
                                                                         <td width="200px">
-                                                                            <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">
+{{--                                                                            <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">--}}
+                                                                            <div class="image-container">
+                                                                                <img src=
+                                                                                         "{{ asset('/storage/galereya/'.$product->img) }}"
+                                                                                     alt="Geeks Image"  width="150px" />
+                                                                            </div>
                                                                         </td>
                                                                         <td>
                                                                             <form action="{{ route('product.destroy',$product ->id) }}" method="POST">
@@ -178,6 +183,19 @@
                                 </tbody>
                             </table>
                             {{ $products->links() }}
+                            <style>
+                                .image-container img {
+                                    transition: transform 0.3s ease-in-out;
+                                }
+
+                                .image-container img:hover {
+
+                                    transform: scale(4);
+                                    position: relative;
+                                    right: 30%;
+                                    top: 30%;
+                                }
+                            </style>
                             <div id="myModal" class="modal" >
 
                                 <!-- Modal content -->
