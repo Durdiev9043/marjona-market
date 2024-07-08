@@ -90,9 +90,9 @@
                                                     )
 
                                                             {{--                                                                            <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">--}}
-                                                            <div class="image-container">
+                                                            <div class="image-container" style="display: inline;">
                                                                 <img src="{{ asset('/storage/galereya/'.$orderproduct->product->img) }}"
-                                                                     alt="Geeks Image"  width="150px" />
+                                                                     alt="Geeks Image"  width="30px" />
                                                             </div>
 
                                                         <br></b>
