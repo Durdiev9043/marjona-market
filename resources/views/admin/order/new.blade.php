@@ -108,7 +108,7 @@
 
                                             .image-container img:hover {
 
-                                                transform: scale(3);
+                                                transform: scale(10);
 
                                             }
                                         </style>
