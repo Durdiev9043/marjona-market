@@ -108,10 +108,8 @@
 
                                             .image-container img:hover {
 
-                                                transform: scale(4);
-                                                position: relative;
-                                                right: 30%;
-                                                top: 30%;
+                                                transform: scale(3);
+
                                             }
                                         </style>
 
