@@ -101,7 +101,19 @@
                                         @endforeach
 
                                         <td>{{$pri }} so'm </td>
+                                        <style>
+                                            .image-container img {
+                                                transition: transform 0.3s ease-in-out;
+                                            }
 
+                                            .image-container img:hover {
+
+                                                transform: scale(4);
+                                                position: relative;
+                                                right: 30%;
+                                                top: 30%;
+                                            }
+                                        </style>
 
                                         <td>
                                             @if($order->status == 0)
