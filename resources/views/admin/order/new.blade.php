@@ -87,7 +87,15 @@
                                                         @else
                                                             {{$orderproduct->count }} ta
                                                         @endif
-                                                    ) <br></b>
+                                                    )
+
+                                                            {{--                                                                            <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">--}}
+                                                            <div class="image-container">
+                                                                <img src="{{ asset('/storage/galereya/'.$orderproduct->product->img) }}"
+                                                                     alt="Geeks Image"  width="150px" />
+                                                            </div>
+
+                                                        <br></b>
 
                                         @endif
                                         @endforeach
@@ -127,6 +135,7 @@
                                                 </form>
                                             @endif
                                         </td>
+
                                         <td>{{$order->created_at->addMinutes(300)->format('d.m.Y  H:i') }}  </td>
                                         <td>
                                             <a class="btn btn-warning btn-sm m-1" href="{{ route('orderView',$order->id) }}">

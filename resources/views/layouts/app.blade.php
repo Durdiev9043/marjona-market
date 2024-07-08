@@ -12,7 +12,19 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <style>
+        .image-container img {
+            transition: transform 0.3s ease-in-out;
+        }
 
+        .image-container img:hover {
+
+            transform: scale(4);
+            position: relative;
+            right: 30%;
+            top: 30%;
+        }
+    </style>
     <!-- Scripts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
