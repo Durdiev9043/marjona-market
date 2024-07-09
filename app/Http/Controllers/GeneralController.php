@@ -151,4 +151,11 @@ return redirect()->back();
         $id=$request->id;
         return view('admin.product.index',['cats'=>$cats,'products'=>$products,'id'=>$id]);
     }
+    public function idCat(Request $request){
+
+        $cats=Category::whereNull('cat_id')->get();
+        $products=Product::where('id','like','%'.$request->cat_id.'%')->paginate(50);
+        $cat=Category::where('id',$request->cat_id)->first();
+        return view('admin.product.index',['cats'=>$cats,'products'=>$products,'cat'=>$cat]);
+    }
 }
