@@ -154,7 +154,7 @@ return redirect()->back();
     public function idCat(Request $request){
 
         $cats=Category::whereNull('cat_id')->get();
-        $products=Product::where('id',$request->cat_id)->paginate(50);
+        $products=Product::where('category_id',$request->cat_id)->paginate(50);
         $cat=Category::where('id',$request->cat_id)->first();
         return view('admin.product.index',['cats'=>$cats,'products'=>$products,'cat'=>$cat]);
     }
