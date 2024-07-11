@@ -82,7 +82,7 @@ class GeneralController extends BaseController
         return $this->sendSuccess($tt,' mahsulotlar royxati');
     }
     public function productlist(){
-        $products=Product::where('count','>',0)->OrWhere('miqdori','>',0)->get();
+        $products=Product::where('count','!=',0)->OrWhere('miqdori','!=',0)->get();
         $tt=[];
 //        $data=[];
         foreach ($products as $product){
@@ -117,7 +117,7 @@ class GeneralController extends BaseController
        return $this->sendSuccess($tt,'Dokondagi barcha Mahsulotlar');
     }
     public function productfilter($id){
-        $products=Product::where('category_id',$id)->OrWhere('count','>',0)->OrWhere('miqdori','>',0)->get();
+        $products=Product::where('category_id',$id)->orWhere('count','!=',0)->orWhere('miqdori','!=',0)->get();
         $tt=[];
 //        $data=[];
         foreach ($products as $product) {
