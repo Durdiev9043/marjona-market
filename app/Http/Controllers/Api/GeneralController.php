@@ -117,8 +117,13 @@ class GeneralController extends BaseController
        return $this->sendSuccess($tt,'Dokondagi barcha Mahsulotlar');
     }
     public function productfilter($id){
-        $products=new Product();
-        $products=$products->where('category_id',$id)->orWhere('count','!=',0)->orWhere('miqdori','!=',0)->get();
+//        $products=Product::where('category_id',$id)->orWhere('count','!=',0)->orWhere('miqdori','!=',0)->get();
+        $products = Product::where(function($query) use ($id) {
+            $query->where('category_id', $id)
+                ->orWhere('count', '!=', 0)
+                ->orWhere('miqdori', '!=', 0);
+        })
+            ->get();
         $tt=[];
 //        $data=[];
         foreach ($products as $product) {
