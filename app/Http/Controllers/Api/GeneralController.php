@@ -127,6 +127,7 @@ class GeneralController extends BaseController
         $tt=[];
 //        $data=[];
         foreach ($products as $product) {
+            if ($product->miqdori > 0 || $product->count > 0){
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
             $data = [];
             $data['id'] = $product->id;
@@ -156,7 +157,7 @@ class GeneralController extends BaseController
             if ($product->img5) {
                 $data['img'][] = $product->img5;
             }
-            $tt[] = $data;
+            $tt[] = $data;}
         }
         return $this->sendSuccess($tt,'chotki');
     }
