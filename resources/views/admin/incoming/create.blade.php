@@ -122,6 +122,11 @@
                                                     <input type="number" name="price" id="price">
                                                 </td>
                                                 <td>
+                                                    <label for="">Sotuv Narxi</label>
+                                                    <input type="number" name="sell_price" id="sell_price">
+                                                </td>
+
+                                                <td>
                                                     <label for="">Soni</label>
                                                     <input type="number" onchange="totalprice(count)" name="count" id="count" >
                                                 </td>

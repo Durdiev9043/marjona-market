@@ -36,6 +36,7 @@ class IncomingController extends Controller
                 'tel'=>$value[0]['tel'],
                 'org'=>$value[0]['org'],
                 'miqdori'=>$value[0]['miqdori'],
+                'sell_price'=>$value[0]['sell_price'],
             ]);
 
             $product=Product::where('id',$value[0]['product_id'])->first();
@@ -44,6 +45,7 @@ class IncomingController extends Controller
             $product->update([
                 'count'=>$count,
                 'miqdori'=>$miqdori,
+                'price'=>$value[0]['sell_price']
             ]);
 //            DB::table('order_products')->insert([
 //                'order_id'=>$order,
