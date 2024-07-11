@@ -46,7 +46,7 @@ class GeneralController extends BaseController
 
     public function getProductsByHash($id)
     {
-        $products=Product::where('hash_id',$id)->get();
+        $products=Product::where('hash_id',$id)->orWhere('count','!=',0)->orWhere('miqdori','!=',0)->get();
         $tt=[];
         foreach ($products as $product){
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
@@ -82,7 +82,7 @@ class GeneralController extends BaseController
         return $this->sendSuccess($tt,' mahsulotlar royxati');
     }
     public function productlist(){
-        $products=Product::where('count','!=',0)->OrWhere('miqdori','!=',0)->get();
+        $products=Product::where('count','!=',0)->orWhere('miqdori','!=',0)->get();
         $tt=[];
 //        $data=[];
         foreach ($products as $product){
