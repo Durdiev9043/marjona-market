@@ -37,7 +37,7 @@ class CourierController extends BaseController
 //            return $existingOrders;
 //        } else {
             // Assign supplier_id to the order and save it
-        if (!$orders->supplier_id == NULL) {
+        if ($orders->supplier_id == NULL) {
             $orders->supplier_id = $id;
             $orders->save();
             return $this->sendSuccess($orders, 'Sizning yangi qabul qilgan buyurutmangiz');
