@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CourierController extends BaseController
 {
     public function getOrder(){
-        $orders=Order::where('status',1)->orWhere('supplier_id',NULL)->get();
+        $orders=Order::where('status',1)->orWhere('supplier_id','==',NULL)->get();
         return $this->sendSuccess($orders,'Buyurtmalar Royxati');
     }
     public function takeOrder(Request $request, $id){
