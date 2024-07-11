@@ -104,7 +104,7 @@
                                 @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
-                                <select class="form-control form-control-sm" id="category_id"  name="cat_id">
+                                <select class="form-control form-control-sm" id="cat_id"  name="cat_id">
 @if(isset($cat)) <option value="{{$cat->id}}">{{ $cat->name }}</option>@else<option value=""></option> @endif
                                     @foreach($cats as $item)
                                         @if(isset($cat))
@@ -354,7 +354,6 @@
     <script>
         function cat(cat) {
             cat = $('#category_id').val();
-
             $.ajax(
                 "{{route('cat.filter')}}",
                 {
