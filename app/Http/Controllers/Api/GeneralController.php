@@ -82,7 +82,7 @@ class GeneralController extends BaseController
         return $this->sendSuccess($tt,' mahsulotlar royxati');
     }
     public function productlist(){
-        $products=Product::all();
+        $products=Product::where('count','>',0)->OrWhere('miqdori','>',0)->get();
         $tt=[];
 //        $data=[];
         foreach ($products as $product){
