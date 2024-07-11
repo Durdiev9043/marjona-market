@@ -31,16 +31,16 @@ class CourierController extends BaseController
         }
 
         // Check if there are any existing orders for the supplier with status != 3
-        $existingOrders = Order::where('supplier_id', $id)->where('status', '!=', 3)->get();
+//        $existingOrders = Order::where('supplier_id', $id)->where('status', '!=', 3)->get();
 
-        if ($existingOrders->count() > 0) {
-            return $existingOrders;
-        } else {
+//        if ($existingOrders->count() > 0) {
+//            return $existingOrders;
+//        } else {
             // Assign supplier_id to the order and save it
             $orders->supplier_id = $id;
             $orders->save();
 
             return $this->sendSuccess($orders, 'Sizning yangi qabul qilgan buyurutmangiz');
-        }
+//        }
     }
 }
