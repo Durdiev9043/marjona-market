@@ -37,10 +37,14 @@ class CourierController extends BaseController
 //            return $existingOrders;
 //        } else {
             // Assign supplier_id to the order and save it
+        if (!$orders->supplier_id == NULL) {
             $orders->supplier_id = $id;
             $orders->save();
-
             return $this->sendSuccess($orders, 'Sizning yangi qabul qilgan buyurutmangiz');
+        }else{
+            return response()->json(['error' => 'Order not found'], 404);
+        }
+
 //        }
     }
 }
