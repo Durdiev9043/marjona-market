@@ -57,6 +57,22 @@ class CourierController extends BaseController
         $orders=Order::where('supplier_id',$id)->where('status',[1,2])->get();
         return $this->sendSuccess($orders,'sizning jarayondagi buyurutmalaringiz');
     }
+    public function startOrder(Request $request,$id)
+    {
+        $orders = Order::find($request->order_id);
+
+        if (!$orders) {
+            return response()->json(['error' => 'Order not found'], 404);
+        }
+
+        if ($orders->supplier_id == $id) {
+            $orders->status = 2;
+            $orders->save();
+            return $this->sendSuccess($orders, 'Sizning buyurutmangiz boshlandi');
+        }else{
+            return response()->json(['error' => 'Order not found'], 404);
+        }
+    }
     public function finishOrder(Request $request,$id)
     {
         $orders = Order::find($request->order_id);
