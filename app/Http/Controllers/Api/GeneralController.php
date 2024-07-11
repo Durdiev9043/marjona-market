@@ -120,8 +120,8 @@ class GeneralController extends BaseController
 //        $products=Product::where('category_id',$id)->orWhere('count','!=',0)->orWhere('miqdori','!=',0)->get();
         $products = Product::where(function($query) use ($id) {
             $query->where('category_id', $id)
-                ->orWhere('count', '!=', 0)
-                ->orWhere('miqdori', '!=', 0);
+                ->orWhere('count', '>', 0)
+                ->orWhere('miqdori', '>', 0);
         })
             ->get();
         $tt=[];
