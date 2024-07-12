@@ -75,16 +75,16 @@ class CourierController extends BaseController
     }
     public function finishOrder(Request $request,$id)
     {
-        $orders = Order::find($request->order_id);
+        $order = Order::where($request->order_id)->first();
 
-//        if (!$orders) {
-//            return response()->json(['error' => 'Order not found'], 404);
-//        }
+        if (!$order) {
+            return response()->json(['error' => 'Order not found'], 404);
+        }
 
-        if ($orders->supplier_id == $id) {
-            $orders->status = 3;
-            $orders->save();
-            return $this->sendSuccess($orders, 'Sizning buyurutmangiz tugatildi');
+        if ($order->supplier_id == $id) {
+            $order->status = 3;
+            $order->save();
+            return $this->sendSuccess($order, 'Sizning buyurutmangiz tugatildi');
         }else{
             return response()->json(['error' => 'Order not found'], 404);
         }
