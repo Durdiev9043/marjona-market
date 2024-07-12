@@ -141,21 +141,25 @@ return redirect()->back();
 
     public function nameSearch(Request $request){
         $cats=Category::whereNull('cat_id')->get();
+        $hashs=Category::whereNotNull('cat_id')->get();
         $products=Product::where('name','like','%'.$request->name.'%')->paginate(50);
         $name=$request->name;
-        return view('admin.product.index',['cats'=>$cats,'products'=>$products,'name'=>$name]);
+        return view('admin.product.index',['cats'=>$cats,'products'=>$products,'name'=>$name,'hashs'=>$hashs]);
     }
     public function idSearch(Request $request){
         $cats=Category::whereNull('cat_id')->get();
+        $hashs=Category::whereNotNull('cat_id')->get();
+
         $products=Product::where('id','like','%'.$request->id.'%')->paginate(50);
         $id=$request->id;
-        return view('admin.product.index',['cats'=>$cats,'products'=>$products,'id'=>$id]);
+        return view('admin.product.index',['cats'=>$cats,'products'=>$products,'id'=>$id,'hashs'=>$hashs]);
     }
     public function idCat(Request $request){
 
         $cats=Category::whereNull('cat_id')->get();
-        $products=Product::where('category_id',$request->cat_id)->paginate(50);
+        $hashs=Category::whereNotNull('cat_id')->get();
+        $products=Product::where('category_id',$request->cat_id)->orWhere('hash_id',$request->hash_id)->paginate(50);
         $cat=Category::where('id',$request->cat_id)->first();
-        return view('admin.product.index',['cats'=>$cats,'products'=>$products,'cat'=>$cat]);
+        return view('admin.product.index',['cats'=>$cats,'products'=>$products,'cat'=>$cat,'hashs'=>$hashs]);
     }
 }

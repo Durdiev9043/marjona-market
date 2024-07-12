@@ -12,8 +12,9 @@ class ProductController extends Controller
     public function index()
     {
         $cats=Category::whereNull('cat_id')->get();
+        $hashs=Category::whereNotNull('cat_id')->get();
         $products=Product::paginate(10);
-        return view('admin.product.index',['cats'=>$cats,'products'=>$products]);
+        return view('admin.product.index',['cats'=>$cats,'products'=>$products,'hashs'=>$hashs]);
     }
 
 

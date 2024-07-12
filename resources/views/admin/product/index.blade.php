@@ -104,7 +104,7 @@
                                 @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
-                                <select class="form-control form-control-sm" id="cat_id"  name="cat_id">
+                                <select class="form-control form-control-sm" id="cat_id" onchange="catfilter(cat_id)"  name="cat_id">
 @if(isset($cat)) <option value="{{$cat->id}}">{{ $cat->name }}</option>@else<option value=""></option> @endif
                                     @foreach($cats as $item)
                                         @if(isset($cat))
@@ -116,8 +116,23 @@
         @endif
                                     @endforeach
                                 </select>
-                                <button class="btn mt-2 w-100 mb-2" style="background: #4abb5a;color: #f1f1f1">Qidirish</button>
+
+                                <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
+                                <select class="form-control form-control-sm" id="cat_id"   name="hash_id">
+{{--                                    <option></option>--}}
+                                    @if(isset($hash)) <option value="{{$cat->id}}">{{ $cat->name }}</option>@else<option value=""></option> @endif
+                                    @foreach($hashs as $item)
+                                        @if(isset($cat))
+                                            @if($cat->id != $item->id)
+                                                <option value="{{$item->id}}">{{ $item->name }}</option>
+                                            @endif
+                                        @else
+                                            <option value="{{$item->id}}">{{ $item->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
+                                <button class="btn mt-2 w-100 mb-2" style="background: #4abb5a;color: #f1f1f1">Qidirish</button>
                             </form>
                             <table class="table table-borderless datatable">
                                 <thead>
@@ -354,6 +369,28 @@
     <script>
         function cat(cat) {
             cat = $('#category_id').val();
+            $.ajax(
+                "{{route('cat.filter')}}",
+                {
+                    method: 'post',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{csrf_token()}}'
+                    },
+                    data: {
+                        cat: cat,
+                    },
+                    success: function (data) {
+
+                        $('#hash_id').empty()
+                        for (let d in data) {
+                            let option = '<option value=' + data[d].id + '>' + data[d].name + '</option>';
+                            $('#hash_id').append(option)
+                        }
+                    }
+                });
+        }
+        function catfilter(cat) {
+            cat = $('#cat_id').val();
             $.ajax(
                 "{{route('cat.filter')}}",
                 {
