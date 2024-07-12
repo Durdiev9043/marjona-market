@@ -77,9 +77,9 @@ class CourierController extends BaseController
     {
         $orders = Order::find($request->order_id);
 
-        if (!$orders) {
-            return response()->json(['error' => 'Order not found'], 404);
-        }
+//        if (!$orders) {
+//            return response()->json(['error' => 'Order not found'], 404);
+//        }
 
         if ($orders->supplier_id == $id) {
             $orders->status = 3;
