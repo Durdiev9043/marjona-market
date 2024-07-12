@@ -117,7 +117,7 @@
                                     @endforeach
                                 </select>
 
-                                <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
+                                <label for="exampleInputEmail1">Mahsulotning Hash toifasini tanlang tanlang</label>
                                 <select class="form-control form-control-sm" id="cat_id"   name="hash_id">
 {{--                                    <option></option>--}}
                                     @if(isset($hash)) <option value="{{$cat->id}}">{{ $cat->name }}</option>@else<option value=""></option> @endif
