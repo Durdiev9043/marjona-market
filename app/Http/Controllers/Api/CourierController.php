@@ -81,13 +81,10 @@ class CourierController extends BaseController
             return response()->json(['error' => 'Order not found'], 404);
         }
 
-        if ($order->supplier_id == $id) {
             $order->status = 3;
             $order->save();
             return $this->sendSuccess($order, 'Sizning buyurutmangiz tugatildi');
-        }else{
-            return response()->json(['error' => 'Order not found'], 404);
-        }
+
     }
 
 }
