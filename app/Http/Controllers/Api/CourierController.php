@@ -75,7 +75,7 @@ class CourierController extends BaseController
     }
     public function finishOrder(Request $request,$id)
     {
-        $order = Order::where($request->order_id)->first();
+        $order = Order::where('id',$request->order_id)->first();
 
         if (!$order) {
             return response()->json(['error' => 'Order not found'], 404);
