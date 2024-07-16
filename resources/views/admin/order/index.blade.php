@@ -127,6 +127,7 @@
                                                 </form>
                                             @endif
                                         </td>
+                                        <td>{{ $order->supplier ? $order->supplier->name : ' ' }} {{ $order->supplier ? $order->supplier->phone : ' ' }}</td>
                                         <td>{{$order->created_at->addMinutes(300)->format('d.m.Y  H:i') }}  </td>
                                     </tr>
                                 @endforeach

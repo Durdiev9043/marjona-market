@@ -14,5 +14,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function supplier()
+    {
+        return $this->belongsTo(User::class);
+    }
     public $st=[-1=>'bekor qilindi',0=>'yangi',1=>'yig`ilmoqda',2=>'yolda',3=>'bajarildi'];
 }

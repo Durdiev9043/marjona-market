@@ -55,7 +55,7 @@ class CourierController extends BaseController
     }
     public function myOrder($id)
     {
-        $orders=Order::where('supplier_id',$id)->where('status',[1,2])->get();
+        $orders=Order::where('supplier_id',$id)->where('status',1)->orWhere('status',2)->get();
         return $this->sendSuccess($orders,'sizning jarayondagi buyurutmalaringiz');
     }
     public function startOrder(Request $request,$id)
