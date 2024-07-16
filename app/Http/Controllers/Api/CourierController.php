@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -88,6 +89,24 @@ class CourierController extends BaseController
         }else{
             return response()->json(['error' => 'Order not found'], 404);
         }
+    }
+    public function orderInfo($id)
+    {
+        $order=Order::where('id',$id)->first();
+        $ammount=OrderProduct::where('order_id',$id)->get();
+        $pp=0;
+        foreach ($ammount as $item){
+            $pp=$pp+$item->total_price;
+        }
+        $dd=[];
+            $dd['client_number']=$order->user->phone;
+            $dd['lat']=$order->lat;
+            $dd['lang']=$order->lang;
+            $dd['pay_type']=$order->pay_type;
+            $dd['address_name']=$order->address_name;
+            $dd['total_price']=$pp;
+            return $this->sendSuccess($dd,'buyurtma');
+
     }
 
 }

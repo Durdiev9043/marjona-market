@@ -42,4 +42,5 @@ Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(functio
     Route::get('get/my/orders/{id}',[\App\Http\Controllers\Api\CourierController::class,'myOrder'] );
     Route::post('start/order/{id}',[\App\Http\Controllers\Api\CourierController::class,'startOrder'] );
     Route::post('finish/order/{id}',[\App\Http\Controllers\Api\CourierController::class,'finishOrder'] );
+    Route::get('/order/info/{id}',[\App\Http\Controllers\Api\CourierController::class,'orderInfo'] );
 });
