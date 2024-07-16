@@ -113,7 +113,7 @@
                                                 {{$order->st[$order->status] }}  {{$order->updated_at->addMinutes(300)->format('d.m.Y  H:i') }}
                                             @endif
                                         </td>
-                                        <td>{{$order->created_at->addMinutes(300)->format('d.m.Y  H:i') }}  </td>
+                                        <td>{{$order->created_at->format('d.m.Y  H:i') }}  </td>
 {{--                                        <td>--}}
 {{--                                            <a class="btn btn-warning btn-sm m-1" href="{{ route('orderView',$order->id) }}">--}}
 {{--                                                                                    <span class="btn-label">--}}
