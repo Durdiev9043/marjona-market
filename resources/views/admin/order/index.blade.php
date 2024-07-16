@@ -59,6 +59,7 @@
 
                                     <th scope="col">Narxi</th>
                                     <th scope="col">Holat</th>
+                                    <th scope="col">Yetkazib beruvchi</th>
                                     <th scope="col">Buyurtma qilinga vaqti</th>
                                     <th scope="col" colspan="2"></th>
 
