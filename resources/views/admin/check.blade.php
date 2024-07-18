@@ -48,7 +48,7 @@ $tt=0;
             ?>
         <div style="position: relative;">
 {{--            style="position: absolute; right: 10px;bottom: 5px"--}}
-        <b>{{ $item->product->name}} </b><br> <b > {{$item->count ?: $item->miqdor}}*{{ $item->total_price / ($item->count ?: 1)}}={{$item->total_price}}</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <b>{{ $item->product->name}} </b><br> <b > {{$item->count ?: $item->miqdor}}*{{ $item->total_price / ($item->count ?: 1)}}={{$item->total_price}}</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <span style="font-size: 13px">{{ $item->product->code }} //  {{ $item->product->id }}</span><hr>
         </div>
     @endforeach
