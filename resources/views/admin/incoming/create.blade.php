@@ -128,11 +128,11 @@
 
                                                 <td>
                                                     <label for="">Soni</label>
-                                                    <input type="number" onchange="totalprice(count)" name="count" id="count" >
+                                                    <input type="number" onchange="totalprice(count)" name="count" placeholder="dona" id="count" >
                                                 </td>
                                                 <td>
                                                     <label for="">Miqdori</label>
-                                                    <input type="number" name="miqdori" onchange="totalprice(count)" id="miqdori" >
+                                                    <input type="number" name="miqdori" onchange="totalprice(count)" placeholder="KG" id="miqdori" >
                                                 </td>
 
 
