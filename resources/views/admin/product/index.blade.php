@@ -165,23 +165,23 @@
 {{--                                                                        <td>{{ Illuminate\Support\Str::limit($product->more, $limit = 50, $end = '...') }}</td>--}}
 
                                                                         <td>
-                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">
-                                                                                @csrf
-                                                                                @method('PUT')
+{{--                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">--}}
+{{--                                                                                @csrf--}}
+{{--                                                                                @method('PUT')--}}
                                                                             @if($product->count>0)
-                                                                                <input style="border:none" type="text" name="count" value="{{$product->count}}">
+                                                                                {{$product->count}}
                                                                             @else
-                                                                                <input style="border:none" type="text" name="miqdori" value="{{$product->miqdori}}">
+                                                                               {{$product->miqdori}}
                                                                             @endif
-                                                                            </form>
+{{--                                                                            </form>--}}
 
                                                                         </td>
                                                                         <td>
-                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">
-                                                                                @csrf
-                                                                                @method('PUT')
-                                                                                <input style="border:none" type="text" name="price" value="{{$product->price}}">
-                                                                            </form>
+{{--                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">--}}
+{{--                                                                                @csrf--}}
+{{--                                                                                @method('PUT')--}}
+                                                                                {{$product->price}}
+{{--                                                                            </form>--}}
                                                                         </td>
 
                                                                         <td>{{$product->category->name}}</td>
