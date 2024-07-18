@@ -5,9 +5,9 @@
     <title>Resume</title>
     <style>
         /*@page { size: auto 8cm landscape; }*/
+        @php $height = ((count($pp) ?: 1) * 3) + 7  @endphp
         @page {
-            width:  7cm;
-            height: auto;
+            size:  7cm {{ $height }}cm;
             margin: 0; /* Kenar boşluğunu sıfırlayın */
         }
         .content-wrapper {
@@ -16,7 +16,7 @@
         }
     </style>
 </head>
-<body style="width: 7cm !important;">
+<body style="width: 7cm !important;height: auto;">
 <div class="content-wrapper" style="margin: 0 auto;display: block;">
     <h3 ALIGN="center">MARJONA <br>ONLINE MARKET</h3>
     Buyurtma haqida ma'lumot

@@ -170,16 +170,11 @@ return array(
          * @see CPDF_Adapter::PAPER_SIZES for valid sizes ('letter', 'legal', 'A4', etc.)
          */
 //        "default_paper_size" => "custom",
-        'defaultPaperWidth' => '8cm',
+//        'defaultPaperWidth' => '8cm',
 //                'defaultPaperSize' => '8cm', // Set the default paper size width to 8cm
 //                'defaultPaperOrientation' => 'landscape', // Set the default paper orientation to landscape or portrait
 
-            'options' => [
-                'defaultPaperSize' => 'custom', // Set to 'custom' to use custom paper size
-                'defaultPaperWidth' => '8cm',   // Set the default paper width to 8cm
-                'defaultPaperHeight' => '11.5in', // Set the default paper height (optional)
-                'isHtml5ParserEnabled' => true,
-            ],
+
 
          /**
           * The default paper orientation.
