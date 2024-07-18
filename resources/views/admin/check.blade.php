@@ -5,7 +5,7 @@
     <title>Resume</title>
     <style>
         /*@page { size: auto 8cm landscape; }*/
-        @php $height = ((count($pp) ?: 1) * 3) + 7  @endphp
+        @php $height = ((count($pp) ?: 1) * 3) + 10  @endphp
         @page {
             size:  7cm {{ $height }}cm;
             margin: 0; /* Kenar boşluğunu sıfırlayın */
