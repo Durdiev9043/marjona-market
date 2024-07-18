@@ -157,7 +157,7 @@
 
 
                                                                 @foreach($products as $product)
-                                                                    <tr @if($product->count == 0) style="background: #ff000057" @endif>
+                                                                    <tr @if($product->count == 0 || $product->count == NULL) style="background: #ff000057" @endif>
 
                                                                         <th scope="row"><a href="#">{{$product -> id }}</a></th>
                                                                         <td>{{$product->name}}</td>
