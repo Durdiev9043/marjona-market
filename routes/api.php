@@ -27,7 +27,7 @@ Route::post('/auth/login/courier', [AuthController::class, 'loginCourier']);
 
 Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(function () {
     Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
-    Route::get('product/search/',[\App\Http\Controllers\Api\GeneralController::class,'search'] );
+    Route::post('product/search/',[\App\Http\Controllers\Api\GeneralController::class,'search'] );
     Route::get('getHashesByHashId/{id}',[\App\Http\Controllers\Api\GeneralController::class,'getHashesByHashId'] );
     Route::get('getProductsByHash/{id}',[\App\Http\Controllers\Api\GeneralController::class,'getProductsByHash'] );
     Route::get('home/list',[\App\Http\Controllers\Api\GeneralController::class,'homelist'] );

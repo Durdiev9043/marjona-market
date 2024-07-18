@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\RegisteredUserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\IncomingController;
+use App\Http\Controllers\PdfGeneratorController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,4 +50,8 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('code/search',[\App\Http\Controllers\GeneralController::class,'codeSearch'])->name('code.search');
     Route::get('add/card',[\App\Http\Controllers\GeneralController::class,'addToCart'])->name('addcart');
     Route::get('clear/card',[\App\Http\Controllers\GeneralController::class,'clearCart'])->name('clearcart');
+    Route::get('/check/{id}', [PdfGeneratorController::class, 'index'])->name('check');
+//    Route::get('/check',function (){
+//        return view('admin.check');
+//    });
 });

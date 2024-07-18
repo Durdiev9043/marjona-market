@@ -130,6 +130,7 @@
                                         </td>
                                         <td>{{ $order->supplier ? $order->supplier->name : ' ' }} {{ $order->supplier ? $order->supplier->phone : ' ' }}</td>
                                         <td>{{$order->created_at->format('d.m.Y  H:i') }}  </td>
+                                        <td><a href="{{ route('check', $order->id) }}" target="_blank" class="btn btn-outline-danger"> checkni yuklab olish</a>  </td>
                                     </tr>
                                 @endforeach
 
