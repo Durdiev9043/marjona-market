@@ -11,7 +11,7 @@ class IncomingController extends Controller
 
     public function index()
     {
-        $data=IncomingProduct::all();
+        $data=IncomingProduct::with('product')->paginate(10);
         return view('admin.incoming.index',['data'=>$data]);
     }
 
