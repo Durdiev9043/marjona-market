@@ -123,7 +123,7 @@
 
                                 </tbody>
                             </table>
-                            {{ $products->links() }}
+                            {{ $data->links() }}
                         </div>
 
                     </div>
