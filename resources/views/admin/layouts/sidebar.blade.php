@@ -52,6 +52,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link " href="{{ route('productLess') }}">
+                <i class="bi bi-grid"></i>
+                <span>Kam qolgan mahsulotlar</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link " href="{{ route('courier.index') }}">
                 <i class="bi bi-grid"></i>
                 <span>Kruyerlar</span>
