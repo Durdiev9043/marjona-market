@@ -105,7 +105,7 @@
                                 @foreach($data as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->product->name ?: ' ' }}</td>
+                                        <td>@if(isset($item->product->name)){{ $item->product->name }} @endif</td>
                                         <td>{{ $item->count }}</td>
                                         <td>
                                             <form action="{{ route('incoming.update',$item->id) }}" method="post">
