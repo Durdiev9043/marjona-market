@@ -52,7 +52,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="{{ route('productLess') }}">
+            <a class="nav-link " href="{{ route('product.less') }}">
                 <i class="bi bi-grid"></i>
                 <span>Kam qolgan mahsulotlar</span>
             </a>

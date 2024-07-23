@@ -22,7 +22,7 @@ class GeneralController extends Controller
     }
 
     public function productLess()
-    {
+    {dd(5465);
         $cats=Category::whereNull('cat_id')->get();
         $hashs=Category::whereNotNull('cat_id')->get();
         $products=Product::where('count', '<' , 5)->paginate(50);
@@ -138,8 +138,13 @@ return redirect()->back();
     }
     public function codeSearch(Request $request)
     {
-        $product=Product::where('code',$request->code)->Orwhere('id',$request->id)->first();
-
+//        $product=Product::where('code',$request->code)->Orwhere('id',$request->id)->first();
+        if ($request->id !== NULL) {
+            $product = Product::where('id', $request->id)->first();
+        }elseif ($request->code){
+            $product=Product::where('code',$request->code)->first();
+        }
+//        $product=$request->id;
         return $product;
     }
     public function region(Request $request){
