@@ -128,6 +128,13 @@ return redirect()->back()->with('success','Mahsulot buyurtmadan bekor qilindi');
 
         return redirect()->back()->with('yardi',$cart);
     }
+    public function delCard($id)
+    {
+        @session_start();
+        unset($_SESSION['cart'][$id]);
+        return redirect()->back();
+
+    }
     public function clearCart()
     {
 

@@ -48,6 +48,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('order/progress',[\App\Http\Controllers\OrderController::class,'orderProgress'])->name('orderProgress');
     Route::put('order/status/{id}',[\App\Http\Controllers\GeneralController::class,'orderstatus'])->name('orderstatus');
     Route::post('code/search',[\App\Http\Controllers\GeneralController::class,'codeSearch'])->name('code.search');
+    Route::get('delete/card/{id}',[\App\Http\Controllers\GeneralController::class,'delCard'])->name('del.card');
     Route::get('add/card',[\App\Http\Controllers\GeneralController::class,'addToCart'])->name('addcart');
     Route::get('clear/card',[\App\Http\Controllers\GeneralController::class,'clearCart'])->name('clearcart');
     Route::get('/product/less',function (){
@@ -55,6 +56,10 @@ Route::group(['middleware' => ['role:admin']], function () {
     })->name('product.less');
 //    Route::get('product/less',[\App\Http\Controllers\GeneralController::class,'productLess'])->name('product.less');
     Route::get('/check/{id}', [PdfGeneratorController::class, 'index'])->name('check');
+    Route::post('/qr/', [PdfGeneratorController::class, 'gen'])->name('gen');
+    Route::get('/aa/', function (){
+        return view('qq');
+    });
 //    Route::get('/check',function (){
 //        return view('admin.check');
 //    });

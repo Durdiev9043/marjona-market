@@ -179,10 +179,12 @@
                                             <th class="align-middle">Tel</th>
 
                                             <th class="align-middle">Tashkilot</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-{{--                                        @dd($_SESSION['cart'])--}}
+
+
                                         <?php
                                         if (isset($_SESSION['cart'])){
                                             $count = 0;
@@ -190,6 +192,8 @@
                                         foreach ($_SESSION['cart'] as $key=>$value){
                                             ?>
                                         <tr>
+{{--                                            @dd($_SESSION['cart'][0])--}}
+
                                             <td>
                                                 <div class="form-check font-size-16">
                                                     <input class="form-check-input" type="checkbox"
@@ -204,6 +208,14 @@
                                             <td>{{ $value[0]['total_price'] }}</td>
                                             <td>{{ $value[0]['tel'] }}</td>
                                             <td>{{ $value[0]['org'] }}</td>
+                                            <td>
+                                                <form action="{{ route('del.card', $key) }}" >
+
+                                                    <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span></button>
+                                                </form>
+                                            </td>
 {{--                                            <td>{{$value['count'] }}</td>--}}
 {{--                                            <td>--}}
 {{--                                                {{$value['ammount'] }}--}}

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderProduct;
+
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -28,5 +30,11 @@ class PdfGeneratorController extends Controller
 
         ]);
         return $pdf->stream('resume.pdf');
+    }
+    public function gen(Request $request)
+    {
+        $code=QrCode::size(300)->generate($request->code);
+//        return QrCode::generate('010460716615124721(8?tH/+.qPBUP93d3FM');
+        return $code;
     }
 }
