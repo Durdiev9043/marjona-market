@@ -16,6 +16,7 @@ class GeneralController extends BaseController
 
     public function search(Request $request)
     {
+        if ($request->name !== NULL){
         $products = Product::where('name', 'like', '%'.$request->name.'%')->get();
         $tt=[];
 //        $data=[];
@@ -48,7 +49,10 @@ class GeneralController extends BaseController
             }
             $tt[]=$data;
         }
-        return $this->sendSuccess($tt,'qiduruv natijasi');
+        return $this->sendSuccess($tt,'qiduruv natijasi');}
+        else{
+            return $this->sendSuccess('mahsulot topilmadi','mahsulot topilmadi');
+        }
     }
     public function category(){
         $cats=Category::whereNull('cat_id')->get();
