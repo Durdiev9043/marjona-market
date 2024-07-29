@@ -25,7 +25,7 @@ class GeneralController extends Controller
     {
         $cats=Category::whereNull('cat_id')->get();
         $hashs=Category::whereNotNull('cat_id')->get();
-        $products=Product::where('count', '<' , 3)->paginate(50);
+        $products=Product::where('count', '<' , 1)->paginate(50);
         return view('admin.product.index',['cats'=>$cats,'products'=>$products,'hashs'=>$hashs]);
     }
     public function orderIndex()
