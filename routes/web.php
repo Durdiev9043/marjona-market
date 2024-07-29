@@ -51,9 +51,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('delete/card/{id}',[\App\Http\Controllers\GeneralController::class,'delCard'])->name('del.card');
     Route::get('add/card',[\App\Http\Controllers\GeneralController::class,'addToCart'])->name('addcart');
     Route::get('clear/card',[\App\Http\Controllers\GeneralController::class,'clearCart'])->name('clearcart');
-    Route::get('/product/less',function (){
-        return 6465;
-    })->name('product.less');
+    Route::get('/less/product',[\App\Http\Controllers\GeneralController::class,'productLess'])->name('product.less');
 //    Route::get('product/less',[\App\Http\Controllers\GeneralController::class,'productLess'])->name('product.less');
     Route::get('/check/{id}', [PdfGeneratorController::class, 'index'])->name('check');
     Route::post('/qr/', [PdfGeneratorController::class, 'gen'])->name('gen');
