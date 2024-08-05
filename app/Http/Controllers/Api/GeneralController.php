@@ -265,6 +265,7 @@ class GeneralController extends BaseController
                 'count'=>$product['count'],
                 'miqdor'=>$product['miqdor'],
                 'total_price'=>$product['total_price'],
+                'type'=>$product['type'],
                 'order_id'=>$p_id,
             ]);
         }
