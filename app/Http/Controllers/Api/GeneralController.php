@@ -254,6 +254,7 @@ class GeneralController extends BaseController
             'status'=>0,
             'lat'=>$jsonData['lat'],
             'lang'=>$jsonData['lang'],
+           'type'=>$jsonData['type'],
             'address_name'=>$jsonData['address_name'],
         ])->id;
 //        $products=json_decode($request->products);
@@ -265,7 +266,6 @@ class GeneralController extends BaseController
                 'count'=>$product['count'],
                 'miqdor'=>$product['miqdor'],
                 'total_price'=>$product['total_price'],
-                'type'=>$product['type'],
                 'order_id'=>$p_id,
             ]);
         }
