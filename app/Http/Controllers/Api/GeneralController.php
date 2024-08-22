@@ -81,7 +81,7 @@ class GeneralController extends BaseController
 
     public function getProductsByHash($id)
     {
-        $products=Product::where('hash_id',$id)->orWhere('count','!=',0)->orWhere('miqdori','!=',0)->orderBy('name')->get();
+        $products=Product::where('hash_id',$id)->orWhere('count','!=',0)->orWhere('miqdori','!=',0)->orderBy('name','desc')->get();
         $tt=[];
         foreach ($products as $product){
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
