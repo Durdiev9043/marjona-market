@@ -118,160 +118,160 @@
                                                                         <td>
                                                                             @foreach($data as $item)
                                                                                 @if($item->cat_id == $cat->id)
-                                                                            {{$item->name}}, <br>
+                                                                                    -{{$item->id}} {{$item->name}}, <br>
 
-                                                                                @endif
-                                                                            @endforeach
+                                                                                        @endif
+                                                                                    @endforeach
 
-                                                                        </td>
-                                                                        <td><img src="{{ asset('/storage/galereya/'.$cat->img) }}" width="150px" alt=""></td>
-                                                                        <td>  <form method="POST" action="{{route('category.update',$cat->id)}}"
-                                                                                    enctype="multipart/form-data">
-                                                                                @csrf
-                                                                                @method('PUT')
-                                                                            <div class="form-group">
-                                                                                <label for="exampleInputEmail1">Surati ozgartirish:</label>
-                                                                                <input type=file name="img" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
-                                                                                <img id="pic"  width="100px"/>
-                                                                                {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
+                                                                                </td>
+                                                                                <td><img src="{{ asset('/storage/galereya/'.$cat->img) }}" width="150px" alt=""></td>
+                                                                                <td>  <form method="POST" action="{{route('category.update',$cat->id)}}"
+                                                                                            enctype="multipart/form-data">
+                                                                                        @csrf
+                                                                                        @method('PUT')
+                                                                                    <div class="form-group">
+                                                                                        <label for="exampleInputEmail1">Surati ozgartirish:</label>
+                                                                                        <input type=file name="img" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+                                                                                        <img id="pic"  width="100px"/>
+                                                                                        {{--                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">--}}
 
-                                                                            </div>
-                                                                                <button type="submit" class="btn btn-primary">Saqlash</button>
-                                                                            </form>
-                                                                        </td>
-                                                                        <td>
-                                                                            <form action="{{ route('category.destroy',$cat ->id) }}" method="POST">
-                                                                                @csrf
-                                                                                @method('DELETE')
-{{--                                                                                <a class="btn btn-warning btn-sm m-1" href="{{ route('category.edit',$cat->id) }}">--}}
-{{--                                                                                    <span class="btn-label">--}}
-{{--                                                                                        <i class="fa fa-edit"></i>--}}
-{{--                                                                                    </span>--}}
-{{--                                                                                </a>--}}
+                                                                                    </div>
+                                                                                        <button type="submit" class="btn btn-primary">Saqlash</button>
+                                                                                    </form>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <form action="{{ route('category.destroy',$cat ->id) }}" method="POST">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+        {{--                                                                                <a class="btn btn-warning btn-sm m-1" href="{{ route('category.edit',$cat->id) }}">--}}
+        {{--                                                                                    <span class="btn-label">--}}
+        {{--                                                                                        <i class="fa fa-edit"></i>--}}
+        {{--                                                                                    </span>--}}
+        {{--                                                                                </a>--}}
 
-                                                                                <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
-                                        <i class="fa fa-trash"></i>
-                                    </span></button>
-                                                                            </form>
-                                                                        </td>
-                                                                    </tr>
-                                                                @endif
-                                                                @endforeach
+                                                                                        <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                                <i class="fa fa-trash"></i>
+                                            </span></button>
+                                                                                    </form>
+                                                                                </td>
+                                                                            </tr>
+                                                                        @endif
+                                                                        @endforeach
 
-                                </tbody>
-                            </table>
-                            <div id="myModal" class="modal" >
+                                        </tbody>
+                                    </table>
+                                    <div id="myModal" class="modal" >
 
-                                <!-- Modal content -->
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data">
-                                        @csrf
+                                        <!-- Modal content -->
+                                        <div class="modal-content">
+                                            <span class="close">&times;</span>
+                                            <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data">
+                                                @csrf
 
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
-                                            <select class="form-control form-control-sm"  name="cat_id">
-                                                <option></option>
-                                                @foreach($category as $item)<option value="{{$item->id}}">{{ $item->name }}</option>@endforeach
-                                            </select>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
+                                                    <select class="form-control form-control-sm"  name="cat_id">
+                                                        <option></option>
+                                                        @foreach($category as $item)<option value="{{$item->id}}">{{ $item->name }}</option>@endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">name</label>
+                                                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="name">
+                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Surati:</label>
+                                                    <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">
+
+                                                </div>
+
+
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">name</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="name">
-                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Surati:</label>
-                                            <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">
 
-                                        </div>
-
-
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
+                                    </div>
                                 </div>
 
                             </div>
                         </div>
 
+
+
+
                     </div>
-                </div>
+
+                </section>
+
+            </main><!-- End #main -->
+
+            <!-- ======= Footer ======= -->
+
+
+            {{--<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>--}}
+
+            <!-- Vendor JS Files -->
+
+
+            <script src="{{asset('/js/core/jquery.3.2.1.min.js')}}"></script>
+            <script src="{{asset('/js/plugin/datatables/datatables.min.js')}}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
 
 
+            <script>
+                $(document).ready( function () {
+                    $('#table').DataTable({
+                        dom: 'Bfrtip',
+                        "buttons": [
+                            {
+                                "extend": 'excel', "text":' Малумотларни excel форматда юклаб олиш',"className": 'btn btn-primary btn-xm'
+                            }
+                        ],
+                        "aLengthMenu": [200],
+                    });
+                    $('#exportButton').on('click', function() {
+                        exportToExcel();
+                    });
 
-            </div>
+                    function exportToExcel() {
+                        var wb = XLSX.utils.table_to_book(document.getElementById('table'), {sheet: 'Sheet JS'});
+                        var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
 
-        </section>
+                        function s2ab(s) {
+                            var buf = new ArrayBuffer(s.length);
+                            var view = new Uint8Array(buf);
+                            for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                            return buf;
+                        }
 
-    </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-
-
-    {{--<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>--}}
-
-    <!-- Vendor JS Files -->
-
-
-    <script src="{{asset('/js/core/jquery.3.2.1.min.js')}}"></script>
-    <script src="{{asset('/js/plugin/datatables/datatables.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
-
-
-    <script>
-        $(document).ready( function () {
-            $('#table').DataTable({
-                dom: 'Bfrtip',
-                "buttons": [
-                    {
-                        "extend": 'excel', "text":' Малумотларни excel форматда юклаб олиш',"className": 'btn btn-primary btn-xm'
+                        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'data.xlsx');
                     }
-                ],
-                "aLengthMenu": [200],
-            });
-            $('#exportButton').on('click', function() {
-                exportToExcel();
-            });
 
-            function exportToExcel() {
-                var wb = XLSX.utils.table_to_book(document.getElementById('table'), {sheet: 'Sheet JS'});
-                var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+                } );
+                var modal = document.getElementById("myModal");
 
-                function s2ab(s) {
-                    var buf = new ArrayBuffer(s.length);
-                    var view = new Uint8Array(buf);
-                    for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-                    return buf;
+                var btn = document.getElementById("myBtn");
+
+                var span = document.getElementsByClassName("close")[0];
+
+                btn.onclick = function() {
+                    modal.style.display = "block";
                 }
 
-                saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'data.xlsx');
-            }
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
 
-        } );
-        var modal = document.getElementById("myModal");
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
 
-        var btn = document.getElementById("myBtn");
-
-        var span = document.getElementsByClassName("close")[0];
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-    </script>
+            </script>
 
 
-@endsection
+        @endsection
