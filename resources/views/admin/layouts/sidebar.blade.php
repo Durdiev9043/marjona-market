@@ -63,6 +63,12 @@
                 <span>Kruyerlar</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('client') }}">
+                <i class="bi bi-grid"></i>
+                <span>Abonetlar Soni ({{ count(\App\Models\User::where('role',2)->get()) }})</span>
+            </a>
+        </li>
 
         <!-- End Dashboard Nav -->
 

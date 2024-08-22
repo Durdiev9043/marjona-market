@@ -56,10 +56,6 @@
         <div class="pagetitle">
             <h1>Dashboard</h1>
 
-            <div class="btn-add bg" >
-                <a id="myBtn" class="bgh" href="#">Qoshish</a>
-            </div>
-
         </div><!-- End Page Title -->
 
         <section class="section dashboard">
@@ -69,24 +65,13 @@
                 <div class="col-12 table_one">
                     <div class="card recent-sales overflow-auto table_one">
 
-                        <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div>
 
                         <div class="card-body">
                             <h5 class="card-title">Recent Sales <span>| Today</span></h5>
 
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
+
+
                                 <form action="{{route('category.update',$cat->id)}}" method="POST" accept-charset="UTF-8"
                                       enctype="multipart/form-data">
                                     @csrf
@@ -94,8 +79,13 @@
 
 
                                     <div class="form-group">
+                                        <label for="exampleInputEmail1">#id</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{ $cat->id }}" name="id" aria-describedby="emailHelp" placeholder="id">
+                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputEmail1">name</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="name">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="{{ $cat->name }}" aria-describedby="emailHelp" placeholder="name">
                                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                     </div>
                                     <div class="form-group">
@@ -109,7 +99,7 @@
 
                                     <button type="submit" class="btn btn-primary">Saqlash</button>
                                 </form>
-                            </div>
+
                             <div id="myModal" class="modal" >
 
                                 <!-- Modal content -->

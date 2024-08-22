@@ -143,11 +143,11 @@
                                                                                     <form action="{{ route('category.destroy',$cat ->id) }}" method="POST">
                                                                                         @csrf
                                                                                         @method('DELETE')
-        {{--                                                                                <a class="btn btn-warning btn-sm m-1" href="{{ route('category.edit',$cat->id) }}">--}}
-        {{--                                                                                    <span class="btn-label">--}}
-        {{--                                                                                        <i class="fa fa-edit"></i>--}}
-        {{--                                                                                    </span>--}}
-        {{--                                                                                </a>--}}
+                                                                                        <a class="btn btn-warning btn-sm m-1" href="{{ route('category.edit',$cat->id) }}">
+                                                                                            <span class="btn-label">
+                                                                                                <i class="fa fa-edit"></i>
+                                                                                            </span>
+                                                                                        </a>
 
                                                                                         <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
                                                 <i class="fa fa-trash"></i>

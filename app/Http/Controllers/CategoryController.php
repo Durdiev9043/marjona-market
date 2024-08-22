@@ -52,7 +52,8 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
- return view('admin.category.view',['cat'=>$category]);
+        $cc=Category::where('cat_id',$category->id)->get();
+ return view('admin.category.view',['cat'=>$category,'cc'=>$cc]);
     }
 
 
@@ -70,7 +71,7 @@ class CategoryController extends Controller
             ]);
         }
         if ($request->name){
-            $category->update([$request->name]);
+            $category->update($request->all());
         }
 
         return redirect()->back();

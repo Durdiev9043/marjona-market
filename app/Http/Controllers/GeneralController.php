@@ -183,4 +183,18 @@ return redirect()->back();
         $cat=Category::where('id',$request->cat_id)->first();
         return view('admin.product.index',['cats'=>$cats,'products'=>$products,'cat'=>$cat,'hashs'=>$hashs]);
     }
+public function client()
+{
+
+    $users=$orderCounts = DB::table('users')
+        ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
+        ->where('users.role', 2)
+        ->select('users.id', 'users.phone', DB::raw('count(orders.id) as orders_count'))
+        ->groupBy('users.id', 'users.phone')
+        ->get();
+//    dd($users);
+//    $users=User::where('role',2)->get();
+    return view('admin.courier.view',['users'=>$users]);
+}
+
 }
