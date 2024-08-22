@@ -152,6 +152,7 @@ class GeneralController extends BaseController
        return $this->sendSuccess($tt,'Dokondagi barcha Mahsulotlar');
     }
     public function productfilter($id){
+        $hashs=Category::where('cat_id',$id)->get();
         $products=Product::where('category_id',$id)->orderBy('name','desc')->get();
 //        $products = Product::where(function($query) use ($id) {
 //            $query->where('category_id', $id)
@@ -159,9 +160,12 @@ class GeneralController extends BaseController
 //                ->orWhere('miqdori', '>', 0);
 //        })
 //            ->get();
-        $tt=[];
+      $ss=[];
 //        $data=[];
+        foreach ($hashs as $hash){
+            $tt=[];
         foreach ($products as $product) {
+            if ($hashs->id == $product->hash_id){
             if ($product->miqdori > 0 || $product->count > 0){
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
             $data = [];
@@ -192,9 +196,14 @@ class GeneralController extends BaseController
             if ($product->img5) {
                 $data['img'][] = $product->img5;
             }
-            $tt[] = $data;}
+            $tt[$hash->name] = $data;
+            }
+            }
+            $ss[]=$tt;
+
         }
-        return $this->sendSuccess($tt,'chotki');
+        }
+        return $this->sendSuccess($ss,'chotki');
     }
     public function homelist()
     {
