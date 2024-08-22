@@ -152,7 +152,7 @@ class GeneralController extends BaseController
        return $this->sendSuccess($tt,'Dokondagi barcha Mahsulotlar');
     }
     public function productfilter($id){
-        $products=Product::where('category_id',$id)->get();
+        $products=Product::where('category_id',$id)->orderBy('name','desc')->get();
 //        $products = Product::where(function($query) use ($id) {
 //            $query->where('category_id', $id)
 //                ->orWhere('count', '>', 0)
