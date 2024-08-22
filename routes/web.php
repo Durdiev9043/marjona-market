@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\SiteController::class,'home']);
+//Route::get('/', [\App\Http\Controllers\SiteController::class,'home']);
+Route::get('/', function (){return view('welcome');});
 
 Auth::routes();
 
