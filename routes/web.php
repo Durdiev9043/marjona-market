@@ -19,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\SiteController::class,'home']);
 
 Auth::routes();
 
@@ -35,6 +33,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('incoming',IncomingController::class);
     Route::resource('courier',CourierController::class);
     Route::post('cat/fil',[App\Http\Controllers\GeneralController::class,'region'])->name('cat.filter');
+    Route::get('client',[App\Http\Controllers\GeneralController::class,'client'])->name('client');
     Route::post('product/filter',[App\Http\Controllers\GeneralController::class,'search'])->name('product.filter');
     Route::post('name/search',[\App\Http\Controllers\GeneralController::class,'nameSearch'])->name('name.search');
     Route::post('name/id',[\App\Http\Controllers\GeneralController::class,'idSearch'])->name('id.search');
