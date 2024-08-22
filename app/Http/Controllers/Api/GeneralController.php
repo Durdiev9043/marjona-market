@@ -152,7 +152,6 @@ class GeneralController extends BaseController
        return $this->sendSuccess($tt,'Dokondagi barcha Mahsulotlar');
     }
     public function productfilter($id){
-        $hashs=Category::where('cat_id',$id)->get();
         $products=Product::where('category_id',$id)->orderBy('name','desc')->get();
 //        $products = Product::where(function($query) use ($id) {
 //            $query->where('category_id', $id)
@@ -160,15 +159,9 @@ class GeneralController extends BaseController
 //                ->orWhere('miqdori', '>', 0);
 //        })
 //            ->get();
-      $ss=[];
+        $tt=[];
 //        $data=[];
-
-        foreach ($hashs as $hash){
-            $tt=[];
-            $hh['id']=$hash->id;
-            $hh['name']=$hash->name;
         foreach ($products as $product) {
-            if ($hash->id == $product->hash_id){
             if ($product->miqdori > 0 || $product->count > 0){
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
             $data = [];
@@ -199,15 +192,9 @@ class GeneralController extends BaseController
             if ($product->img5) {
                 $data['img'][] = $product->img5;
             }
-            $hh['products'] = $data;
-            }
-            $tt[]=$hh;
-            }
-            $ss[]=$tt;
-
+            $tt[] = $data;}
         }
-        }
-        return $this->sendSuccess($ss,'chotki');
+        return $this->sendSuccess($tt,'chotki');
     }
     public function homelist()
     {
