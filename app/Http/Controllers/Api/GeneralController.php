@@ -162,8 +162,11 @@ class GeneralController extends BaseController
 //            ->get();
       $ss=[];
 //        $data=[];
+
         foreach ($hashs as $hash){
             $tt=[];
+            $hh['id']=$hash->id;
+            $hh['name']=$hash->name;
         foreach ($products as $product) {
             if ($hash->id == $product->hash_id){
             if ($product->miqdori > 0 || $product->count > 0){
@@ -196,8 +199,9 @@ class GeneralController extends BaseController
             if ($product->img5) {
                 $data['img'][] = $product->img5;
             }
-            $tt[$hash->name] = $data;
+            $hh['products'] = $data;
             }
+            $tt[]=$hh;
             }
             $ss[]=$tt;
 
