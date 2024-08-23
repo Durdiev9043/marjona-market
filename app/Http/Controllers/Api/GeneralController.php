@@ -311,7 +311,7 @@ class GeneralController extends BaseController
     }
     public function productLimit()
     {
-        $products=Product::where('count','!=',0)->orWhere('miqdori','!=',0)->orderBy('name','desc')->limit(18)->get();
+        $products=Product::where('count','!=',0)->orWhere('miqdori','!=',0)->inRandomOrder()->limit(18)->get();
         $tt=[];
         foreach ($products as $product){
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
