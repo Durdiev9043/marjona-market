@@ -78,11 +78,11 @@
                                     @METHOD('PUT')
 
 
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">#id</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{ $cat->id }}" name="id" aria-describedby="emailHelp" placeholder="id">
-                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                    </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="exampleInputEmail1">#id</label>--}}
+{{--                                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{ $cat->id }}" name="id" aria-describedby="emailHelp" placeholder="id">--}}
+{{--                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
+{{--                                    </div>--}}
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">name</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="{{ $cat->name }}" aria-describedby="emailHelp" placeholder="name">
@@ -100,6 +100,33 @@
                                     <button type="submit" class="btn btn-primary">Saqlash</button>
                                 </form>
 
+                            <div class="card-body border mt-3">
+                                <h5 class="card-title"><span>-/-</span></h5>
+@foreach($cc as $item)
+                                    <form class="form-inline" action="{{route('category.update',$item->id)}}" method="POST" accept-charset="UTF-8"
+                                          enctype="multipart/form-data">
+                                        @csrf
+                                        @METHOD('PUT')
+                                <div class="row">
+                                        <div class="form-group mx-sm-3 mb-2 col-4">
+                                            <label for="inputPassword2" class="sr-only">TR №</label>
+                                            <input type="text" class="form-control" name="tr" value="{{ $item->tr }}" id="inputPassword2" placeholder="Tartib raqami">
+                                        </div>
+                                    <div class="form-group mx-sm-3 mb-2 col-4">
+                                            <label for="inputPassword2" class="sr-only">Nomi</label>
+                                            <input type="text" class="form-control" name="name" value="{{ $item->name }}" id="inputPassword2" placeholder="Password">
+                                        </div>
+                                        <div class="col-3">
+                                            <button type="submit" class="btn btn-primary mb-2">Saqlash</button>
+                                        </div>
+                                </div>
+                                    </form>
+
+@endforeach
+
+
+
+                            </div>
                             <div id="myModal" class="modal" >
 
                                 <!-- Modal content -->
