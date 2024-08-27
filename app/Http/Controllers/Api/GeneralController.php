@@ -72,7 +72,7 @@ class GeneralController extends BaseController
         $data=[];
         $cat_id=Category::where('id',$id)->first()->id;
         $cat_name=Category::where('id',$cat_id)->first()->name;
-        $hashs=Category::where('cat_id',$cat_id)->get();
+        $hashs=Category::where('cat_id',$cat_id)->orderBy('tr')->get();
         $data['cat_id']=$cat_id;
         $data['cat_name']=$cat_name;
         $data['hashs']=$hashs;
