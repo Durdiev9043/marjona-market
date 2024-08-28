@@ -27,6 +27,8 @@ Route::post('/auth/login/courier', [AuthController::class, 'loginCourier']);
 
 Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(function () {
     Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
+    Route::get('delete/account/{id}',[\App\Http\Controllers\Api\GeneralController::class,'delAccount'] );
+    Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
     Route::get('product/limit',[\App\Http\Controllers\Api\GeneralController::class,'productLimit'] );
     Route::post('product/search/',[\App\Http\Controllers\Api\GeneralController::class,'search'] );
     Route::get('getHashesByHashId/{id}',[\App\Http\Controllers\Api\GeneralController::class,'getHashesByHashId'] );

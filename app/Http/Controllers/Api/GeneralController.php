@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class GeneralController extends BaseController
 {
+    public function delAccount($id)
+    {
+        $user=User::find($id)->delete();
+        return $this->sendSuccess(' ', 'user ochirildi');
+    }
 
     public function search(Request $request)
     {
