@@ -158,7 +158,7 @@ class GeneralController extends BaseController
     }
     public function productfilter($id){
         $hh=Category::orderBy('tr')->get();
-        $products=Product::where('category_id',$id)->orderBy('hash_id')->get();
+        $products=Product::where('category_id',$id)->orderBy('hash_id');
 //        $products = Product::where(function($query) use ($id) {
 //            $query->where('category_id', $id)
 //                ->orWhere('count', '>', 0)
@@ -168,10 +168,10 @@ class GeneralController extends BaseController
         $tt=[];
 //        $data=[];
         foreach ($hh as $it) {
-        foreach ($products as $product) {
+        foreach ($products->where('hash_id',$it)->get() as $product) {
 
                 if ($product->miqdori > 0 || $product->count > 0) {
-                    if ($it->id == $product->hash_id) {
+//                    if ($it->id == $product->hash_id) {
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
                         $data = [];
                         $data['id'] = $product->id;
@@ -205,7 +205,7 @@ class GeneralController extends BaseController
                         $tt[] = $data;
                     }
                 }
-            }
+//            }
         }
         return $this->sendSuccess($tt,'chotki');
     }
