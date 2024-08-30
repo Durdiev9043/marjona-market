@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\DB;
 class GeneralController extends Controller
 {
 
+    public function ppup()
+    {
+        $pp=Product::where('count','>',0)->get();
+        foreach ($pp as $item){
+            $item->update([
+                'count'=>0
+            ]);
+        }
+        $tt=Product::where('miqdori','>',0)->get();
+        foreach ($pp as $item){
+            $item->update([
+                'miqdori'=>0,
+            ]);
+        }
+        return redirect()->back();
+    }
     public function search(Request $request)
     {
         $cats=Category::whereNull('cat_id')->get();
@@ -89,7 +105,6 @@ return redirect()->back()->with('success','Mahsulot buyurtmadan bekor qilindi');
 
         if(isset($_SESSION["cart"]) and (!empty($_SESSION["cart"]))){
             $cart = ($_SESSION['cart']);
-//            echo "cart sessiyada bo <br>";
         }else{
             $cart=[];
 //            echo "cart sessiyada yoq <br>";
@@ -163,7 +178,7 @@ return redirect()->back();
     public function nameSearch(Request $request){
         $cats=Category::whereNull('cat_id')->get();
         $hashs=Category::whereNotNull('cat_id')->get();
-        $products=Product::where('name','like','%'.$request->name.'%')->paginate(50);
+        $products=Product::where('name','like','%'.$request->name.'%')->paginate(500);
         $name=$request->name;
         return view('admin.product.index',['cats'=>$cats,'products'=>$products,'name'=>$name,'hashs'=>$hashs]);
     }
@@ -171,7 +186,7 @@ return redirect()->back();
         $cats=Category::whereNull('cat_id')->get();
         $hashs=Category::whereNotNull('cat_id')->get();
 
-        $products=Product::where('id','like','%'.$request->id.'%')->paginate(50);
+        $products=Product::where('id','like','%'.$request->id.'%')->paginate(500);
         $id=$request->id;
         return view('admin.product.index',['cats'=>$cats,'products'=>$products,'id'=>$id,'hashs'=>$hashs]);
     }
@@ -179,7 +194,7 @@ return redirect()->back();
 
         $cats=Category::whereNull('cat_id')->get();
         $hashs=Category::whereNotNull('cat_id')->get();
-        $products=Product::where('category_id',$request->cat_id)->orWhere('hash_id',$request->hash_id)->paginate(50);
+        $products=Product::where('category_id',$request->cat_id)->orWhere('hash_id',$request->hash_id)->paginate(500);
         $cat=Category::where('id',$request->cat_id)->first();
         return view('admin.product.index',['cats'=>$cats,'products'=>$products,'cat'=>$cat,'hashs'=>$hashs]);
     }
@@ -192,8 +207,6 @@ public function client()
         ->select('users.id', 'users.phone', DB::raw('count(orders.id) as orders_count'))
         ->groupBy('users.id', 'users.phone')
         ->get();
-//    dd($users);
-//    $users=User::where('role',2)->get();
     return view('admin.courier.view',['users'=>$users]);
 }
 
