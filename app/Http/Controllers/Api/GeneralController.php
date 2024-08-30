@@ -157,6 +157,7 @@ class GeneralController extends BaseController
        return $this->sendSuccess($tt,'Dokondagi barcha Mahsulotlar');
     }
     public function productfilter($id){
+        $hh=Category::orderBy('tr')->get();
         $products=Product::where('category_id',$id)->orderBy('hash_id')->get();
 //        $products = Product::where(function($query) use ($id) {
 //            $query->where('category_id', $id)
@@ -167,37 +168,43 @@ class GeneralController extends BaseController
         $tt=[];
 //        $data=[];
         foreach ($products as $product) {
-            if ($product->miqdori > 0 || $product->count > 0){
+            foreach ($hh as $it) {
+                if ($product->miqdori > 0 || $product->count > 0) {
+                    if ($it->id == $product->hash_id) {
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
-            $data = [];
-            $data['id'] = $product->id;
-            $data['category_id'] = $product->category_id;
-            if ($product->hash_id){
-            $data['hash'] = Category::where('id',$product->hash_id)->first()->name;
-            $data['hash_id'] = Category::where('id',$product->hash_id)->first()->id;}
-            $data['name'] = $product->name;
-            $data['more'] = $product->more;
-            $data['price'] = $product->price;
-            $data['count'] = $product->count;
-            $data['miqdori'] = $product->miqdori;
-            $data['code'] = $product->code;
-            $data['type'] = $product->type;
-            if ($product->img) {
-                $data['img'][] = $product->img;
+                        $data = [];
+                        $data['id'] = $product->id;
+                        $data['category_id'] = $product->category_id;
+                        if ($product->hash_id) {
+                            $data['hash'] = Category::where('id', $product->hash_id)->first()->name;
+                            $data['hash_id'] = Category::where('id', $product->hash_id)->first()->id;
+                        }
+                        $data['name'] = $product->name;
+                        $data['more'] = $product->more;
+                        $data['price'] = $product->price;
+                        $data['count'] = $product->count;
+                        $data['miqdori'] = $product->miqdori;
+                        $data['code'] = $product->code;
+                        $data['type'] = $product->type;
+                        if ($product->img) {
+                            $data['img'][] = $product->img;
+                        }
+                        if ($product->img2) {
+                            $data['img'][] = $product->img2;
+                        }
+                        if ($product->img3) {
+                            $data['img'][] = $product->img3;
+                        }
+                        if ($product->img4) {
+                            $data['img'][] = $product->img4;
+                        }
+                        if ($product->img5) {
+                            $data['img'][] = $product->img5;
+                        }
+                        $tt[] = $data;
+                    }
+                }
             }
-            if ($product->img2) {
-                $data['img'][] = $product->img2;
-            }
-            if ($product->img3) {
-                $data['img'][] = $product->img3;
-            }
-            if ($product->img4) {
-                $data['img'][] = $product->img4;
-            }
-            if ($product->img5) {
-                $data['img'][] = $product->img5;
-            }
-            $tt[] = $data;}
         }
         return $this->sendSuccess($tt,'chotki');
     }
