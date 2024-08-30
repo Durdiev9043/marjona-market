@@ -29,6 +29,8 @@ Route::post('/auth/login/courier', [AuthController::class, 'loginCourier']);
 
 Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(function () {
     Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
+    Route::get('rek/list',[\App\Http\Controllers\Api\GeneralController::class,'rek'] );
+    Route::get('aksiya/list',[\App\Http\Controllers\Api\GeneralController::class,'aksiya'] );
     Route::get('delete/account/{id}',[\App\Http\Controllers\Api\GeneralController::class,'delAccount'] );
     Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
     Route::get('product/limit',[\App\Http\Controllers\Api\GeneralController::class,'productLimit'] );

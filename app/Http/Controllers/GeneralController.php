@@ -29,6 +29,12 @@ class GeneralController extends Controller
         }
         return redirect()->back();
     }
+
+    public function pstatus()
+    {
+        $products=Product::where('status',1)->paginate(10);
+        return view('admin.product.aksiya',['products'=>$products]);
+    }
     public function search(Request $request)
     {
         $cats=Category::whereNull('cat_id')->get();

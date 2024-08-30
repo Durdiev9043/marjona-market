@@ -58,6 +58,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link " href="{{ route('pstatus') }}">
+                <i class="bi bi-grid"></i>
+                <span>Aksiyadagi mahsulotlar</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link " href="{{ route('courier.index') }}">
                 <i class="bi bi-grid"></i>
                 <span>Kruyerlar</span>
@@ -67,6 +73,12 @@
             <a class="nav-link " href="{{ route('client') }}">
                 <i class="bi bi-grid"></i>
                 <span>Abonetlar Soni ({{ count(\App\Models\User::where('role',2)->get()) }})</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('rek.index') }}">
+                <i class="bi bi-grid"></i>
+                <span>Reklamma</span>
             </a>
         </li>
 

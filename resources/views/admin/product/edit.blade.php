@@ -144,6 +144,18 @@
                                     <textarea class="form-control" name="more"  id="exampleFormControlTextarea1" rows="3">{{ $product->more }}</textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Mahsulot aksiyadami</label>
+                                    <select class="form-control form-control-sm"  name="status">
+                                        <option value="0"></option>
+                                        <option value="0">Hozirda aksiyada emas</option>
+                                        <option value="1">Hozirda aksiyada</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Yangi narxi</label>
+                                    <input type="text" class="form-control" value="{{ $product->new_price }}" id="exampleInputEmail1" name="new_price" aria-describedby="emailHelp" placeholder="Yangi narxi">
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Tovarning shtrix kodi</label>
                                     <input type="number" class="form-control" value="{{ $product->code }}" id="exampleInputEmail1" name="code" aria-describedby="emailHelp" placeholder="nomi">
 

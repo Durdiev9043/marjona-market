@@ -6,6 +6,7 @@ use App\Http\Controllers\CourierController;
 use App\Http\Controllers\IncomingController;
 use App\Http\Controllers\PdfGeneratorController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RekController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,8 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('product',ProductController::class);
     Route::resource('incoming',IncomingController::class);
     Route::resource('courier',CourierController::class);
+    Route::resource('rek',RekController::class);
+    Route::get('status/1',[App\Http\Controllers\GeneralController::class,'pstatus'])->name('pstatus');
     Route::post('cat/fil',[App\Http\Controllers\GeneralController::class,'region'])->name('cat.filter');
     Route::get('client',[App\Http\Controllers\GeneralController::class,'client'])->name('client');
     Route::post('product/filter',[App\Http\Controllers\GeneralController::class,'search'])->name('product.filter');

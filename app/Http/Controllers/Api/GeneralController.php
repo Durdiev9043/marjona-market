@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\Rek;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,17 @@ class GeneralController extends BaseController
     {
         $user=User::find($id)->delete();
         return $this->sendSuccess(' ', 'user ochirildi');
+    }
+
+    public function aksiya()
+    {
+        $products=Product::where('status',1)->get();
+        return $this->sendSuccess('$products','mahsulotlar');
+    }
+    public function rek()
+    {
+        $products=Rek::all();
+        return $this->sendSuccess($products,'mahsulotlar');
     }
 
     public function search(Request $request)
