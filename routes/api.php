@@ -25,6 +25,20 @@ Route::post('reg',[\App\Http\Controllers\Api\AuthController::class,'reg']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::post('/auth/login/courier', [AuthController::class, 'loginCourier']);
 
+
+Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
+Route::get('delete/account/{id}',[\App\Http\Controllers\Api\GeneralController::class,'delAccount'] );
+Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
+Route::get('product/limit',[\App\Http\Controllers\Api\GeneralController::class,'productLimit'] );
+Route::post('product/search/',[\App\Http\Controllers\Api\GeneralController::class,'search'] );
+Route::get('getHashesByHashId/{id}',[\App\Http\Controllers\Api\GeneralController::class,'getHashesByHashId'] );
+Route::get('getProductsByHash/{id}',[\App\Http\Controllers\Api\GeneralController::class,'getProductsByHash'] );
+Route::get('home/list',[\App\Http\Controllers\Api\GeneralController::class,'homelist'] );
+Route::get('product/list',[\App\Http\Controllers\Api\GeneralController::class,'productlist'] );
+Route::get('product/filter/{id}',[\App\Http\Controllers\Api\GeneralController::class,'productfilter'] );
+Route::get('product/hash/filter/{id}',[\App\Http\Controllers\Api\GeneralController::class,'productfilter'] );
+
+
 Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(function () {
     Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
     Route::get('delete/account/{id}',[\App\Http\Controllers\Api\GeneralController::class,'delAccount'] );
