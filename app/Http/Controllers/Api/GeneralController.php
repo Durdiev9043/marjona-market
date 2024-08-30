@@ -168,7 +168,8 @@ class GeneralController extends BaseController
         $tt=[];
 //        $data=[];
         foreach ($hh as $it) {
-        foreach ($products->where('hash_id',$it)->get() as $product) {
+            $pp=$products->where('hash_id',$it)->get();
+        foreach ($pp as $product) {
 
                 if ($product->miqdori > 0 || $product->count > 0) {
 //                    if ($it->id == $product->hash_id) {
