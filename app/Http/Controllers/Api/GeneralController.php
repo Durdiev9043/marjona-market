@@ -23,7 +23,7 @@ class GeneralController extends BaseController
     public function aksiya()
     {
         $products=Product::where('status',1)->get();
-        return $this->sendSuccess('$products','mahsulotlar');
+        return $this->sendSuccess($products,'mahsulotlar');
     }
     public function rek()
     {
