@@ -167,8 +167,9 @@ class GeneralController extends BaseController
 //            ->get();
         $tt=[];
 //        $data=[];
+        foreach ($hh as $it) {
         foreach ($products as $product) {
-            foreach ($hh as $it) {
+
                 if ($product->miqdori > 0 || $product->count > 0) {
                     if ($it->id == $product->hash_id) {
 //            'category_id','name','more','price','img','img2','img3','img4','img5','count','status','miqdori','type','code'
