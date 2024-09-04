@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\LikeProduct;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\DB;
 
 class GeneralController extends BaseController
 {
+
+    public function pLike(Request $request,$id)
+    {
+        LikeProduct::create([
+            'user_id'=>$id,
+            'product_id'=>$request->product_id
+        ]);
+        return $this->sendSuccess(' ', 'Mahsulot saqlandi');
+    }
     public function delAccount($id)
     {
         $user=User::find($id)->delete();

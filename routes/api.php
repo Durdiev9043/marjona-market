@@ -35,6 +35,8 @@ Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(functio
     Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
     Route::get('product/limit',[\App\Http\Controllers\Api\GeneralController::class,'productLimit'] );
     Route::post('product/search/',[\App\Http\Controllers\Api\GeneralController::class,'search'] );
+    Route::post('product/like/{id}',[\App\Http\Controllers\Api\GeneralController::class,'pLike'] );
+//    Route::post('product/dislike/{id}',[\App\Http\Controllers\Api\GeneralController::class,'pLike'] );
     Route::get('getHashesByHashId/{id}',[\App\Http\Controllers\Api\GeneralController::class,'getHashesByHashId'] );
     Route::get('getProductsByHash/{id}',[\App\Http\Controllers\Api\GeneralController::class,'getProductsByHash'] );
     Route::get('home/list',[\App\Http\Controllers\Api\GeneralController::class,'homelist'] );
