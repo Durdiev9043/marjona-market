@@ -100,6 +100,7 @@
                                                                        </span></button>
                                         </form>
                                         @endif
+                                            @if($order->type == -1)  Dokon olib ketuvchi @endif
                                 </th>
                                         <th>
                                             @if($orderproduct->comment) Bekor qilinish sababi: {{ $orderproduct->comment }}@endif

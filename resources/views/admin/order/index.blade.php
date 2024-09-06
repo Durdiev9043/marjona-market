@@ -127,6 +127,7 @@
                                                     <button>Buyurutmani tugatish</button>
                                                 </form>
                                             @endif
+                                                @if($order->type == -1)  Dokon olib ketuvchi @endif
                                         </td>
                                         <td>{{ $order->supplier ? $order->supplier->name : ' ' }} {{ $order->supplier ? $order->supplier->phone : ' ' }}</td>
                                         <td>{{$order->created_at->format('d.m.Y  H:i') }}  </td>
