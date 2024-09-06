@@ -29,8 +29,8 @@ class AuthController extends BaseController
             'phone' => 'required',
         ]);
         $smsphone='+998'.$data['phone'];
-//        $code = rand(1000, 9999);
-        $code=7777;
+        $code = rand(1000, 9999);
+//        $code=7777;
         $us=User::where('phone',$request->phone)->first();
 
         if ($us){
@@ -51,11 +51,11 @@ class AuthController extends BaseController
 
             return response()->json($res, 200);
         }else{
-//            if ($this->service->sendMessage($smsphone, $code) != 200)
-//            {
-//                redirect()->back()->with('failed', 'invalid Phone');
-//            }
-//            else {
+            if ($this->service->sendMessage($smsphone, $code) != 200)
+            {
+                redirect()->back()->with('failed', 'invalid Phone');
+            }
+            else {
                 $role = 'client';
                 $user = User::create([
                     'phone' => $request->phone,
@@ -74,7 +74,7 @@ class AuthController extends BaseController
 
             return response()->json($res, 200);
     }
-    }
+    }}
 
     public function checkSms(Request $request, $phone)
 
