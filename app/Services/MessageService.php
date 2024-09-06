@@ -45,7 +45,7 @@ $msg='Marjona market ilovasi uchun tasdiqlash kodi: '.$message.'. Tanlovingiz uc
 //            'password' => config('i1DYvprVps4rFJRr6nTsbV2Io8ca7AqXl5ZTi90R'),
 //        ])->json();
 
-        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTE4ODkwMjQsImlhdCI6MTcwOTI5NzAyNCwicm9sZSI6InRlc3QiLCJzaWduIjoiNjEyYTM5ZmUyZmVhNzdlNjdhZjViZjE2YzlmNTAzZmExM2ZjMGFmNWQxZWExNjNhYzNiNzAzMDIyODA5YmM0MiIsInN1YiI6IjY2MDYifQ.4f9ZiVxqoeHTuw6cToAiQi5TyKWAv8VuOXwImx-ysk4';
+        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjgyMzIyNDgsImlhdCI6MTcyNTY0MDI0OCwicm9sZSI6InVzZXIiLCJzaWduIjoiNTQyNzI2MTZhYzAwMTdjYzEwZDhkNjVjZTA4YjU4Yzg2OWE1ZTIzODRmMzJjODI5ZTQzNmI2OWVkNTExY2VmNyIsInN1YiI6IjY2MDYifQ.WzuLhUAcrpAhyuPTHh0MdTiwMVj42EQJSAgdUSHtjfE';
 
     }
 

@@ -29,8 +29,8 @@ class AuthController extends BaseController
             'phone' => 'required',
         ]);
         $smsphone='+998'.$data['phone'];
-        $code = rand(1000, 9999);
-//        $code=7777;
+//        $code = rand(1000, 9999);
+        $code=7777;
         $us=User::where('phone',$request->phone)->first();
 
         if ($us){
@@ -46,7 +46,7 @@ class AuthController extends BaseController
             $res = [
                 'success' => true,
                 'data' => $request->phone,
-                'message' => 'telefon raqam saqlandi',
+                'message' => 'sms kod yuborildi',
             ];
 
             return response()->json($res, 200);

@@ -24,6 +24,23 @@ class GeneralController extends BaseController
         ]);
         return $this->sendSuccess(' ', 'Mahsulot saqlandi');
     }
+    public function dLike(Request $request,$id)
+    {
+        LikeProduct::where('user_id',$id)->where('product_id',$request->product_id)->first()->delete();
+//            'user_id'=>$id,
+//            'product_id'=>$request->product_id
+//        );
+        return $this->sendSuccess(' ', 'like ochirildi saqlandi');
+    }
+    public function liked($id)
+    {
+        $data=LikeProduct::where('user_id',$id)->get();
+        $dd=[];
+        foreach ($data as $item){
+            $dd[]=Product::find($item->product_id);
+        }
+        return $this->sendSuccess($dd, 'liked list');
+    }
     public function delAccount($id)
     {
         $user=User::find($id)->delete();
