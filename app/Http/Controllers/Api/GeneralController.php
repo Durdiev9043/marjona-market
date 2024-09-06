@@ -35,11 +35,39 @@ class GeneralController extends BaseController
     public function liked($id)
     {
         $data=LikeProduct::where('user_id',$id)->get();
-        $dd=[];
-        foreach ($data as $item){
-            $dd[]=Product::find($item->product_id);
+        $tt=[];
+        foreach ($data as $product){
+            $data=[];
+//            $data[]=Product::find($product->product_id);
+            $product= Product::find($product->product_id);
+            $data['id']=$product->id;
+            $data['category_id']=$product->category_id;
+            $data['name']=$product->name;
+            $data['more']=$product->more;
+            $data['price']=$product->price;
+            $data['count']=$product->count;
+            $data['miqdori']=$product->miqdori;
+            $data['code']=$product->code;
+            $data['type']=$product->type;
+            if ($product->img) {
+                $data['img'][] = $product->img;
+            }
+            if ($product->img2) {
+                $data['img'][] = $product->img2;
+            }
+            if ($product->img3) {
+                $data['img'][] = $product->img3;
+            }
+            if ($product->img4) {
+                $data['img'][] = $product->img4;
+            }
+            if ($product->img5) {
+                $data['img'][] = $product->img5;
+            }
+            $tt[]=$data;
+
         }
-        return $this->sendSuccess($dd, 'liked list');
+        return $this->sendSuccess($tt, 'liked list');
     }
     public function delAccount($id)
     {
