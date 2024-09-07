@@ -18,7 +18,7 @@ class MessageService {
     public function sendMessage($phone, $message) {
 
         $token = $this->getToken();
-$msg='Marjona market ilovasi uchun tasdiqlash kodi: '.$message.'. Tanlovingiz uchun raxmat.';
+            $msg='Marjona-market mobil dasturida roʻyxatdan o\'tish kodi: '.$message;
         if ($phone != '998999999999') {
             $res = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
@@ -45,7 +45,7 @@ $msg='Marjona market ilovasi uchun tasdiqlash kodi: '.$message.'. Tanlovingiz uc
 //            'password' => config('i1DYvprVps4rFJRr6nTsbV2Io8ca7AqXl5ZTi90R'),
 //        ])->json();
 
-        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjgyMzIyNDgsImlhdCI6MTcyNTY0MDI0OCwicm9sZSI6InVzZXIiLCJzaWduIjoiNTQyNzI2MTZhYzAwMTdjYzEwZDhkNjVjZTA4YjU4Yzg2OWE1ZTIzODRmMzJjODI5ZTQzNmI2OWVkNTExY2VmNyIsInN1YiI6IjY2MDYifQ.WzuLhUAcrpAhyuPTHh0MdTiwMVj42EQJSAgdUSHtjfE';
+        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjgyMTUyMzEsImlhdCI6MTcyNTYyMzIzMSwicm9sZSI6InVzZXIiLCJzaWduIjoiNTQyNzI2MTZhYzAwMTdjYzEwZDhkNjVjZTA4YjU4Yzg2OWE1ZTIzODRmMzJjODI5ZTQzNmI2OWVkNTExY2VmNyIsInN1YiI6IjY2MDYifQ.xl-FCZKtqio22Qi7RyRBVxMGEoZUimDbNvCH6iRAlbg';
 
     }
 
