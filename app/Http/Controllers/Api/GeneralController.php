@@ -166,7 +166,7 @@ class GeneralController extends BaseController
             $tt['id']=$cat->id;
             $tt['name']=$cat->name;
             $tt['img']=$cat->img;
-            $tt['hashs']=DB::table('categories')->select('*')->where('cat_id',$cat->id)->whereNotNull('cat_id')->orderBy('tr')->get();
+            $tt['hashs']=DB::table('categories')->select('*')->where('cat_id',$cat->id)->whereNotNull('cat_id')->get();
             $data[]=$tt;
         }
         return $this->sendSuccess($data,'Dokondagi barcha Mahsulotlar Toifalari');
