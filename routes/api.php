@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 //Route::post('/send-sms', [RegisteredUserController::class, 'sendSms'])->name('send_sms');
-Route::post('/check-sms/{phone}', [AuthController::class, 'checkSms'])->name('check_sms');
+Route::post('/check-sms/{phone}', [AuthController::class, 'checkSms']);
 Route::post('reg',[\App\Http\Controllers\Api\AuthController::class,'reg']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::post('/auth/login/courier', [AuthController::class, 'loginCourier']);

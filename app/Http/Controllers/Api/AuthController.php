@@ -9,6 +9,7 @@ use App\Services\MessageService;
 use App\Services\UserService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -78,16 +79,18 @@ class AuthController extends BaseController
     public function checkSms(Request $request, $phone)
 
     {
+
         $user=User::where('phone',$phone)->first();
+        $credentials = ['phone' => $request->username, 'password' => $request->password];
         if ($request->get('verify_code') == $user->verify_code && $user->verify_expiration > now()) {
 
             $user->update(['verify_code_status' => '1']);
 
             event(new Registered($user));
+            Auth::guard('web')->attempt($credentials, false, false);
+//            Auth::login($user);
 
-            Auth::login($user);
-
-            if ($user)
+            if($user)
             {
                 $role=User::where('phone', $request->phone)->first()->role;
                 $user_id=User::where('phone', $request->phone)->first()->id;
