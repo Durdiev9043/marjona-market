@@ -84,12 +84,61 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                            <div class="p-2" style="display: inline;border-right: solid 1px black">
                             <img src="{{ asset('/storage/galereya/'.$product->img) }}" width="150px" alt="">
-                            <img src="{{ asset('/storage/galereya/'.$product->img2) }}" width="150px" alt="">
-                            <img src="{{ asset('/storage/galereya/'.$product->img3) }}" width="150px" alt="">
-                            <img src="{{ asset('/storage/galereya/'.$product->img4) }}" width="150px" alt="">
-                            <img src="{{ asset('/storage/galereya/'.$product->img5) }}" width="150px" alt="">
+                            <form action="{{ route('rek.destroy',$product ->img) }}" method="POST" style="display: inline">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" value="{{ $product->id }}">
+                                <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span></button>
+                            </form>
+                            </div>
+                            <div class="p-2" style="display: inline;border-right: solid 1px black">
 
+                            <img src="{{ asset('/storage/galereya/'.$product->img2) }}" width="150px" alt="">
+                                <form action="{{ route('rek.destroy',$product ->img) }}" method="POST" style="display: inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span></button>
+                                </form>
+                            </div>
+                            <div class="p-2" style="display: inline;border-right: solid 1px black">
+
+                            <img src="{{ asset('/storage/galereya/'.$product->img3) }}" width="150px" alt="">
+                                <form action="{{ route('rek.destroy',$product ->img) }}" method="POST" style="display: inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span></button>
+                                </form>
+                            </div>
+                            <div class="p-2" style="display: inline;border-right: solid 1px black">
+
+                            <img src="{{ asset('/storage/galereya/'.$product->img4) }}" width="150px" alt="">
+                                <form action="{{ route('rek.destroy',$product ->img) }}" method="POST" style="display: inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span></button>
+                                </form>
+                            </div>
+                            <div class="p-2" style="display: inline;border-right: solid 1px black">
+
+                            <img src="{{ asset('/storage/galereya/'.$product->img5) }}" width="150px" alt="">
+                                <form action="{{ route('rek.destroy',$product ->img) }}" method="POST" style="display: inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span></button>
+                                </form>
+                            </div>
                             <form method="POST" action="{{route('product.update',$product->id)}}"
                                   enctype="multipart/form-data">
                                 @csrf

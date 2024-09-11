@@ -51,8 +51,9 @@ class RekController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Rek $rek)
     {
-        //
+        $rek->delete();
+        return redirect()->back();
     }
 }

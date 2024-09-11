@@ -119,21 +119,21 @@
                                                                                      alt="Geeks Image"  width="150px" />
                                                                             </div>
                                                                         </td>
-{{--                                                                        <td>--}}
-{{--                                                                            <form action="{{ route('rek.destroy',$product ->id) }}" method="POST">--}}
-{{--                                                                                @csrf--}}
-{{--                                                                                @method('DELETE')--}}
+                                                                        <td>
+                                                                            <form action="{{ route('rek.destroy',$product ->id) }}" method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
 {{--                                                                                <a class="btn btn-warning btn-sm m-1" href="{{ route('rek.edit',$product->id) }}">--}}
 {{--                                                                                    <span class="btn-label">--}}
 {{--                                                                                        <i class="fa fa-edit"></i>--}}
 {{--                                                                                    </span>--}}
 {{--                                                                                </a>--}}
 
-{{--                                                                                <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">--}}
-{{--                                        <i class="fa fa-trash"></i>--}}
-{{--                                    </span></button>--}}
-{{--                                                                            </form>--}}
-{{--                                                                        </td>--}}
+                                                                                <button type="submit" class="btn btn-danger m-1 btn-sm"><span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span></button>
+                                                                            </form>
+                                                                        </td>
                                                                     </tr>
                                                                 @endforeach
 
