@@ -28,7 +28,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/send-sms', [RegisteredUserController::class, 'sendSms'])->name('send_sms');
-Route::post('/check-sms/{user:phone}', [RegisteredUserController::class, 'checkSms'])->name('check_sms');
+// Route::post('/check-sms/{user:phone}', [RegisteredUserController::class, 'checkSms'])->name('check_sms');
 Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('category',CategoryController::class);
     Route::resource('product',ProductController::class);
@@ -44,7 +44,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('search/cat/id',[\App\Http\Controllers\GeneralController::class,'idCat'])->name('id.cat');
     Route::get('order/index/web',[\App\Http\Controllers\GeneralController::class,'orderIndex'])->name('orderIndex');
     Route::get('order/done',[\App\Http\Controllers\GeneralController::class,'orderDone'])->name('orderDone');
-    Route::get('order/view/{order}',[\App\Http\Controllers\GeneralController::class,'orderView'])->name('orderView');
+    // Route::get('order/view/{order}',[\App\Http\Controllers\GeneralController::class,'orderView'])->name('orderView');
     Route::post('order/product/cancel/{id}',[\App\Http\Controllers\GeneralController::class,'orderProductCancel'])->name('orderProduct.cancel');
     Route::get('order/view/{id}',[\App\Http\Controllers\GeneralController::class,'orderIndex'])->name('orderView');
     Route::get('order/cancel',[\App\Http\Controllers\OrderController::class,'orderCancel'])->name('orderCancel');
