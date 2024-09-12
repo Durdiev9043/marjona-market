@@ -98,9 +98,12 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        return $this->guard()->attempt(
-            $this->credentials($request), $request->boolean('remember')
-        );
+
+        $credentials = ['phone' => $request->phone, 'password' => $request->password];
+        return Auth::guard('web')->attempt($credentials, false, false);
+//        return $this->guard()->attempt(
+//            $this->credentials($request), $request->boolean('remember')
+//        );
     }
 
     /**
