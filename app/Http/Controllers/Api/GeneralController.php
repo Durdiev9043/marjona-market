@@ -365,7 +365,7 @@ class GeneralController extends BaseController
         foreach ($jsonData['products'] as $product){
 
             $pp=Product::where('id',$product['product_id'])->first();
-            $cc=(integerValue($pp->count) - $product['count']);
+            $cc=((int)$pp->count) - ($product['count']);
             $mm=(($pp->miqdor) - $product['miqdor']);
                $pp->update([
                    'count'=>$cc,
