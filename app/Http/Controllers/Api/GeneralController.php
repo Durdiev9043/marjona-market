@@ -384,8 +384,8 @@ $tt=(int)$product['count'];
             ]);
         }
         $msg='Buyurtma saqlandi';
-//        $pp=Product::where('id',$product['product_id'])->first();
-       return $this->sendSuccess('yaratildi',$msg);
+        $pp=Product::where('id',$product['product_id'])->first();
+       return $this->sendSuccess($pp,$msg);
     }
     public function orderhistory($id)
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
