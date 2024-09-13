@@ -375,13 +375,14 @@ class GeneralController extends BaseController
                     'count'=>$cc,
                 ]);
             }else{
-$count=(int)$pp->count;
-$tt=(int)$product['count'];
-            $cc=$count - $tt;
-            $mm=(($pp->miqdor) - $product['miqdor']);
-               $pp->update([
+                $count=(int)$pp->count;
+                $tt=(int)$product['count'];
+                $cc=$count - $tt;
+                $mm=(($pp->miqdor) - $product['miqdor']);
+                $pp->update([
                    'count'=>$cc,
-            ]);}
+                ]);
+            }
             OrderProduct::create([
                 'product_id'=>$product['product_id'],
                 'name'=>Product::where('id',$product['product_id'])->first()->name,
@@ -394,7 +395,7 @@ $tt=(int)$product['count'];
         }
         $msg='Buyurtma saqlandi';
         $pp=Product::where('id',$product['product_id'])->first();
-       return $this->sendSuccess($pp,$msg);
+       return $this->sendSuccess('buyurtma yaratildi',$msg);
     }
     public function orderhistory($id)
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
