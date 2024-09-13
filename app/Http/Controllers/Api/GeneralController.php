@@ -382,7 +382,8 @@ class GeneralController extends BaseController
             ]);
         }
         $msg='Buyurtma saqlandi';
-       return $this->sendSuccess('created',$msg);
+        $pp=Product::where('id',$product['product_id'])->first();
+       return $this->sendSuccess($pp,$msg);
     }
     public function orderhistory($id)
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
