@@ -358,14 +358,16 @@ class GeneralController extends BaseController
             'status'=>0,
             'lat'=>$jsonData['lat'],
             'lang'=>$jsonData['lang'],
-           'type'=>$jsonData['type'],
+            'type'=>$jsonData['type'],
             'address_name'=>$jsonData['address_name'],
         ])->id;
 //        $products=json_decode($request->products);
         foreach ($jsonData['products'] as $product){
 
             $pp=Product::where('id',$product['product_id'])->first();
-            $cc=($pp->count) - ($product['count']);
+$count=(int)$pp->count;
+$tt=(int)$product['count'];
+            $cc=$count - $tt;
             $mm=(($pp->miqdor) - $product['miqdor']);
                $pp->update([
                    'count'=>$cc,
@@ -382,8 +384,8 @@ class GeneralController extends BaseController
             ]);
         }
         $msg='Buyurtma saqlandi';
-        $pp=Product::where('id',$product['product_id'])->first();
-       return $this->sendSuccess($pp,$msg);
+//        $pp=Product::where('id',$product['product_id'])->first();
+       return $this->sendSuccess('yaratildi',$msg);
     }
     public function orderhistory($id)
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
