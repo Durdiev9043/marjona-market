@@ -16,7 +16,7 @@ class OrderController extends Controller
     }
     public function orderProgress()
     {
-        $orders=Order::where('status',1)->Orwhere('status',2)->get();
+        $orders=Order::where('status',1)->Orwhere('status',2)->orderBy('id','DESC')->get();
         $orderproducts=OrderProduct::all();
         return view('admin.order.index',['orders'=>$orders,'orderproducts'=>$orderproducts]);
     }
