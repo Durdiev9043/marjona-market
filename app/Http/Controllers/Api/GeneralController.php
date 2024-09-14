@@ -232,7 +232,7 @@ class GeneralController extends BaseController
             $data['name']=$product->name;
             $data['more']=$product->more;
             $data['price']=$product->price;
-            $data['count']=$product->count;
+            $data['count']=(string)$product->count;
             $data['miqdori']=$product->miqdori;
             $data['code']=$product->code;
             $data['type']=$product->type;
@@ -277,7 +277,7 @@ class GeneralController extends BaseController
             $data['name'] = $product->name;
             $data['more'] = $product->more;
             $data['price'] = $product->price;
-            $data['count'] = $product->count;
+            $data['count'] = (string)$product->count;
             $data['miqdori'] = $product->miqdori;
             $data['code'] = $product->code;
             $data['type'] = $product->type;
