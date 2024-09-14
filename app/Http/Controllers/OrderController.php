@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function orderCancel()
     {
-        $orders=Order::where('status',-1)->get();
+        $orders=Order::where('status',-1)->orderBy('id','desc')->get();
         $orderproducts=OrderProduct::all();
         return view('admin.order.index',['orders'=>$orders,'orderproducts'=>$orderproducts]);
     }
