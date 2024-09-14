@@ -64,7 +64,7 @@ class GeneralController extends Controller
 //            )
 //            ->join('orders', 'orders.id', '=', 'order_products.order_id')
 //            ->get();
-        $orders=Order::where('status','>',-1)->where('status','<',1)->get();
+        $orders=Order::where('status','>',-1)->where('status','<',1)->orderBy('id','DESC')->get();
         $users=User::all();
         $orderproducts=OrderProduct::whereNull('cancel')->whereNull('comment')->get();
         return view('admin.order.new',['orders'=>$orders,'orderproducts'=>$orderproducts,'users'=>$users]);
@@ -76,7 +76,7 @@ class GeneralController extends Controller
     }
     public function orderDone()
     {
-        $orders=Order::where('status',3)->get();
+        $orders=Order::where('status',3)->orderBy('id','DESC')->get();
         $users=User::all();
         $orderproducts=OrderProduct::whereNull('cancel')->get();
         return view('admin.order.done',['orders'=>$orders,'orderproducts'=>$orderproducts,'users'=>$users]);
