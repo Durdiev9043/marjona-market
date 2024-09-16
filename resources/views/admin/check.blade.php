@@ -59,6 +59,8 @@ $tt=0;
 <span style="font-size: 13px">{{ $item->product->code }} //  {{ $item->product->id }}</span><hr>
         </div>
     @endforeach
+    <?php if( $order->type == 1){$tt=$tt+8000;}else{$tt=$tt+5000;} ?>
+    Yetkazib berish: @if($order->type == 1) 8 000 @else 5 000 @endif
     Hammasi: {{$tt}} so'm <br>
     To'lov turi:  <hr>
     <h4 ALIGN="center">Xaridingiz uchun raxmat!</h4>
