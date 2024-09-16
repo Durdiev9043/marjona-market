@@ -204,11 +204,11 @@ class AuthController extends BaseController
             }
 
             $user=User::where('role',3)->where('phone',$request->phone)->first();
-
+            $credentials = ['phone' => $request->phone, 'password' => $request->password];
 //            $user = User::where('phone', $request->phone)->first();
 
             if ($user) {
-                Auth::login($user);
+                Auth::guard('web')->attempt($credentials, false, false);
                 $role = $user->role;
                 $user_id = $user->id;
                 $name = $user->name;
