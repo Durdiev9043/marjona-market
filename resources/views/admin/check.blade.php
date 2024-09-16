@@ -3,18 +3,14 @@
 <head>
 {{--    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>--}}
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
     <style>
-        @font-face {
-            font-family: 'CustomCyrillicFont';
-            src: url('/path/to/your/font.woff2') format('woff2'),
-            url('/path/to/your/font.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
+
 
         body {
-            font-family: 'CustomCyrillicFont', Arial, sans-serif;
+            font-family: 'Roboto', 'Arial', sans-serif;
         }
     </style>
     <title>Resume</title>
