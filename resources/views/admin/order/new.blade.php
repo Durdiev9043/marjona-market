@@ -127,6 +127,7 @@
                                                     {{--                                                        </select>--}}
                                                     {{--                                                    </div>--}}
                                                     <button>Tugatish</button>
+                                                    <span>Dokondan olib ketish</span>
                                                 </form>
                                             @else
                                             @if($order->status == 0)
