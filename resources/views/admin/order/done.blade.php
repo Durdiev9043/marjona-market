@@ -60,6 +60,8 @@
                                     <th scope="col">Narxi</th>
                                     <th scope="col">Holat</th>
                                     <th scope="col">Buyurtma qilinga vaqti</th>
+                                    <th scope="col">-/-</th>
+{{--                                    <th scope="col">-/-</th>--}}
 {{--                                    <th scope="col" colspan="2"> Amallar</th>--}}
 
                                 </tr>
@@ -120,6 +122,8 @@
 {{--                                                                                        <i class="fa fa-edit"></i>--}}
 {{--                                                                                    </span>--}}
 {{--                                            </a>                                        </td>--}}
+                                      
+                                        <td><a href="{{ route('check', $order->id) }}" target="_blank" class="btn btn-outline-danger"> checkni yuklab olish</a>  </td>
                                     </tr>
                                 @endforeach
 
