@@ -10,7 +10,7 @@
 
 
         body {
-            font-family: 'Roboto', 'Arial', sans-serif;
+            font-family:  Arial, sans-serif;
         }
     </style>
     <title>Resume</title>
