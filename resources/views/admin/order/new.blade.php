@@ -126,7 +126,7 @@
                                                     {{--                                                            <option value="-1">Bekor qilish</option>--}}
                                                     {{--                                                        </select>--}}
                                                     {{--                                                    </div>--}}
-                                                    <button>Tugatish</button>
+                                                    <button>Tugatish</button><br>
                                                     <span>Dokondan olib ketish</span>
                                                 </form>
                                             @else
