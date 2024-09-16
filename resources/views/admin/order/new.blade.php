@@ -67,7 +67,7 @@
                                 <tbody>
 
                                 @foreach($orders as $order)
-                                    <tr @if($order->type == 1) class="bg-danger" @endif>
+                                    <tr @if($order->type == 1) style="background: rgb(220 53 69 / 21%)" @endif>
                                         <th scope="row" ><a href="#">{{$order -> id }}</a></th>
                                         <td> {{$order->user->phone }} </td>
                                             <?php
