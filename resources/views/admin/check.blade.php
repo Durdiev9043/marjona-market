@@ -60,7 +60,7 @@ $tt=0;
         </div>
     @endforeach
     <?php if( $order->type == 1){$tt=$tt+8000;}else{$tt=$tt+5000;} ?>
-    Yetkazib berish: @if($order->type == 1) 8 000 @else 5 000 @endif
+    Yetkazib berish: @if($order->type == 1) 8 000 @else 5 000 @endif<br>
     Hammasi: {{$tt}} so'm <br>
     To'lov turi:  <hr>
     <h4 ALIGN="center">Xaridingiz uchun raxmat!</h4>
