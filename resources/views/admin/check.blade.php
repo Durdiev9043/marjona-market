@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+{{--    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>--}}
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+    </style>
     <title>Resume</title>
     <style>
         /*@page { size: auto 8cm landscape; }*/
