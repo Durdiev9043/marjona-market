@@ -68,7 +68,7 @@
 
                                 @foreach($orders as $order)
                                     <tr>
-                                        <th scope="row"><a href="#">{{$order -> id }}</a></th>
+                                        <th scope="row" @if($order->type == 1) style="background: red" @endif><a href="#">{{$order -> id }}</a></th>
                                         <td> {{$order->user->phone }} </td>
                                             <?php
                                             $pri=0;
