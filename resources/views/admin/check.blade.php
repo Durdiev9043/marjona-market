@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="UTF-8">
+
     <title>Resume</title>
     <style>
         /*@page { size: auto 8cm landscape; }*/
