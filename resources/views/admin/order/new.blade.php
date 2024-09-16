@@ -128,6 +128,7 @@
                                                     {{--                                                    </div>--}}
                                                     <button>Tugatish</button>
                                                 </form>
+                                            @else
                                             @if($order->status == 0)
                                                 <form action="{{ route('orderstatus', $order->id) }}" method="post">
                                                     @csrf
