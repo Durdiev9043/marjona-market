@@ -114,6 +114,20 @@
                                         </style>
 
                                         <td>
+                                            @if($order->status == 1)
+                                                <form action="{{ route('orderstatus', $order->id) }}" method="post">
+                                                    @csrf
+                                                    @method('put')
+                                                    <input type="hidden" name="status" value="3">
+                                                    {{--                                                    <div class="form-group">--}}
+                                                    {{--                                                        <select class="form-control" name="status" id="exampleFormControlSelect1">--}}
+                                                    {{--                                                            <option value="{{ $order->status }}">{{$order->st[$order->status] }}</option>--}}
+                                                    {{--                                                            <option value="1">Bajarildi</option>--}}
+                                                    {{--                                                            <option value="-1">Bekor qilish</option>--}}
+                                                    {{--                                                        </select>--}}
+                                                    {{--                                                    </div>--}}
+                                                    <button>Tugatish</button>
+                                                </form>
                                             @if($order->status == 0)
                                                 <form action="{{ route('orderstatus', $order->id) }}" method="post">
                                                     @csrf
@@ -143,6 +157,7 @@
                                                     <input type="hidden" name="status" value="3">
                                                     <button>Bajarildi</button>
                                                 </form>
+                                            @endif
                                             @endif
                                         </td>
 
