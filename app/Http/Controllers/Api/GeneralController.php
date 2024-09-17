@@ -121,7 +121,7 @@ class GeneralController extends BaseController
     public function search(Request $request)
     {
         if ($request->name !== NULL){
-        $products = Product::where('name','like','%'.$request->name.'%')->paginate(150);
+        $products = Product::where('name','like','%'.$request->name.'%')->where('count','>',0)->paginate(150);
         $tt=[];
 //        $data=[];
         foreach ($products as $product){
