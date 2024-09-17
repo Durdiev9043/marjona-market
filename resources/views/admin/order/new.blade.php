@@ -114,7 +114,7 @@
                                         </style>
 
                                         <td>
-                                            @if($order->type == 1)
+                                            @if($order->type == -1)
                                                 <form action="{{ route('orderstatus', $order->id) }}" method="post">
                                                     @csrf
                                                     @method('put')
