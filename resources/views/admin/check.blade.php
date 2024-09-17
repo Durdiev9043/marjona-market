@@ -70,7 +70,7 @@ $tt=0;
         To'lov turi:  <hr>
     @else
 
-            <?php if( $order->type == 1){$tt=$tt+8000;}  @else{$tt=$tt+5000;} ?>
+            <?php if( $order->type == 1){$tt=$tt+8000;}  else{$tt=$tt+5000;} ?>
 
         Yetkazib berish: @if($order->type == 1) 8 000 so'm @else 5 000 so'm @endif<br>
         Hammasi: {{$tt}} so'm <br>
