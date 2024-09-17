@@ -27,6 +27,7 @@ class PdfGeneratorController extends Controller
 //            'defaultPaperSize' => 'A4', // Set the default paper size (A4 is the default value)
 //            "default_paper_size" => "custom",
             'defaultPaperWidth' => '7cm',
+            'encoding' => 'utf-8'
 
         ]);
         return $pdf->stream('resume.pdf');

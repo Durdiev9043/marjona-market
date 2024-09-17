@@ -6,12 +6,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
-    <style>
-
-
-        body {
-            font-family:  Arial, sans-serif;
+    <style type="text/css">
+        * {
+            /*font-family: Helvetica, sans-serif;*/
+            font-family: "DejaVu Sans", sans-serif;
+            font-size: 0.8rem;
         }
+
     </style>
     <title>Resume</title>
     <style>
@@ -63,10 +64,19 @@ $tt=0;
 <span style="font-size: 13px">{{ $item->product->code }} //  {{ $item->product->id }}</span><hr>
         </div>
     @endforeach
-    <?php if( $order->type == 1){$tt=$tt+8000;}else{$tt=$tt+5000;} ?>
-    Yetkazib berish: @if($order->type == 1) 8 000 @else 5 000 @endif<br>
-    Hammasi: {{$tt}} so'm <br>
-    To'lov turi:  <hr>
+    @if($tt > 70000)
+        Yetkazib berish: 0 So'm<br>
+        Hammasi: {{$tt}} so'm <br>
+        To'lov turi:  <hr>
+    @else
+
+            <?php if( $order->type == 1){$tt=$tt+8000;}  @else{$tt=$tt+5000;} ?>
+
+        Yetkazib berish: @if($order->type == 1) 8 000 so'm @else 5 000 so'm @endif<br>
+        Hammasi: {{$tt}} so'm <br>
+        To'lov turi:  <hr>
+    @endif
+
     <h4 ALIGN="center">Xaridingiz uchun raxmat!</h4>
 </div>
 </body>
