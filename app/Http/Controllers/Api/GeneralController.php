@@ -374,15 +374,15 @@ class GeneralController extends BaseController
                 $pp->update([
                     'count'=>$cc,
                 ]);
-            }else{
-                $count=(int)$pp->count;
-                $tt=(int)$product['count'];
-                $cc=$count - $tt;
-                $mm=(($pp->miqdor) - $product['miqdor']);
-                $pp->update([
-                   'count'=>$cc,
-                ]);
-            }
+//            }else{
+//                $count=(int)$pp->count;
+//                $tt=(int)$product['count'];
+//                $cc=$count - $tt;
+//                $mm=(($pp->miqdor) - $product['miqdor']);
+//                $pp->update([
+//                   'count'=>$cc,
+//                ]);
+//            }
             OrderProduct::create([
                 'product_id'=>$product['product_id'],
                 'name'=>Product::where('id',$product['product_id'])->first()->name,
