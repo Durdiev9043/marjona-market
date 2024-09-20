@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class CourierController extends BaseController
 {
     public function getOrder(){
-        $orders=Order::where('status',1)->Where('supplier_id',NULL)->where('type','!=',-1)->get();
+        $orders=Order::where('status',2)->Where('supplier_id',NULL)->where('type','!=',-1)->get();
         return $this->sendSuccess($orders,'Buyurtmalar Royxati');
     }
     public function takeOrder(Request $request, $id){
