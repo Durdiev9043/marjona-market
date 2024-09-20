@@ -349,31 +349,32 @@ class GeneralController extends BaseController
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
     public function orderstory(Request $request,$id)
     {
-        $user=User::where('id',$id)->first();
+        $user = User::where('id', $id)->first();
         $jsonData = $request->json()->all();
 //        dd($jsonData['lat']);
 //        $rrr= json_decode($request->json(), true);
-       $p_id=Order::create([
-            'user_id'=>$user->id,
-            'status'=>0,
-            'lat'=>$jsonData['lat'],
-            'lang'=>$jsonData['lang'],
-            'type'=>$jsonData['type'],
-            'address_name'=>$jsonData['address_name'],
+        $p_id = Order::create([
+            'user_id' => $user->id,
+            'status' => 0,
+            'lat' => $jsonData['lat'],
+            'lang' => $jsonData['lang'],
+            'type' => $jsonData['type'],
+            'address_name' => $jsonData['address_name'],
         ])->id;
 //        $products=json_decode($request->products);
-        foreach ($jsonData['products'] as $product){
+        foreach ($jsonData['products'] as $product) {
 
-            $pp=Product::where('id',$product['product_id'])->first();
-            if ((int)$product['count'] == NULL){
+            $pp = Product::where('id', $product['product_id'])->first();
+            if ((int)$product['count'] == NULL) {
 
-                $count=(int)$pp->count;
-                $tt=(int)$product['miqdori'];
-                $cc=$count - $tt;
-                $mm=(($pp->miqdor) - $product['miqdor']);
+                $count = (int)$pp->count;
+                $tt = (int)$product['miqdori'];
+                $cc = $count - $tt;
+                $mm = (($pp->miqdor) - $product['miqdor']);
                 $pp->update([
-                    'count'=>$cc,
+                    'count' => $cc,
                 ]);
+            }
 //            }else{
 //                $count=(int)$pp->count;
 //                $tt=(int)$product['count'];
@@ -384,19 +385,20 @@ class GeneralController extends BaseController
 //                ]);
 //            }
             OrderProduct::create([
-                'product_id'=>$product['product_id'],
-                'name'=>Product::where('id',$product['product_id'])->first()->name,
-                'img'=>Product::where('id',$product['product_id'])->first()->img,
-                'count'=>$product['count'],
-                'miqdor'=>$product['miqdor'],
-                'total_price'=>$product['total_price'],
-                'order_id'=>$p_id,
+                'product_id' => $product['product_id'],
+                'name' => Product::where('id', $product['product_id'])->first()->name,
+                'img' => Product::where('id', $product['product_id'])->first()->img,
+                'count' => $product['count'],
+                'miqdor' => $product['miqdor'],
+                'total_price' => $product['total_price'],
+                'order_id' => $p_id,
             ]);
         }
-        $msg='Buyurtma saqlandi';
-        $pp=Product::where('id',$product['product_id'])->first();
-       return $this->sendSuccess('buyurtma yaratildi',$msg);
+        $msg = 'Buyurtma saqlandi';
+        $pp = Product::where('id', $product['product_id'])->first();
+        return $this->sendSuccess('buyurtma yaratildi', $msg);
     }
+
     public function orderhistory($id)
 //'user_id','status','lat','lang','address_name':'product_id','count','miqdor','total_price','order_id'
     {
