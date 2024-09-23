@@ -110,11 +110,11 @@
                                 </thead>
                                 <tbody>
 
-
+<?php $nn=0;?>
                                 @foreach($products as $product)
-                                    <tr @if($product->count == 0 || $product->count == NULL) style="background: #ff000057" @endif>
-
-                                        <th scope="row"><a href="#">{{$product -> id }}</a></th>
+                                    <tr >
+                                            <?php $nn=$nn+1;?>
+                                        <th scope="row"><a href="#">{{$nn}}</a></th>
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->code}}</td>
                                         {{--                                                                        <td>{{ Illuminate\Support\Str::limit($product->more, $limit = 50, $end = '...') }}</td>--}}
