@@ -123,11 +123,9 @@
                                             {{--                                                                            <form action="{{ route('product.update',$product->id) }}" method="post">--}}
                                             {{--                                                                                @csrf--}}
                                             {{--                                                                                @method('PUT')--}}
-                                            @if($product->count>0)
+
                                                 {{$product->count}}
-                                            @else
-                                                {{$product->miqdori}}
-                                            @endif
+
                                             {{--                                                                            </form>--}}
 
                                         </td>
