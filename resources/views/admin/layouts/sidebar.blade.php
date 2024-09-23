@@ -58,6 +58,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link " href="{{ route('product.minus') }}">
+                <i class="bi bi-grid"></i>
+                <span>Minusga otgan mahsulotlar</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link " href="{{ route('pstatus') }}">
                 <i class="bi bi-grid"></i>
                 <span>Aksiyadagi mahsulotlar</span>

@@ -50,6 +50,13 @@ class GeneralController extends Controller
         $products=Product::where('count', '<' , 1)->orWhere('count',NULL)->paginate(50);
         return view('admin.product.index',['cats'=>$cats,'products'=>$products,'hashs'=>$hashs]);
     }
+    public function productMinus()
+    {
+        $cats=Category::whereNull('cat_id')->get();
+        $hashs=Category::whereNotNull('cat_id')->get();
+        $products=Product::where('count', '<' , 0)->orWhere('count',NULL);
+        return view('admin.product.minus',['cats'=>$cats,'products'=>$products,'hashs'=>$hashs]);
+    }
     public function orderIndex()
     {
 
