@@ -171,7 +171,7 @@
 
                                 </tbody>
                             </table>
-                            {{ $products->links() }}
+
                             <style>
                                 .image-container img {
                                     transition: transform 0.3s ease-in-out;
