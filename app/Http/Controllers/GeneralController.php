@@ -54,7 +54,7 @@ class GeneralController extends Controller
     {
         $cats=Category::whereNull('cat_id')->get();
         $hashs=Category::whereNotNull('cat_id')->get();
-        $products=Product::where('count', '<' , 0)->orWhere('count',NULL);
+        $products=Product::where('count', 'like' , "-");
         return view('admin.product.minus',['cats'=>$cats,'products'=>$products,'hashs'=>$hashs]);
     }
     public function orderIndex()
