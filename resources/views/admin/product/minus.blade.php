@@ -94,6 +94,7 @@
                                 <tr>
                                     {{--                                    <th scope="col">#</th>--}}
                                     <th scope="col">#</th>
+                                    <th scope="col">#id</th>
                                     <th scope="col">Nomi</th>
                                     <th scope="col">Shtrix kod</th>
                                     {{--                                    <th scope="col">izoh</th>--}}
@@ -115,6 +116,7 @@
                                     <tr >
                                             <?php $nn=$nn+1;?>
                                         <th scope="row"><a href="#">{{$nn}}</a></th>
+                                        <td>{{$product->id}}</td>
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->code}}</td>
                                         {{--                                                                        <td>{{ Illuminate\Support\Str::limit($product->more, $limit = 50, $end = '...') }}</td>--}}
