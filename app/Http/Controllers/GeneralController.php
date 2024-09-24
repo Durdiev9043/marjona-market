@@ -111,13 +111,13 @@ class GeneralController extends Controller
     public function orderstatus(Request $request,$order)
     {
         $order=Order::where('id',$order)->first();
-        $orpr=OrderProduct::where('order_id',$order->id)->get();
-        foreach ($orpr as $item){
-            $p_id=$item->product_id;
-            $pp=Product::where('id',$p_id)->first();
-            $count=$pp->count - $item->count;
-            $pp->update(['count'=>$count]);
-        }
+//        $orpr=OrderProduct::where('order_id',$order->id)->get();
+//        foreach ($orpr as $item){
+//            $p_id=$item->product_id;
+//            $pp=Product::where('id',$p_id)->first();
+//            $count=$pp->count - $item->count;
+//            $pp->update(['count'=>$count]);
+//        }
         $order->update([
             'status' => $request->status,
         ]);
