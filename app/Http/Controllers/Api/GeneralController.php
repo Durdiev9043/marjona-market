@@ -365,24 +365,24 @@ class GeneralController extends BaseController
         foreach ($jsonData['products'] as $product) {
 
             $pp = Product::where('id', $product['product_id'])->first();
-            if ((int)$product['count'] == NULL) {
+//            if ((int)$product['count'] == NULL) {
 
-                $count = (int)$pp->count;
-                $tt = (int)$product['miqdori'];
-                $cc = $count - $tt;
-                $mm = (($pp->miqdor) - $product['miqdor']);
-                $pp->update([
-                    'count' => $cc,
-                ]);
-            }
-//            }else{
-//                $count=(int)$pp->count;
-//                $tt=(int)$product['count'];
-//                $cc=$count - $tt;
-//                $mm=(($pp->miqdor) - $product['miqdor']);
+//                $count = (int)$pp->count;
+//                $tt = (int)$product['coun'];
+//                $cc = $count - $tt;
+//                $mm = (($pp->miqdor) - $product['miqdor']);
 //                $pp->update([
-//                   'count'=>$cc,
+//                    'count' => $cc,
 //                ]);
+//            }
+//            }else{
+                $count=(int)$pp->count;
+                $tt=(int)$product['count'];
+                $cc=$count - $tt;
+                $mm=(($pp->miqdor) - $product['miqdor']);
+                $pp->update([
+                   'count'=>$cc,
+                ]);
 //            }
             OrderProduct::create([
                 'product_id' => $product['product_id'],
