@@ -9,9 +9,28 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class GeneralController extends Controller
 {
+
+
+    public function sms()
+    {
+        $token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjgyMTUyMzEsImlhdCI6MTcyNTYyMzIzMSwicm9sZSI6InVzZXIiLCJzaWduIjoiNTQyNzI2MTZhYzAwMTdjYzEwZDhkNjVjZTA4YjU4Yzg2OWE1ZTIzODRmMzJjODI5ZTQzNmI2OWVkNTExY2VmNyIsInN1YiI6IjY2MDYifQ.xl-FCZKtqio22Qi7RyRBVxMGEoZUimDbNvCH6iRAlbg';
+        $users=User::all();
+        foreach ($users as $user){
+            $res = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+            ])->post("http://notify.eskiz.uz/api/message/sms/send", [
+                'mobile_phone' => '+998'.$user->phone,
+                'message' => 'MARJONA ONLINE MARKET ILOVASIDAN YANGI VERSIYA - YANGILIKLARDAN DOIMO HABARDOR BO\'LING ILOVANI YUKLAB OLING https://play.google.com/store/apps/details?id=uz.khusinov.marjonamarket',
+                'from' => '4546',
+                //'callback_url' => route('receive_status')
+            ]);
+        }
+        dd('sms yuborildi');
+    }
 
     public function ppup()
     {
