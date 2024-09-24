@@ -465,6 +465,18 @@ class GeneralController extends BaseController
 
         return $this->sendSuccess($tt,' mahsulotlar royxati');
     }
-
+    public function orderCancel(Request $request)
+    {
+        $order=Order::where('id',$request->order_id)->first()->update(['status'=> -1]);
+            $pp=OrderProduct::where('order_id',$request->order_id)->get();
+            foreach ($pp as $item){
+                $pr=Product::where('id',$item->product_id)->first();
+                $cc=(int)$pr->count;
+                $ct=(int)$item->count;
+                $cc=$cc+$ct;
+                $pr->update(['count'=>$cc]);
+            }
+        return $this->sendSuccess($order,' Buyurtma bekor qilindi');
+    }
 
 }
