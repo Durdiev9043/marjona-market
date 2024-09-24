@@ -376,8 +376,8 @@ class GeneralController extends BaseController
 //                ]);
 //            }
 //            }else{
-                $count=(int)$pp->count;
-                $tt=(int)$product['count'];
+                $count=$pp->count;
+                $tt=$product['count'];
                 $cc=$count - $tt;
                 $mm=(($pp->miqdor) - $product['miqdor']);
                 $pp->update([
