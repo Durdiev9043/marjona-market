@@ -48,6 +48,7 @@ Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(functio
 
 
     Route::post('product/like/{id}',[\App\Http\Controllers\Api\GeneralController::class,'pLike'] );
+    Route::put('user/update/{id}',[\App\Http\Controllers\Api\GeneralController::class,'userUpdate'] );
     Route::post('product/dislike/{id}',[\App\Http\Controllers\Api\GeneralController::class,'dLike'] );
     Route::post('liked/list/{id}',[\App\Http\Controllers\Api\GeneralController::class,'liked'] );
 

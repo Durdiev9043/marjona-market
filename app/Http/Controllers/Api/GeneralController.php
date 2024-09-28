@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\DB;
 
 class GeneralController extends BaseController
 {
+    public function userUpdate(Request $request,$id)
+    {
+        User::find($id)->update($request->all());
+        return $this->sendSuccess(' ', 'Foydalanuvchi ma\'lumotlar ozgartirildi');
+    }
 
     public function pLike(Request $request,$id)
     {

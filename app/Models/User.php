@@ -20,6 +20,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
+        'gender',
+        'birthday',
         'phone',
         'password',
         'role',
@@ -37,6 +40,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+public $gn=[0=>'erkak',1=>'ayol'];
 
 }

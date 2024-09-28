@@ -170,6 +170,14 @@
                                                                                         <i class="fa fa-edit"></i>
                                                                                     </span>
                                             </a>                                        </td>
+                                        <td>
+                                            <form action="{{ route('cancel', ) }}" method="post">
+                                                @csrf
+                                                @method('post')
+                                                <input type="hidden" name="order_id" value="{{$order->id}}">
+                                                <button>Bekor qilish</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
 

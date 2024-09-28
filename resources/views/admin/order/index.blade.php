@@ -132,6 +132,14 @@
                                         <td>{{ $order->supplier ? $order->supplier->name : ' ' }} {{ $order->supplier ? $order->supplier->phone : ' ' }}</td>
                                         <td>{{$order->created_at->format('d.m.Y  H:i') }}  </td>
                                         <td><a href="{{ route('check', $order->id) }}" target="_blank" class="btn btn-outline-danger"> checkni yuklab olish</a>  </td>
+                                        <td>
+                                            <form action="{{ route('cancel', ) }}" method="post">
+                                                @csrf
+                                                @method('post')
+                                                <input type="hidden" name="order_id" value="{{$order->id}}">
+                                                <button>Bekor qilish</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
 

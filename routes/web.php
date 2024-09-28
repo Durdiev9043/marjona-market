@@ -47,7 +47,8 @@ Route::group(['middleware' => ['role:admin']], function () {
      Route::get('order/view/{order}',[\App\Http\Controllers\GeneralController::class,'orderView'])->name('orderView');
     Route::post('order/product/cancel/{id}',[\App\Http\Controllers\GeneralController::class,'orderProductCancel'])->name('orderProduct.cancel');
 //    Route::get('order/view/{id}',[\App\Http\Controllers\GeneralController::class,'orderIndex'])->name('orderView');
-    Route::get('order/cancel',[\App\Http\Controllers\OrderController::class,'orderCancel'])->name('orderCancel');
+    Route::get('order/cancel',[\App\Http\Controllers\OrderController::class,'orderCancellist'])->name('orderCancel');
+    Route::post('order/cancel',[\App\Http\Controllers\OrderController::class,'orderCancel'])->name('cancel');
     Route::get('order/progress',[\App\Http\Controllers\OrderController::class,'orderProgress'])->name('orderProgress');
     Route::put('order/status/{id}',[\App\Http\Controllers\GeneralController::class,'orderstatus'])->name('orderstatus');
     Route::post('code/search',[\App\Http\Controllers\GeneralController::class,'codeSearch'])->name('code.search');
