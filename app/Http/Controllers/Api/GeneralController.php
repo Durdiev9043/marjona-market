@@ -18,11 +18,22 @@ class GeneralController extends BaseController
     public function userUpdate(Request $request,$id)
     {
         $user=User::find($id);
-        $user = $request->all();
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        // Validate the request data if necessary
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+
+            // Add other fields as necessary
+        ]);
+
+        // Update the user model with validated data
+        $user->fill($validatedData);
+
+        // Save the user
         $user->save();
-//        $user->surname = $request->surname;
-//        $user->gender = $request->gender;
-//        $user->save();
         return $this->sendSuccess($user, 'Foydalanuvchi ma\'lumotlar ozgartirildi');
     }
 
