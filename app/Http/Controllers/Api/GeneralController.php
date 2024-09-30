@@ -23,11 +23,7 @@ class GeneralController extends BaseController
         }
 
         // Validate the request data if necessary
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-
-            // Add other fields as necessary
-        ]);
+        $validatedData = $request->all();
 
         // Update the user model with validated data
         $user->fill($validatedData);
