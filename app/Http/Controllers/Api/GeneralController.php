@@ -18,7 +18,8 @@ class GeneralController extends BaseController
     public function userUpdate(Request $request,$id)
     {
         $user=User::where('id',$id)->first();
-        $user->update(['name'=>'name'])->save();
+        $user->$request->all();
+        $user->save();
         return $this->sendSuccess($user, 'Foydalanuvchi ma\'lumotlar ozgartirildi');
     }
 
