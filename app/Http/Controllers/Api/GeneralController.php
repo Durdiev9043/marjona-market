@@ -18,7 +18,7 @@ class GeneralController extends BaseController
     public function userUpdate(Request $request,$id)
     {
         $user=User::find($id);
-        $user->fill($request->all());
+        $user->update($request->all());
         $user->save();
 //        $user->surname = $request->surname;
 //        $user->gender = $request->gender;
