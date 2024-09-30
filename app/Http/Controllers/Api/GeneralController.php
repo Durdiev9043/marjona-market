@@ -19,10 +19,10 @@ class GeneralController extends BaseController
     {
         $user=User::where('id',$id)->first();
 
-        $user->update($request->all());
+        $user->save($request->all());
 //        $user->surname = $request->surname;
 //        $user->gender = $request->gender;
-        $user->save();
+//        $user->save();
         return $this->sendSuccess($user, 'Foydalanuvchi ma\'lumotlar ozgartirildi');
     }
 
