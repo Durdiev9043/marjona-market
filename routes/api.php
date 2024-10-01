@@ -1,20 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\RegisteredUserController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
@@ -24,7 +12,6 @@ Route::post('/check-sms/{phone}', [AuthController::class, 'checkSms']);
 Route::post('reg',[\App\Http\Controllers\Api\AuthController::class,'reg']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::post('/auth/login/courier', [AuthController::class, 'loginCourier']);
-
 
 Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
 Route::get('rek/list',[\App\Http\Controllers\Api\GeneralController::class,'rek'] );
@@ -41,14 +28,11 @@ Route::get('product/hash/filter/{id}',[\App\Http\Controllers\Api\GeneralControll
 Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(function () {
 //    Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
 
-
-
     Route::get('delete/account/{id}',[\App\Http\Controllers\Api\GeneralController::class,'delAccount'] );
 //    Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
 
-
     Route::post('product/like/{id}',[\App\Http\Controllers\Api\GeneralController::class,'pLike'] );
-    Route::put('user/update/{id}',[\App\Http\Controllers\Api\GeneralController::class,'userUpdate'] );
+    Route::put('user/update',[\App\Http\Controllers\Api\GeneralController::class,'userUpdate'] );
     Route::post('product/dislike/{id}',[\App\Http\Controllers\Api\GeneralController::class,'dLike'] );
     Route::post('liked/list/{id}',[\App\Http\Controllers\Api\GeneralController::class,'liked'] );
 
@@ -62,4 +46,6 @@ Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(functio
     Route::post('start/order/{id}',[\App\Http\Controllers\Api\CourierController::class,'startOrder'] );
     Route::post('finish/order/{id}',[\App\Http\Controllers\Api\CourierController::class,'finishOrder'] );
     Route::get('/order/info/{id}',[\App\Http\Controllers\Api\CourierController::class,'orderInfo'] );
+
+    Route::get('/getMe', [UserController::class, 'getMe']);
 });
