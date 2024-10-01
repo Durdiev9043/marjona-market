@@ -82,9 +82,7 @@ class AuthController extends BaseController
     }}
 
     public function checkSms(Request $request, $phone)
-
     {
-
         $user=User::where('phone',$phone)->first();
         $credentials = ['phone' => $request->username, 'password' => $request->password];
         if ($request->get('verify_code') == $user->verify_code && $user->verify_expiration > now()) {
@@ -93,7 +91,6 @@ class AuthController extends BaseController
 
             event(new Registered($user));
             Auth::guard('web')->attempt($credentials, false, false);
-//            Auth::login($user);
 
             if($user)
             {
@@ -134,8 +131,6 @@ class AuthController extends BaseController
 
             if($validateUser->fails()){
                 return response()->json([
-
-
                     'status' => false,
                     'message' => 'validation error',
                     'errors' => $validateUser->errors()
@@ -169,15 +164,6 @@ class AuthController extends BaseController
                 'message' => 'User Logged In Successfully',
                 'data' => $data
             ], 200);
-//            return response()->json([
-//                'status' => true,
-//                'message' => 'User Logged In Successfully',
-//                'token' => $user->createToken("API TOKEN")->plainTextToken,
-//                'role' => $role,
-//                'user_id'=>$user_id,
-//                'name'=>$name,
-//                'phone'=>$phone
-//            ], 200);
 
         } catch (\Throwable $th) {
             return response()->json([

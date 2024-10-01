@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Resources\ProfileResource;
 use App\Models\Category;
 use App\Models\LikeProduct;
 use App\Models\Order;
@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\DB;
 
 class GeneralController extends BaseController
 {
-    public function userUpdate(Request $request,$id)
+    public function userUpdate(Request $request)
     {
-        $user=User::find($id);
+        $user = auth()->user();
+
         if (!$user) {
             return response()->json(['error' => 'User not found'], 404);
         }
@@ -30,7 +31,7 @@ class GeneralController extends BaseController
 
         // Save the user
         $user->save();
-        return $this->sendSuccess($user, 'Foydalanuvchi ma\'lumotlar ozgartirildi');
+        return $this->sendSuccess(new ProfileResource($user), 'Foydalanuvchi ma\'lumotlar ozgartirildi');
     }
 
     public function pLike(Request $request,$id)

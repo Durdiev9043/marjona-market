@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 
 class BaseController extends Controller {
-    public function sendSuccess($data, $msg, $success = true) {
+    public function sendSuccess($data, $msg = 'Success', $success = true) {
         $res = [
             'success' => $success,
             'data' => $data,
