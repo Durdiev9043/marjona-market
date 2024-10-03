@@ -104,8 +104,8 @@
                                     </tr>
                                 @endforeach
                                 </tbody>
-                                {{ $orders->links('pagination::bootstrap-4')  }}
                             </table>
+                            {{ $orders->links('pagination::bootstrap-4')  }}
                         </div>
                     </div>
                 </div>
