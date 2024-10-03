@@ -103,10 +103,9 @@ class GeneralController extends Controller
     }
     public function orderDone()
     {
-        $orders=Order::where('status',3)->orderBy('id','DESC')->paginate(15);
+        $orders=Order::where('status',3)->orderBy('id','DESC')->paginate(10);
         $users=User::all();
-        $orderproducts=OrderProduct::whereNull('cancel')->get();
-        return view('admin.order.done',['orders'=>$orders,'orderproducts'=>$orderproducts,'users'=>$users]);
+        return view('admin.order.done',['orders'=>$orders, 'users' => $users]);
     }
     public function orderstatus(Request $request,$order)
     {

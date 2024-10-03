@@ -59,21 +59,17 @@
                                             $pri = 0;
                                             ?>
                                         <td>
-                                            @foreach($orderproducts as $orderproduct)
-                                                @if($orderproduct->order_id == $order->id)
-                                                        <?php
-                                                        $pri = $pri + $orderproduct->total_price;
-                                                        ?>
+                                            @foreach($order->products as $product)
 
-                                                    <b>{{$orderproduct->product->name }} (
-                                                        @if($orderproduct->count == 0)
-                                                            {{$orderproduct->miqdor }} KG
+
+                                                    <b>{{$product->product->name }} (
+                                                        @if($product->count == 0)
+                                                            {{$product->miqdor }} KG
                                                         @else
-                                                            {{$orderproduct->count }} ta
+                                                            {{$product->count }} ta
                                                         @endif
-                                                        <br></b>
-
-                                        @endif
+                                                        <br>
+                                                    </b>
                                         @endforeach
 
                                         <td>{{$pri }} so'm</td>
