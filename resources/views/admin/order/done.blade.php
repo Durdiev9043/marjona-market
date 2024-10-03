@@ -2,13 +2,6 @@
 
 @section('content')
 
-
-    <!-- ======= Header ======= -->
-
-
-    <!-- ======= Sidebar ======= -->
-
-
     <main id="main" class="main">
         @if (\Session::has('success'))
             <div class="alert alert-success">
@@ -20,16 +13,10 @@
         <div class="pagetitle">
             <h1>Buyurtmalar holati boyicha ma'lumot</h1>
 
-            {{--            <div class="btn-add">--}}
-            {{--                <a href="{{ route('patient.create') }}">Be`mor qoshish</a>--}}
-            {{--            </div>--}}
-
-        </div><!-- End Page Title -->
+        </div>
 
         <section class="section dashboard">
             <div class="row">
-
-
                 <div class="col-12 table_one">
                     <div class="card recent-sales overflow-auto table_one">
 
@@ -64,20 +51,18 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 @foreach($orders as $order)
                                     <tr>
                                         <th scope="row"><a href="#">{{$order -> id }}</a></th>
                                         <td> {{$order->user->phone }} </td>
                                             <?php
-                                            $pri=0;
+                                            $pri = 0;
                                             ?>
                                         <td>
-
                                             @foreach($orderproducts as $orderproduct)
                                                 @if($orderproduct->order_id == $order->id)
                                                         <?php
-                                                        $pri=$pri+$orderproduct->total_price;
+                                                        $pri = $pri + $orderproduct->total_price;
                                                         ?>
 
                                                     <b>{{$orderproduct->product->name }} (
@@ -86,12 +71,12 @@
                                                         @else
                                                             {{$orderproduct->count }} ta
                                                         @endif
-                                                    ) <br></b>
+                                                        <br></b>
 
                                         @endif
                                         @endforeach
 
-                                        <td>{{$pri }} so'm </td>
+                                        <td>{{$pri }} so'm</td>
 
                                         <td>
                                             @if($order->status == 0)
@@ -99,8 +84,10 @@
                                                     @csrf
                                                     @method('put')
                                                     <div class="form-group">
-                                                        <select class="form-control" name="status" id="exampleFormControlSelect1">
-                                                            <option value="{{ $order->status }}">{{$order->st[$order->status] }}</option>
+                                                        <select class="form-control" name="status"
+                                                                id="exampleFormControlSelect1">
+                                                            <option
+                                                                value="{{ $order->status }}">{{$order->st[$order->status] }}</option>
                                                             <option value="1">Bajarildi</option>
                                                             <option value="-1">Bekor qilish</option>
                                                         </select>
@@ -112,36 +99,17 @@
                                             @endif
                                         </td>
                                         <td>{{$order->created_at->format('d.m.Y  H:i') }}  </td>
-                                        <td><a href="{{ route('check', $order->id) }}" target="_blank" class="btn btn-outline-danger"> checkni yuklab olish</a>  </td>
+                                        <td><a href="{{ route('check', $order->id) }}" target="_blank"
+                                               class="btn btn-outline-danger"> checkni yuklab olish</a></td>
                                     </tr>
                                 @endforeach
-
                                 </tbody>
+                                {{ $orders->links()  }}
                             </table>
-
                         </div>
-
                     </div>
                 </div>
-
-
-
-
             </div>
-
         </section>
-
-    </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-
-
-    {{--<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>--}}
-
-    <!-- Vendor JS Files -->
-
-
-
-
-
+    </main>
 @endsection
