@@ -25,7 +25,9 @@ class OrderController extends Controller
         $orders = Order::query()
             ->with('products')
             ->withSum('products', 'total_price')
-            ->where('status', -1)->orderBy('id', 'DESC')
+            ->where('status', 1)
+            ->orWhere('status', 2)
+            ->orderBy('id', 'DESC')
             ->paginate(10);
 
         return view('admin.order.index', compact('orders'));
