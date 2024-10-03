@@ -77,7 +77,6 @@
                                                     <input type="hidden" name="status" value="2">
                                                     <button>Yetkazib beruvchiga topshirish</button>
                                                 </form>
-                                                {{--                                                {{$order->st[$order->status] }}  {{$order->updated_at->addMinutes(300)->format('d.m.Y  H:i') }}--}}
                                             @elseif($order->status == 2)
                                                 <form action="{{ route('orderstatus', $order->id) }}" method="post">
                                                     @csrf
@@ -87,7 +86,7 @@
                                                 </form>
                                             @endif
                                             @if($order->type == -1)
-                                                Dokon olib ketuvchi
+                                                Do'kondan olib ketuvchi
                                             @endif
                                         </td>
                                         <td>{{ $order->supplier ? $order->supplier->name : ' ' }} {{ $order->supplier ? $order->supplier->phone : ' ' }}</td>
