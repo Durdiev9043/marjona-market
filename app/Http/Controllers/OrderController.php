@@ -22,10 +22,13 @@ class OrderController extends Controller
 
     public function orderProgress()
     {
-        $orders        = Order::where('status', 1)->Orwhere('status', 2)->orderBy('id', 'DESC')->get();
-        $orderproducts = OrderProduct::all();
+        $orders = Order::query()
+            ->with('products')
+            ->withSum('products', 'total_price')
+            ->where('status', -1)->orderBy('id', 'DESC')
+            ->paginate(10);
 
-        return view('admin.order.index', ['orders' => $orders, 'orderproducts' => $orderproducts]);
+        return view('admin.order.index', compact('orders'));
     }
 
     public function orderCancel(Request $request)
