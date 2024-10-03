@@ -120,8 +120,6 @@ class GeneralController extends Controller
             ->orderBy('id', 'DESC')
             ->paginate(10);
 
-        dd($orders);
-
         $users = User::all();
 
         return view('admin.order.done', ['orders' => $orders, 'users' => $users]);

@@ -70,7 +70,7 @@
                                                     </b>
                                         @endforeach
 
-                                        <td>{{ $order->products_total_price_sum }} so'm</td>
+                                        <td>{{ $order->products_sum_total_price }} so'm</td>
 
                                         <td>
                                             @if($order->status == 0)
