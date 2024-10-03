@@ -60,8 +60,6 @@
                                             ?>
                                         <td>
                                             @foreach($order->products as $product)
-
-
                                                     <b>{{$product->product->name }} (
                                                         @if($product->count == 0)
                                                             {{$product->miqdor }} KG
@@ -72,7 +70,7 @@
                                                     </b>
                                         @endforeach
 
-                                        <td>{{$pri }} so'm</td>
+                                        <td>{{ $order->products_total_price_sum }} so'm</td>
 
                                         <td>
                                             @if($order->status == 0)
