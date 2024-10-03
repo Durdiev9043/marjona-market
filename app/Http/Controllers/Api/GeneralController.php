@@ -430,7 +430,7 @@ class GeneralController extends BaseController
             $tt=[];
             $tt['id']=$item->id;
             $tt['status']=$item->status;
-            $tt['time']=$item->created_at->addMinutes(300)->format('d.m.Y  H:i');
+            $tt['time']=$item->created_at->format('d.m.Y  H:i');
             foreach ($pr as $pp){
                 $ppt=[];
                 $ppt['name']=$pp->name;
