@@ -17,7 +17,7 @@ class OrderController extends Controller
             ->where('status', -1)->orderBy('id', 'DESC')
             ->paginate(10);
 
-        return view('admin.order.index', compact($orders));
+        return view('admin.order.index', compact('orders'));
     }
 
     public function orderProgress()
