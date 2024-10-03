@@ -52,7 +52,6 @@
                             <table class="table table-borderless datatable">
                                 <thead>
                                 <tr>
-                                    {{--                                    <th scope="col">#</th>--}}
                                     <th scope="col">№</th>
                                     <th scope="col">Buyurmachi</th>
                                     <th scope="col">Mahsulot</th>
@@ -61,8 +60,6 @@
                                     <th scope="col">Holat</th>
                                     <th scope="col">Buyurtma qilinga vaqti</th>
                                     <th scope="col">-/-</th>
-{{--                                    <th scope="col">-/-</th>--}}
-{{--                                    <th scope="col" colspan="2"> Amallar</th>--}}
 
                                 </tr>
                                 </thead>
@@ -96,7 +93,6 @@
 
                                         <td>{{$pri }} so'm </td>
 
-
                                         <td>
                                             @if($order->status == 0)
                                                 <form action="{{ route('orderstatus', $order->id) }}" method="post">
@@ -112,17 +108,10 @@
                                                     <button>saqlash</button>
                                                 </form>
                                             @else
-                                                {{$order->st[$order->status] }}  {{$order->updated_at->addMinutes(300)->format('d.m.Y  H:i') }}
+                                                {{$order->st[$order->status] }}  {{$order->updated_at->format('d.m.Y  H:i') }}
                                             @endif
                                         </td>
                                         <td>{{$order->created_at->format('d.m.Y  H:i') }}  </td>
-{{--                                        <td>--}}
-{{--                                            <a class="btn btn-warning btn-sm m-1" href="{{ route('orderView',$order->id) }}">--}}
-{{--                                                                                    <span class="btn-label">--}}
-{{--                                                                                        <i class="fa fa-edit"></i>--}}
-{{--                                                                                    </span>--}}
-{{--                                            </a>                                        </td>--}}
-                                      
                                         <td><a href="{{ route('check', $order->id) }}" target="_blank" class="btn btn-outline-danger"> checkni yuklab olish</a>  </td>
                                     </tr>
                                 @endforeach
