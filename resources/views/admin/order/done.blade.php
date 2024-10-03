@@ -60,14 +60,14 @@
                                             ?>
                                         <td>
                                             @foreach($order->products as $product)
-                                                    <b>{{$product->product->name }} (
-                                                        @if($product->count == 0)
-                                                            {{$product->miqdor }} KG
-                                                        @else
-                                                            {{$product->count }} ta
-                                                        @endif
-                                                        <br>
-                                                    </b>
+                                                <b>
+                                                    {{$product->product->name }}
+                                                    @if($product->count == 0)
+                                                        ( {{$product->miqdor }} KG )
+                                                    @else
+                                                        ( {{$product->count }} ta )
+                                                    @endif
+                                                </b>
                                         @endforeach
 
                                         <td>{{ $order->products_sum_total_price }} so'm</td>
