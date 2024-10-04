@@ -347,8 +347,8 @@ class GeneralController extends BaseController
 
     public function homelist()
     {
-        $cat     = Category::all();
-        $data    = [];
+        $cat  = Category::all();
+        $data = [];
 
         foreach ($cat as $item) {
             $tt           = [];
@@ -389,6 +389,7 @@ class GeneralController extends BaseController
 
         return $this->sendSuccess($data, 'home page uchun api');
     }
+
     public function orderstory(Request $request, $id)
     {
         $user     = auth()->user();
@@ -423,7 +424,7 @@ class GeneralController extends BaseController
         $msg = 'Buyurtma saqlandi';
 
         $message = PHP_EOL . "📦 Buyurtma: #$p_id"
-            . '📅 Sana : ' . now()->toDateTimeString();
+            . PHP_EOL . '📅 Sana : ' . now()->toDateTimeString();
 
         (new TelegramNotification())($message);
 
