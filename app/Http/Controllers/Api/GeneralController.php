@@ -422,8 +422,8 @@ class GeneralController extends BaseController
         }
         $msg = 'Buyurtma saqlandi';
 
-        $message = PHP_EOL . '📅 date : ' . now()->toDateTimeString()
-            . PHP_EOL . 'Yangi buyurtma';
+        $message = PHP_EOL . "📦 Buyurtma: #$p_id"
+            . '📅 Sana : ' . now()->toDateTimeString();
 
         (new TelegramNotification())($message);
 
