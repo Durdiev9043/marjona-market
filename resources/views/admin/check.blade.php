@@ -66,6 +66,7 @@
     Yetkazib berish:
     @if($order->type == 1)
         8 000 so'm
+        <br>
         Hammasi: {{$tt + 80000}} so'm
     @elseif($tt > 70000)
         0 so'm
