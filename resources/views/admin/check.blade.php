@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-{{--    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>--}}
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
     <style type="text/css">
         * {
-            /*font-family: Helvetica, sans-serif;*/
             font-family: "DejaVu Sans", sans-serif;
             font-size: 0.8rem;
         }
@@ -16,12 +14,12 @@
     </style>
     <title>Resume</title>
     <style>
-        /*@page { size: auto 8cm landscape; }*/
         @php $height = ((count($pp) ?: 1) * 3) + 10  @endphp
         @page {
-            size:  7cm {{ $height }}cm;
-            margin: 0; /* Kenar boşluğunu sıfırlayın */
+            size: 7cm {{ $height }}cm;
+            margin: 0;
         }
+
         .content-wrapper {
             height: auto;
             width: 7cm !important;
@@ -51,32 +49,36 @@
             <td>{{$order->address_name}}</td>
         </tr>
     </table>
-<?php
-$tt=0;
-?>
+    <?php
+    $tt = 0;
+    ?>
     @foreach($pp as $item)
             <?php
-            $tt=$tt+$item->total_price;
+            $tt = $tt + $item->total_price;
             ?>
         <div style="position: relative;">
-{{--            style="position: absolute; right: 10px;bottom: 5px"--}}
-        <b>{{ $item->product->name}} </b><br> <b > {{$item->count ?: $item->miqdor}}*{{ $item->total_price / ($item->count ?: 1)}}={{$item->total_price}}</b> &nbsp;&nbsp;&nbsp;
-<span style="font-size: 13px">{{ $item->product->code }} //  {{ $item->product->id }}</span><hr>
+            <b>{{ $item->product->name}} </b><br> <b> {{$item->count ?: $item->miqdor}}
+                *{{ $item->total_price / ($item->count ?: 1)}}={{$item->total_price}}</b> &nbsp;&nbsp;&nbsp;
+            <span style="font-size: 13px">{{ $item->product->code }} //  {{ $item->product->id }}</span>
+            <hr>
         </div>
     @endforeach
-    @if($tt > 70000)
-        Yetkazib berish: 0 So'm<br>
-        Hammasi: {{$tt}} so'm <br>
-        To'lov turi:  <hr>
+    Yetkazib berish:
+    @if($order->type == 1)
+        8 000 so'm
+    @elseif($tt > 70000)
+        0 so'm
+        <br>
+        Hammasi: {{$tt}} so'm
+        <br>
+        <hr>
     @else
-
-            <?php if( $order->type == 1){$tt=$tt+8000;}  else{$tt=$tt+5000;} ?>
-
-        Yetkazib berish: @if($order->type == 1) 8 000 so'm @else 5 000 so'm @endif<br>
-        Hammasi: {{$tt}} so'm <br>
-        To'lov turi:  <hr>
+        Yetkazib berish:
+        5 000 so'm
+        <br>
+        Hammasi: {{$tt + 5000}} so'm <br>
+        <hr>
     @endif
-
     <h4 ALIGN="center">Xaridingiz uchun raxmat!</h4>
 </div>
 </body>
