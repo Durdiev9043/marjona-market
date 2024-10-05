@@ -272,16 +272,17 @@ class GeneralController extends Controller
                                             'hashs'    => $hashs]);
     }
 
-    public function client()
+    public function client(Request $request)
     {
-        $users = $orderCounts = DB::table('users')
-            ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
-            ->where('users.role', 2)
-            ->select('users.id', 'users.phone', DB::raw('count(orders.id) as orders_count'))
-            ->groupBy('users.id', 'users.phone')
-            ->get();
+        $users = User::query()
+            ->withCount('orders')
+            ->when($request->search, function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->search . '%')
+                    ->orWhere('surname', 'like', '%' . $request->search . '%')
+                    ->orWhere('phone', 'like', '%' . $request->search . '%');
+            })
+            ->paginate(15);
 
-        return view('admin.courier.view', ['users' => $users]);
+        return view('admin.clients.view', compact('users'));
     }
-
 }

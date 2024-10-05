@@ -40,6 +40,10 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-public $gn=[0=>'erkak',1=>'ayol'];
+    public $gn=[0=>'erkak',1=>'ayol'];
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

@@ -2,12 +2,9 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\CategoryController;
 use Illuminate\Support\Facades\Route;
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-//Route::post('/send-sms', [RegisteredUserController::class, 'sendSms'])->name('send_sms');
 Route::post('/check-sms/{phone}', [AuthController::class, 'checkSms']);
 Route::post('reg',[\App\Http\Controllers\Api\AuthController::class,'reg']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
@@ -48,4 +45,8 @@ Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(functio
     Route::get('/order/info/{id}',[\App\Http\Controllers\Api\CourierController::class,'orderInfo'] );
 
     Route::get('/getMe', [UserController::class, 'getMe']);
+
+    Route::group(['prefix' => 'v1'], function () {
+        Route::apiResource('categories', CategoryController::class);
+    });
 });
