@@ -26,11 +26,9 @@ class MessageService {
                 'mobile_phone' => "$phone",
                 'message' => $msg,
                 'from' => '4546',
-                //'callback_url' => route('receive_status')
             ]);
 
             return $res->status();
-
         }
         else{
             dd($phone);
@@ -45,7 +43,7 @@ class MessageService {
 //            'password' => config('i1DYvprVps4rFJRr6nTsbV2Io8ca7AqXl5ZTi90R'),
 //        ])->json();
 
-        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjgyMTUyMzEsImlhdCI6MTcyNTYyMzIzMSwicm9sZSI6InVzZXIiLCJzaWduIjoiNTQyNzI2MTZhYzAwMTdjYzEwZDhkNjVjZTA4YjU4Yzg2OWE1ZTIzODRmMzJjODI5ZTQzNmI2OWVkNTExY2VmNyIsInN1YiI6IjY2MDYifQ.xl-FCZKtqio22Qi7RyRBVxMGEoZUimDbNvCH6iRAlbg';
+        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzA4MjAwOTAsImlhdCI6MTcyODIyODA5MCwicm9sZSI6InVzZXIiLCJzaWduIjoiNTQyNzI2MTZhYzAwMTdjYzEwZDhkNjVjZTA4YjU4Yzg2OWE1ZTIzODRmMzJjODI5ZTQzNmI2OWVkNTExY2VmNyIsInN1YiI6IjY2MDYifQ.ub8iKbZYRsfZXvY6CZ3fG--ffG-9_Ka6Zn2a8huzUgo';
 
     }
 

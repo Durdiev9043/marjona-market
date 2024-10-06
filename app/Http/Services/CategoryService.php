@@ -13,6 +13,6 @@ class CategoryService implements CategoryServiceInterface
             ->when($request->with_products, function ($query) {
                 return $query->with('products');
             })
-            ->get();
+            ->paginate(10);
     }
 }
