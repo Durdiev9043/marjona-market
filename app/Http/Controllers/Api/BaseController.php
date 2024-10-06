@@ -12,7 +12,7 @@ class BaseController extends Controller {
             'message' => $msg,
         ];
 
-        return response()->json($res, 200);
+        return response()->json($res,200);
     }
 
     public function sendError($error, $errorMsg = [], $code = 200) {

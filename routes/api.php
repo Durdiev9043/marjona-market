@@ -25,12 +25,10 @@ Route::get('product/hash/filter/{id}',[\App\Http\Controllers\Api\GeneralControll
 Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(function () {
 
     Route::get('delete/account/{id}',[\App\Http\Controllers\Api\GeneralController::class,'delAccount'] );
-
     Route::post('product/like/{id}',[\App\Http\Controllers\Api\GeneralController::class,'pLike'] );
     Route::put('user/update',[\App\Http\Controllers\Api\GeneralController::class,'userUpdate'] );
     Route::post('product/dislike/{id}',[\App\Http\Controllers\Api\GeneralController::class,'dLike'] );
     Route::post('liked/list/{id}',[\App\Http\Controllers\Api\GeneralController::class,'liked'] );
-
     Route::post('order/story/{id}',[\App\Http\Controllers\Api\GeneralController::class,'orderstory'] );
     Route::post('order/cancel/',[\App\Http\Controllers\Api\GeneralController::class,'orderCancel'] );
     Route::get('order/history/{id}',[\App\Http\Controllers\Api\GeneralController::class,'orderhistory'] );
@@ -41,9 +39,7 @@ Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(functio
     Route::post('start/order/{id}',[\App\Http\Controllers\Api\CourierController::class,'startOrder'] );
     Route::post('finish/order/{id}',[\App\Http\Controllers\Api\CourierController::class,'finishOrder'] );
     Route::get('/order/info/{id}',[\App\Http\Controllers\Api\CourierController::class,'orderInfo'] );
-
     Route::get('/getMe', [UserController::class, 'getMe']);
-
     Route::group(['prefix' => 'v1'], function () {
         Route::apiResource('categories', CategoryController::class);
     });
