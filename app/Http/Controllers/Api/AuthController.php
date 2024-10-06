@@ -62,13 +62,7 @@ class AuthController extends BaseController
 
         $this->service->send('998' . $request->phone, $message);
 
-        $res = [
-            'success' => true,
-            'data'    => $request->phone,
-            'message' => 'sms kod yuborildi',
-        ];
-
-        return response()->json($res);
+        return $this->sendSuccess($request->phone, 'СМС код юборилди');
     }
 
     public function checkSms(Request $request, $phone)
