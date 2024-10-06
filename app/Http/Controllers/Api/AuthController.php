@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends BaseController
 {
@@ -58,8 +59,7 @@ class AuthController extends BaseController
             if ($this->service->sendMessage($smsphone, $code) != 200) {
                 redirect()->back()->with('failed', 'invalid Phone');
             } else {
-
-                $role = 'client';
+                $role = Role::query()->find(2);
                 $user = User::create([
                                          'phone'              => $request->phone,
                                          'role'               => '2',
