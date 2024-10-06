@@ -1,6 +1,9 @@
 @extends('admin.layouts.app')
-@section('content')
+@push('admin-lte-css')
     <link href="{{ asset('assets/css/adminlte.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+@endpush
+@section('content')
     <main id="main" class="main">
         <div class="card">
             <div class="card-header">
