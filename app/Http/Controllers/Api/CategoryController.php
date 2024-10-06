@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function __construct(
         protected CategoryServiceInterface $service
-    ) { }
+    ) {}
 
     public function index(CategoryFilterRequest $request)
     {
