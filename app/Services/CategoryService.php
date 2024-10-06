@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Services;
+namespace App\Services;
 
 use App\Http\Requests\CategoryFilterRequest;
 use App\Models\Category;
+use App\Services\Interfaces\CategoryServiceInterface;
 
 class CategoryService implements CategoryServiceInterface
 {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryFilterRequest;
 use App\Http\Resources\CategoryResource;
-use App\Http\Services\CategoryServiceInterface;
+use App\Services\Interfaces\CategoryServiceInterface;
 
 class CategoryController extends Controller
 {

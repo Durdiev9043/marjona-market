@@ -2,80 +2,67 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use App\Services\MessageService;
-use App\Services\UserService;
+use App\Services\EskizSmsService;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Spatie\Permission\Models\Role;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class AuthController extends BaseController
 {
-    private MessageService $service;
-
-    public function __construct(MessageService $messageService)
-    {
-        $this->service = $messageService;
+    public function __construct(
+        private EskizSmsService $service,
+    ) {
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws RequestException
+     * @throws NotFoundExceptionInterface
+     */
     public function reg(Request $request)
     {
-        $data     = $request->validate([
-                                           'phone' => 'required',
-                                       ]);
+        $request->validate([
+                               'phone' => 'required',
+                           ]);
 
-        $smsphone = '+998' . $data['phone'];
+        $user = User::query()
+            ->where('phone', $request->phone)
+            ->first();
 
-        if ($request->phone == 942331705 || $request->phone == 994576678) {
+        if ($request->phone == 942331705 || $request->phone == 994576678 || $request->phone == '972113355') {
             $code = 7777;
         } else {
             $code = rand(1000, 9999);
         }
 
-        $us = User::where('phone', $request->phone)->first();
-
-        if ($us) {
-            if ($this->service->sendMessage($smsphone, $code) != 200) {
-                redirect()->back()->with('failed', 'invalid Phone');
-            }
-            $us->update([
-                            'verify_code'       => $code,
-                            'verify_expiration' => now()->addMinutes(3),
-                        ]);
-            $res = [
-                'success' => true,
-                'data'    => $request->phone,
-                'message' => 'sms kod yuborildi',
-            ];
-
-            return response()->json($res, 200);
+        if (!$user) {
+            $user = User::query()->create(
+                [
+                    'phone'              => $request->phone,
+                    'role'               => '2',
+                    'verify_code'        => $code,
+                    'verify_expiration'  => now()->addMinutes(3),
+                    'verify_code_status' => false,
+                ]);
         } else {
-            if ($this->service->sendMessage($smsphone, $code) != 200) {
-                redirect()->back()->with('failed', 'invalid Phone');
-            } else {
-                $role = Role::query()->find(2);
-                $user = User::create([
-                                         'phone'              => $request->phone,
-                                         'role'               => '2',
-                                         'verify_code'        => $code,
-                                         'verify_expiration'  => now()->addMinutes(3),
-                                         'verify_code_status' => false,
-                                     ]);
-                $user->assignRole($role);
-                $res = [
-                    'success' => true,
-                    'data'    => $request->phone,
-                    'message' => 'telefon raqam saqlandi',
-                ];
-                return response()->json($res);
-            }
+            $user->update(
+                [
+                    'verify_code'        => $code,
+                    'verify_expiration'  => now()->addMinutes(3),
+                    'verify_code_status' => false,
+                ]);
         }
+
+        $message = "Marjona-market mobil dasturida roʻyxatdan o'tish kodi: $code";
+
+        $this->service->send('998' . $request->phone, $message);
+
+        return $this->sendSuccess($user, "Сизга СМС код юборилди");
     }
 
     public function checkSms(Request $request, $phone)
@@ -86,29 +73,19 @@ class AuthController extends BaseController
             $user->update(['verify_code_status' => '1']);
 
             event(new Registered($user));
-            Auth::guard('web')->attempt($credentials, false, false);
+            Auth::guard('web')->attempt($credentials);
 
-            if ($user) {
-                $role    = User::where('phone', $request->phone)->first()->role;
-                $user_id = User::where('phone', $request->phone)->first()->id;
-                $name    = User::where('phone', $request->phone)->first()->name;
-                $phone   = User::where('phone', $request->phone)->first()->phone;
-            }
             $data = [
                 'token'   => $user->createToken("API TOKEN")->plainTextToken,
-                'role'    => $role,
-                'user_id' => $user_id,
-                'name'    => $name,
-                'phone'   => $phone,
+                'role'    => $user->role,
+                'user_id' => $user->id,
+                'name'    => $user->name,
+                'phone'   => $user->phone,
             ];
 
-            return response()->json([
-                                        'success' => true,
-                                        'message' => 'User Logged In Successfully',
-                                        'data'    => $data,
-                                    ], 200);
+            return $this->sendSuccess($data, "Фойдаланувчи муваффакиятли ройхатдан утди");
         } else {
-            return redirect()->back()->with('error', 'Логин или пароль неправильно!');
+            return $this->sendError('СМС код хато', 401);
         }
     }
 
@@ -124,7 +101,7 @@ class AuthController extends BaseController
             if ($validateUser->fails()) {
                 return response()->json([
                                             'status' => false,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'message' => 'validation error',
+                                                                                                                                                                                                                                                                                                                                                                                                                                      'message' => 'validation error',
                                             'errors' => $validateUser->errors(),
                                         ], 401);
             }
@@ -132,7 +109,7 @@ class AuthController extends BaseController
             if (!Auth::attempt($request->only(['phone', 'password']))) {
                 return response()->json([
                                             'status' => false,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'message' => 'Phone & Password does not match with our record.',
+                                                                                                                                                                                                                                                                                                                                                                                                                                      'message' => 'Phone & Password does not match with our record.',
                                         ], 401);
             }
 
@@ -159,7 +136,7 @@ class AuthController extends BaseController
         } catch (\Throwable $th) {
             return response()->json([
                                         'status' => false,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 'message' => $th->getMessage(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                  'message' => $th->getMessage(),
                                     ], 500);
         }
     }
@@ -179,7 +156,7 @@ class AuthController extends BaseController
 
 
                                             'status' => false,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'message' => 'validation error',
+                                                                                                                                                                                                                                                                                                                                                                                                                                      'message' => 'validation error',
                                             'errors' => $validateUser->errors(),
                                         ], 401);
             }
@@ -220,13 +197,13 @@ class AuthController extends BaseController
             } else {
                 return response()->json([
                                             'status' => false,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'message' => 'Phone & Password does not match with our record.',
+                                                                                                                                                                                                                                                                                                                                                                                                                                      'message' => 'Phone & Password does not match with our record.',
                                         ], 401);
             }
         } catch (\Throwable $th) {
             return response()->json([
                                         'status' => false,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 'message' => $th->getMessage(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                  'message' => $th->getMessage(),
                                     ], 500);
         }
     }

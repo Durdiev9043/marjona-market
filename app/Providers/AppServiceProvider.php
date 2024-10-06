@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Http\Services\CategoryService;
-use App\Http\Services\CategoryServiceInterface;
+use App\Services\CategoryService;
+use App\Services\Interfaces\CategoryServiceInterface;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;

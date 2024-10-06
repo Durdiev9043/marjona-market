@@ -23,10 +23,8 @@ Route::get('product/filter/{id}',[\App\Http\Controllers\Api\GeneralController::c
 Route::get('product/hash/filter/{id}',[\App\Http\Controllers\Api\GeneralController::class,'productfilter'] );
 
 Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(function () {
-//    Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
 
     Route::get('delete/account/{id}',[\App\Http\Controllers\Api\GeneralController::class,'delAccount'] );
-//    Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
 
     Route::post('product/like/{id}',[\App\Http\Controllers\Api\GeneralController::class,'pLike'] );
     Route::put('user/update',[\App\Http\Controllers\Api\GeneralController::class,'userUpdate'] );
