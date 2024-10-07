@@ -30,6 +30,18 @@ class HomeController extends Controller
                                              ])->get('https://api.timeweb.cloud/api/v1/account/finances');
         $serverBalance   = $responseTimeWeb->json()['finances']['balance'];
 
+        if (cache()->get('eskiz_bearer_token') == null) {
+            $responseEskiz = Http::withHeaders([
+                                                   'Accept'       => 'application/json',
+                                                   'Content-Type' => 'application/json',
+                                               ])
+                ->post(config('eskiz.host') . '/auth/login', [
+                    'email'    => config('eskiz.email'),
+                    'password' => config('eskiz.password')
+                ]);
+            cache()->put('eskiz_bearer_token', $responseEskiz->json()['data']['token'], 3600 * 24);
+        }
+
         $responseEskiz = Http::withHeaders([
                                                'Accept'       => 'application/json',
                                                'Content-Type' => 'application/json',
